@@ -10,4 +10,9 @@ angular
 function BlockController() {
   var vm = this;
 
+  vm.block = {
+    number: 1,
+    nonce: 28906,
+    data: {}
+  };
 }

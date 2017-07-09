@@ -1,5 +1,6 @@
 <div class="well" ng-class="{'well-success': vm.valid, 'well-error': !vm.valid}">
     <form class="form-horizontal">
+        <!-- Block number -->
         <div class="form-group">
             <label for="block{{vm.id}}number" class="col-sm-2 control-label">Block:</label>
             <div class="col-sm-10">
@@ -12,6 +13,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Nonce -->
         <div class="form-group">
             <label for="block{{vm.id}}nonce" class="col-sm-2 control-label">Nonce:</label>
             <div class="col-sm-10">
@@ -22,23 +25,73 @@
                        class="form-control">
             </div>
         </div>
-        <div class="form-group">
+
+        <!-- Coinbase -->
+        <div class="form-group" ng-if="vm.data.coinbase">
+            <label class="col-sm-2 control-label"><a ng-click="vm.showData = !vm.showData">Coinbase:</a></label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <div class="input-group-addon">€</div>
+                    <input type="text" ng-model="vm.data.coinbase.value" class="form-control">
+                    <div class="input-group-addon">-&gt;</div>
+                    <input type="text" ng-model="vm.data.coinbase.to" class="form-control"></div>
+            </div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="form-group" ng-if="vm.data.txs">
+            <label class="col-sm-2 control-label"><a ng-click="vm.showData = !vm.showData">Tx:</a></label>
+            <div class="col-sm-10">
+                <div class="input-group" ng-repeat="tx in vm.data.txs track by $index">
+                    <div class="input-group-addon">€</div>
+                    <input type="text" ng-model="tx.value" class="form-control">
+                    <div class="input-group-addon">From:</div>
+                    <input type="text" ng-model="tx.from" class="form-control">
+                    <div class="input-group-addon">-&gt;</div>
+                    <input type="text" ng-model="tx.to" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <!-- Data -->
+        <div class="form-group" ng-if="vm.showData || (!vm.data.coinbase && !vm.data.txs)">
             <label for="block{{vm.id}}data" class="col-sm-2 control-label">Data:</label>
             <div class="col-sm-10">
                 <textarea id="block{{vm.id}}data"
                           rows="10"
-                          ng-model="vm.data"
+                          ng-model="vm.dataString"
+                          ng-trim="false"
                           ng-change="vm.updateBlock()"
                           class="form-control">
                 </textarea>
             </div>
         </div>
-        <div id="state" class="form-group">
-            <label for="block{{vm.id}}hash" class="col-sm-2 control-label">Hash:</label>
+
+        <!-- Prev -->
+        <div class="form-group" ng-if="vm.prev">
+            <label for="block{{vm.id}}prev" class="col-sm-2 control-label">Prev:</label>
             <div class="col-sm-10">
-                <input id="block{{vm.id}}hash" type="text" ng-model="vm.hash" disabled class="form-control">
+                <input id="block{{vm.id}}prev"
+                       type="text"
+                       ng-model="vm.prev"
+                       disabled
+                       class="form-control">
             </div>
         </div>
+
+        <!-- Hash -->
+        <div class="form-group">
+            <label for="block{{vm.id}}hash" class="col-sm-2 control-label">Hash:</label>
+            <div class="col-sm-10">
+                <input id="block{{vm.id}}hash"
+                       type="text"
+                       ng-model="vm.hash"
+                       disabled
+                       class="form-control">
+            </div>
+        </div>
+
+        <!-- Button -->
         <div class="form-group">
             <div class="col-sm-2"><i class="icon-spinner icon-spin icon-large"></i></div>
             <div class="col-sm-10">

@@ -6,11 +6,14 @@ angular
     controllerAs: 'vm',
     bindings: {
       number: '<',
-      nonce: '<'
+      nonce: '=',
+      data: '=?',
+      prev: '<?',
+      hash: '=?'
     }
   });
 
-function BlockController($rootScope, $timeout, $element) {
+function BlockController($rootScope, $scope, $timeout, $element) {
   var vm = this;
 
   vm.hashFunction = $rootScope.sha256;
@@ -18,17 +21,19 @@ function BlockController($rootScope, $timeout, $element) {
   vm.$onInit = function () {
     vm.id = $rootScope.newId();
     vm.number = vm.number || 1;
-    vm.nonce = vm.nonce || 72608;
-    vm.data = '';
+    vm.nonce = vm.nonce || 1;
+    vm.data = vm.data || '';
+    vm.prev = vm.prev || '';
     vm.updateBlock();
 
-    $rootScope.$on('difficulty-change', function () {
-      vm.updateBlock();
-    })
+    $rootScope.$on('difficulty-change', vm.updateBlock);
+    $scope.$watch('vm.prev', vm.updateBlock);
+    $scope.$watch('vm.data', stringifyData, true);
+    $scope.$watch('vm.dataString', parseData);
   };
 
   vm.updateBlock = function () {
-    vm.hash = hashBlock(vm.number, vm.nonce, vm.data);
+    vm.hash = hashBlock(vm.number, vm.nonce, vm.dataString, vm.prev);
     vm.valid = validHash(vm.hash, $rootScope.difficultyPrefix());
     if (!vm.valid) {
       vm.mined = false;
@@ -43,11 +48,34 @@ function BlockController($rootScope, $timeout, $element) {
       vm.mined = true;
       ladda.stop();
       vm.updateBlock();
-    }, 250); // give UI time to update
+    }, 250);
   };
 
-  function hashBlock(blockNumber, nonce, data) {
-    return vm.hashFunction([blockNumber, nonce, data].join(''));
+  function stringifyData() {
+    vm.dataString = JSON.stringify(vm.data, null, 2);
+    vm.updateBlock();
+  }
+
+  function parseData() {
+    try {
+      vm.data = JSON.parse(vm.dataString);
+      if (vm.data.txs && vm.data.txs.length > 0) {
+        vm.data.txs.forEach(function (tx) {
+          try {
+            tx.value = parseFloat(tx.value);
+          } catch (e) {
+            // ignore parse error
+          }
+        });
+      }
+      vm.updateBlock();
+    } catch (e) {
+      // don't update while invalid
+    }
+  }
+
+  function hashBlock(blockNumber, nonce, data, prev) {
+    return vm.hashFunction([blockNumber, nonce, data, prev].join(''));
   }
 
   function validHash(hash, difficultyPrefix) {
@@ -66,14 +94,14 @@ function BlockController($rootScope, $timeout, $element) {
       // do the mining
       do {
         nonce++;
-        currentHash = hashBlock(vm.number, nonce, vm.data);
+        currentHash = hashBlock(vm.number, nonce, vm.dataString, vm.prev);
       } while (!validHash(currentHash, difficultyPrefix));
 
       // finished, set mined nonce
       vm.nonce = nonce;
       var duration = (new Date().getTime() - start);
       var seconds = duration / 1000;
-      vm.miningStats = ' mining took ' + round(seconds, 1) + ' s, mined with ' + round(nonce / seconds, 0) + ' hashes/s';
+      vm.miningStats = ' took ' + round(seconds, 1) + 's, speed: ' + round(nonce / seconds, 0) + ' hashes/s';
     }
   }
 

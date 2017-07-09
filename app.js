@@ -25,18 +25,19 @@ function routeConfig($locationProvider, $routeProvider) {
   $locationProvider.html5Mode({enabled: false, requireBase: false});
 
   $routeProvider
-    .when('/hash', {template: '<hash-page></hash-page>'})
-    .when('/block', {template: '<block-page></block-page>'})
-    .when('/blockchain', {template: '<blockchain-page></blockchain-page>'})
-    .when('/distributed', {template: '<distributed-page></distributed-page>'})
-    .when('/coinbase', {template: '<coinbase-page></coinbase-page>'})
-    .when('/tokens', {template: '<tokens-page></tokens-page>'})
-    .otherwise({template: '<intro-page></intro-page>'})
+    .when('/hash', {template: '<hash-page></hash-page>', containerClass: 'container'})
+    .when('/block', {template: '<block-page></block-page>', containerClass: 'container'})
+    .when('/blockchain', {template: '<blockchain-page></blockchain-page>', containerClass: 'container-fluid'})
+    .when('/distributed', {template: '<distributed-page></distributed-page>', containerClass: 'container-fluid'})
+    .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
+    .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
+    .otherwise({template: '<intro-page></intro-page>', containerClass: 'container'})
 }
 
-function run($location, $rootScope) {
+function run($location, $rootScope, $route) {
   var id = 0;
   $rootScope.difficulty = 4;
+  $rootScope.$route = $route;
 
   $rootScope.sha256 = function (input) {
     return CryptoJS.SHA256(input).toString();

@@ -42,6 +42,6 @@
 <a ng-if="vm.isActive('/')" href="https://github.com/guggero/blockchain-demo/">
     <img src="images/fork-me-on-github-ribbon.png" alt="Fork me on GitHub" class="github-ribbon">
 </a>
-<div class="container" ng-view>
+<div ng-class="$root.$route.current.containerClass" ng-view>
 
 </div>
