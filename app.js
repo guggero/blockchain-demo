@@ -25,13 +25,14 @@ function routeConfig($locationProvider, $routeProvider) {
   $locationProvider.html5Mode({enabled: false, requireBase: false});
 
   $routeProvider
+    .when('/', {template: '<intro-page></intro-page>', containerClass: 'container'})
     .when('/hash', {template: '<hash-page></hash-page>', containerClass: 'container'})
     .when('/block', {template: '<block-page></block-page>', containerClass: 'container'})
     .when('/blockchain', {template: '<blockchain-page></blockchain-page>', containerClass: 'container-fluid'})
     .when('/distributed', {template: '<distributed-page></distributed-page>', containerClass: 'container-fluid'})
     .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
     .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
-    .otherwise({template: '<intro-page></intro-page>', containerClass: 'container'})
+    .otherwise({redirectTo: '/'})
 }
 
 function run($location, $rootScope, $route) {

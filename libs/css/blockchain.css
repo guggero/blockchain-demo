@@ -25,6 +25,10 @@ body app > .container-fluid {
     margin: 20px 0;
 }
 
+input, textarea {
+    font-family: monospace;
+}
+
 .well-success {
     background: rgb(223, 240, 216);
 }
