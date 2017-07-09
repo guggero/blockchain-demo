@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/" class="navbar-brand">Blockchain Demo</a>
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <label class="navbar-text" for="difficulty">Block difficulty:</label>
+                    <select id="difficulty"
+                            ng-model="$root.difficulty"
+                            ng-options="(value + ' (' + $root.difficultyPrefix(value) + ')') for value in [3,4,5,6,7]"
+                            ng-change="$root.$broadcast('difficulty-change');"
+                            class="form-control">
+                    </select>
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{active: $root.isActive('/hash')}">
+                    <a href="#!/hash">Hash</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/block')}">
+                    <a href="#!/block">Block</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/blockchain')}">
+                    <a href="#!/blockchain">Blockchain</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/distributed')}">
+                    <a href="#!/distributed">Distributed</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/tokens')}">
+                    <a href="#!/tokens">Tokens</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/coinbase')}">
+                    <a href="#!/coinbase">Coinbase</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<a ng-if="vm.isActive('/')" href="https://github.com/guggero/blockchain-demo/">
+    <img src="images/fork-me-on-github-ribbon.png" alt="Fork me on GitHub" class="github-ribbon">
+</a>
+<div class="container" ng-view>
+
+</div>
