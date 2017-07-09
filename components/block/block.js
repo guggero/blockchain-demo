@@ -9,7 +9,8 @@ angular
       nonce: '=',
       data: '=?',
       prev: '<?',
-      hash: '=?'
+      hash: '=?',
+      valid: '=?'
     }
   });
 

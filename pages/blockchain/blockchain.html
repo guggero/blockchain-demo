@@ -1,10 +1,13 @@
-<h1>Blockchain</h1>
+<h1>Blockchain
+    <chain-info ng-if="$root.expertMode" blocks="vm.blocks"></chain-info>
+</h1>
 <div class="row row-horizon">
     <div class="col-xs-7 col-lg-5" ng-repeat="block in vm.blocks">
         <block number="block.number"
                nonce="block.nonce"
                data="block.data"
                hash="block.hash"
+               valid="block.valid"
                prev="!block.prev ? vm.blocks[$index-1].hash : block.prev">
         </block>
     </div>

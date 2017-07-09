@@ -12,9 +12,11 @@ This fork is just a static rebuild with AngularJS that can be hosted on GitHub P
 Changes in detail:
 * Static HTML/JS, so it can be served with GitHub Pages
 * Use AngularJS for rendering the page
-* Show/implement concept of mining difficulty
-* Show duration and speed of mining process
+* Expert Mode that shows many details
+* Show/implement concept of mining difficulty (in Expert Mode)
+* Show duration and speed of mining process (in Expert Mode)
 * Toggle between TX/Coinbase and Data view
+* Crypto/Misc page
 
 ## Send Thanks
 

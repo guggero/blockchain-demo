@@ -1,0 +1,42 @@
+<h1>Crypto/Misc</h1>
+
+This page shows the relationship between private keys, public keys, addresses and transactions.<br/>
+Sources used and other useful information:<br/>
+<ul>
+    <li><a href="http://procbits.com/2013/08/27/generating-a-bitcoin-address-with-javascript">Generating a Bitcoin Address with JavaScript</a></li>
+    <li><a href="https://bitcoinjs.org/">BitcoinJS</a></li>
+    <li><a href="https://en.bitcoin.it/wiki/List_of_address_prefixes">List of address prefixes</a></li>
+    <li><a href="https://en.bitcoin.it/wiki/Wallet_import_format">Wallet Import Format (WIF)</a></li>
+</ul>
+
+<h4 class="alert alert-danger">
+    Warning: The values displayed here are for demonstration and academic purposes only.<br/>
+    Do not use generated values for any transactions as they might not be sufficiently cryptographically secure
+    as the random number generator relies heavily on your browser's implementation of the Crypto API.
+</h4>
+
+<h3>Elliptic Curve key pair</h3>
+<div class="well">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Private key (WIF format):</label>
+            <div class="col-sm-10">
+                <pre>{{vm.keyPair.toWIF()}}</pre>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Public key, address (base 58):</label>
+            <div class="col-sm-10">
+                <pre>{{vm.keyPair.getAddress()}}</pre>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <div class="col-sm-2"><i class="icon-spinner icon-spin icon-large"></i></div>
+            <div class="col-sm-10">
+                <button class="btn btn-primary" ng-click="vm.newPrivateKey()">Generate new</button>
+            </div>
+        </div>
+    </form>
+</div>

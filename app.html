@@ -6,7 +6,7 @@
 
         <div id="navbar" class="collapse navbar-collapse">
             <form class="navbar-form navbar-right">
-                <div class="form-group">
+                <div class="form-group" ng-if="$root.expertMode">
                     <label class="navbar-text" for="difficulty">Block difficulty:</label>
                     <select id="difficulty"
                             ng-model="$root.difficulty"
@@ -15,6 +15,12 @@
                             class="form-control">
                     </select>
                 </div>
+                <button type="button"
+                        class="btn btn-default"
+                        ng-if="!$root.expertMode"
+                        ng-click="$root.expertMode = true;">
+                    Enable Expert Mode
+                </button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-class="{active: $root.isActive('/hash')}">
@@ -34,6 +40,9 @@
                 </li>
                 <li ng-class="{active: $root.isActive('/coinbase')}">
                     <a href="#!/coinbase">Coinbase</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/crypto')}">
+                    <a href="#!/crypto">Crypto/Misc</a>
                 </li>
             </ul>
         </div>

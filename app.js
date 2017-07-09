@@ -32,6 +32,7 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/distributed', {template: '<distributed-page></distributed-page>', containerClass: 'container-fluid'})
     .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
     .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
+    .when('/crypto', {template: '<crypto-page></crypto-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
 
@@ -60,31 +61,4 @@ function run($location, $rootScope, $route) {
     }
     return result;
   };
-}
-
-
-function updateChain(block, chain) {
-  // update all blocks walking the chain from this block to the end
-  for (var x = block; x <= 5; x++) {
-    if (x > 1) {
-      $('#block' + x + 'chain' + chain + 'previous').val($('#block' + (x - 1).toString() + 'chain' + chain + 'hash').val());
-    }
-    updateHash(x, chain);
-  }
-}
-
-function mine(block, chain, isChain) {
-  for (var x = 0; x <= 500000; x++) {
-    $('#block' + block + 'chain' + chain + 'nonce').val(x);
-    $('#block' + block + 'chain' + chain + 'hash').val(sha256(block, chain));
-    if ($('#block' + block + 'chain' + chain + 'hash').val().substr(0, 4) === '0000') {
-      if (isChain) {
-        updateChain(block, chain);
-      }
-      else {
-        updateState(block, chain);
-      }
-      break;
-    }
-  }
 }

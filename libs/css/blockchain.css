@@ -49,3 +49,9 @@ input, textarea {
     margin-top: 10px;
     margin-bottom: 8px;
 }
+
+h1 chain-info, h3 peer-info {
+    font-size: 14px;
+    font-family: monospace;
+    padding-left: 5px;
+}
