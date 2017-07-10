@@ -48,9 +48,16 @@ Sources used and other useful information:<br/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Private key (WIF format, uncompressed):</label>
+            <label for="wifUncompressed" class="col-sm-4 control-label">Private key (WIF format, uncompressed):</label>
             <div class="col-sm-8">
-                <pre>{{vm.keyPairUncompressed.toWIF()}}</pre>
+                <input type="text"
+                       id="wifUncompressed"
+                       ng-model="vm.wifUncompressed"
+                       ng-change="vm.importFromWif()"
+                       ng-class="{'well-error': vm.error}"
+                       class="form-control"><br/>
+                <span ng-if="!vm.error">paste to import from WIF</span>
+                <span ng-if="vm.error" class="well-error"> {{vm.error}}</span>
             </div>
         </div>
 
