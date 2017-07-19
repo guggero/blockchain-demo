@@ -12,7 +12,8 @@ function BlockController() {
 
   vm.block = {
     number: 1,
-    nonce: 28906,
+    nonce: 23344,
+    prev: '0000000000000000000000000000000000000000000000000000000000000000',
     data: {}
   };
 }

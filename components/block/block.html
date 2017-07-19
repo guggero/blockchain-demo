@@ -1,4 +1,4 @@
-<div class="well" ng-class="{'well-success': vm.valid, 'well-error': !vm.valid}">
+<div class="well" ng-class="{'well-success': vm.valid, 'well-error': !vm.valid, 'well-sm': vm.prev}">
     <form class="form-horizontal">
         <!-- Block number -->
         <div class="form-group">
@@ -89,14 +89,6 @@
                        ng-model="vm.hash"
                        disabled
                        class="form-control">
-            </div>
-        </div>
-
-        <!-- Hash calculation -->
-        <div class="form-group" ng-if="$root.expertMode && !vm.prev">
-            <label class="col-sm-2 control-label">Hash calculation:</label>
-            <div class="col-sm-10">
-                <pre>CryptoJS.SHA256([blockNumber, nonce, data].join(''))</pre>
             </div>
         </div>
 

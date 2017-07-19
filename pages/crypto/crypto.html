@@ -1,14 +1,30 @@
 <h1>Crypto/Misc</h1>
 
-This page shows the relationship between private keys, public keys, addresses and transactions.<br/>
-Sources used and other useful information:<br/>
-<ul>
-    <li><a href="http://procbits.com/2013/08/27/generating-a-bitcoin-address-with-javascript">Generating a Bitcoin
-        Address with JavaScript</a></li>
-    <li><a href="https://bitcoinjs.org/">BitcoinJS</a></li>
-    <li><a href="https://en.bitcoin.it/wiki/List_of_address_prefixes">List of address prefixes</a></li>
-    <li><a href="https://en.bitcoin.it/wiki/Wallet_import_format">Wallet Import Format (WIF)</a></li>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
+        <div class="panel-body">
+            This page shows the relationship between private keys, public keys, addresses and transactions.
+
+            <h3>Sources and other useful information:</h3>
+            <ul>
+                <li>
+                    <a href="http://procbits.com/2013/08/27/generating-a-bitcoin-address-with-javascript">
+                        Generating a Bitcoin Address with JavaScript
+                    </a>
+                </li>
+                <li><a href="https://bitcoinjs.org/">BitcoinJS</a></li>
+                <li><a href="https://en.bitcoin.it/wiki/List_of_address_prefixes">List of address prefixes</a></li>
+                <li><a href="https://en.bitcoin.it/wiki/Wallet_import_format">Wallet Import Format (WIF)</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 <h4>
     <strong>Warning</strong>: The values displayed here are for demonstration and academic purposes only.<br/>

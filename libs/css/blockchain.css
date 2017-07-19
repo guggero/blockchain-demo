@@ -5,8 +5,11 @@ html {
 }
 
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #888;
+    line-height: 18px;
 }
 
 body app > .container {
@@ -29,12 +32,27 @@ input, textarea {
     font-family: monospace;
 }
 
+block .well-sm {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.panel .panel-body {
+    line-height: 24px;
+}
+
+.well {
+    background: #f8f8f8;
+}
+
 .well-success {
-    background: rgb(223, 240, 216);
+    transition: background 0.6s;
+    background: rgba(147, 255, 75, 0.27);
 }
 
 .well-error {
-    background: rgb(250, 220, 220);
+    transition: background 0.6s;
+    background: rgba(238, 4, 30, 0.21);
 }
 
 .github-ribbon {
@@ -54,4 +72,154 @@ h1 chain-info, h3 peer-info {
     font-size: 14px;
     font-family: monospace;
     padding-left: 5px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+a, a:hover, a:focus {
+    color: #89cc2d;
+    text-decoration: none;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+    cursor: pointer;
+}
+
+h1, h2 {
+    margin-top: 10px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #5a4d45;
+    line-height: 44px;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #5a4d45;
+    line-height: 30px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.medium-paragraph {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+::-moz-selection {
+    background: #89cc2d;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #89cc2d;
+    color: #fff;
+    text-shadow: none;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background: #5a4d45;
+    border: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+}
+
+ul.navbar-nav {
+    font-size: 15px;
+    color: #fff;
+}
+
+.navbar-inverse ul.navbar-nav li a {
+    color: #fff;
+    opacity: 0.8;
+    border: 0;
+}
+
+.navbar-inverse ul.navbar-nav li a:hover {
+    color: #fff;
+    opacity: 1;
+    border: 0;
+}
+
+.navbar-inverse ul.navbar-nav li a:focus {
+    color: #fff;
+    outline: 0;
+    opacity: 1;
+    border: 0;
+}
+
+button.btn {
+    height: 40px;
+    margin: 0;
+    padding: 0 15px;
+    vertical-align: middle;
+    background: #89cc2d;
+    border: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #fff;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    text-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+}
+
+button.btn:hover {
+    opacity: 0.6;
+    color: #fff;
+}
+
+button.btn:active {
+    outline: 0;
+    opacity: 0.6;
+    color: #fff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+button.btn:focus {
+    outline: 0;
+    opacity: 0.6;
+    background: #89cc2d;
+    color: #fff;
+}
+
+button.btn:active:focus, button.btn.active:focus {
+    outline: 0;
+    opacity: 0.6;
+    background: #89cc2d;
+    color: #fff;
+}
+
+button i {
+    padding-left: 5px;
+    vertical-align: middle;
+    font-size: 20px;
+    line-height: 20px;
 }
