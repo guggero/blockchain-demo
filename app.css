@@ -37,12 +37,8 @@ block .well-sm {
     font-weight: 300;
 }
 
-.panel .panel-body {
+.panel .panel-body, intro-page {
     line-height: 24px;
-}
-
-.well {
-    background: #f8f8f8;
 }
 
 .well-success {

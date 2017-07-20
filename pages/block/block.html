@@ -13,7 +13,7 @@
             <ul>
                 <li>
                     <strong>Block number:</strong> The Number of the block in the chain. Integer that
-                    starts at 1 and is increased by one for every new block
+                    starts at 1 and is increased by one for every new block.
                 </li>
                 <li>
                     <strong>Nonce:</strong> A number that is used to make a block valid. Its sole purpose
@@ -21,14 +21,17 @@
                 </li>
                 <li><strong>Data:</strong> The actual data of the block. Can be anything!</li>
                 <li><strong>Previous block hash:</strong> The hash of the previous block. For the first block in a chain an arbitrary value like
-                    00000000000... is used
+                    00000000000... is used (something that is very unlikely to be a real hash).
                 </li>
                 <li>
-                    <strong>Hash:</strong> The hash of all the previous elements appended together. For our example the hash is calculated with the
+                    <strong>Hash:</strong> All previous elements appended together and then hashed. For our example the hash is calculated with the
                     following code:
                     <pre>CryptoJS.SHA256([blockNumber, nonce, data, prev].join(''))</pre>
                 </li>
             </ul>
+            A block is considered "valid" if its hash has a certain form. For our example we want the hash to start with a certain amount of zeroes.<br/>
+            The higher the number of zeroes we want a hash to start with, the harder it will be to find a nonce that makes the hash of the block to look
+            the way we want. This is what is called the difficulty. You can change the difficulty of this example page by enabling expert mode.
 
             <h3>Links:</h3>
             <ul>
