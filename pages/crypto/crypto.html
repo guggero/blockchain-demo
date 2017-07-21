@@ -25,6 +25,7 @@
                     </a>
                 </li>
                 <li><a href="https://bitcoinjs.org/">BitcoinJS</a></li>
+                <li><a href="https://github.com/bitcoinjs/bitcoinjs-lib">BitcoinJS GitHub repo</a></li>
                 <li><a href="https://en.bitcoin.it/wiki/List_of_address_prefixes">List of address prefixes</a></li>
                 <li><a href="https://en.bitcoin.it/wiki/Wallet_import_format">Wallet Import Format (WIF)</a></li>
             </ul>
@@ -41,7 +42,7 @@
 <div class="well">
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-4 control-label">Private key (decimal number):</label>
+            <label class="col-sm-4 control-label">Private key (decimal):</label>
             <div class="col-sm-8 input-group">
                 <input type="text"
                        class="form-control"
@@ -85,6 +86,13 @@
                 <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
             </div>
             <div ng-show="vm.showWifUncompressed" class="col-sm-offset-4 col-sm-8 qr-code" id="qrPrivUncompressed"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Public key (hex):</label>
+            <div class="col-sm-8 input-group">
+                <pre>{{vm.keyPair.getPublicKeyBuffer().toString('hex')}}</pre>
+            </div>
         </div>
 
         <div class="form-group">
