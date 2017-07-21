@@ -28,8 +28,9 @@ body app > .container-fluid {
     margin: 20px 0;
 }
 
-input, textarea {
+input, textarea, pre, .form-control {
     font-family: monospace;
+    font-size: 13px;
 }
 
 block .well-sm {
@@ -159,7 +160,7 @@ ul.navbar-nav {
     border: 0;
 }
 
-button.btn {
+:not(.input-group-btn) > button.btn {
     height: 40px;
     margin: 0;
     padding: 0 15px;
@@ -183,6 +184,30 @@ button.btn {
     -webkit-transition: all .6s;
     -ms-transition: all .6s;
     transition: all .6s;
+}
+
+.input-group-btn button.btn {
+    font-family: 'Raleway', sans-serif;
+    background: #89cc2d;
+    color: #fff;
+    border: 1px solid #89cc2d;
+    text-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+}
+
+.input-group[class*=col-] {
+    padding-right: 15px;
+}
+
+span.input-group-addon {
+    font-size: 13px;
 }
 
 button.btn:hover {
@@ -218,4 +243,8 @@ button i {
     vertical-align: middle;
     font-size: 20px;
     line-height: 20px;
+}
+
+.no-left-padding {
+    padding-left: 0;
 }
