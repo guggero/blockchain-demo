@@ -46,12 +46,44 @@
             <div class="col-sm-8 input-group">
                 <input type="text"
                        class="form-control"
-                       ng-disabled="true" value="{{vm.decimalKey}}">
+                       ng-disabled="true"
+                       value="{{vm.decimalKey}}">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" ng-click="vm.newPrivateKey()">Generate new</button>
                 </span>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Private key (hex):</label>
+            <div class="col-sm-8 input-group">
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.decimalKey.toString(16)}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Public key (decimal):</label>
+            <div class="col-sm-8 input-group">
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.pubKeyDecimal}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Public key (hex):</label>
+            <div class="col-sm-8 input-group">
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.pubKey.toString('hex')}}">
+            </div>
+        </div>
+
         <div class="form-group">
             <label class="col-sm-4 control-label">Format key for network:</label>
             <div class="col-sm-8 input-group">
@@ -62,15 +94,20 @@
                 </select>
             </div>
         </div>
+
         <div class="form-group">
             <label class="col-sm-4 control-label">
                 <a ng-click="vm.showWifCompressed = !vm.showWifCompressed">Private key (WIF format, compressed):</a>
             </label>
             <div class="col-sm-8 input-group">
-                <pre>{{vm.keyPair.toWIF()}}</pre>
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.keyPair.toWIF()}}">
             </div>
             <div ng-show="vm.showWifCompressed" class="col-sm-offset-4 col-sm-8 qr-code" id="qrPrivCompressed"></div>
         </div>
+
         <div class="form-group">
             <label for="wifUncompressed" class="col-sm-4 control-label">
                 <a ng-click="vm.showWifUncompressed = !vm.showWifUncompressed">Private key (WIF format, uncompressed):</a>
@@ -89,18 +126,14 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-4 control-label">Public key (hex):</label>
-            <div class="col-sm-8 input-group">
-                <pre>{{vm.keyPair.getPublicKeyBuffer().toString('hex')}}</pre>
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="col-sm-4 control-label">
                 <a ng-click="vm.showPubkey = !vm.showPubkey">Pay to Pubkey Hash (P2PKH) address:</a>
             </label>
             <div class="col-sm-8 input-group">
-                <pre>{{vm.keyPair.getAddress()}}</pre>
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.keyPair.getAddress()}}">
             </div>
             <div ng-show="vm.showPubkey" class="col-sm-offset-4 col-sm-8 qr-code" id="qrPubkey"></div>
         </div>
@@ -119,7 +152,10 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Signature:</label>
             <div class="col-sm-8 no-left-padding">
-                <pre>{{vm.signature}}</pre>
+                <input type="text"
+                       class="form-control"
+                       ng-disabled="true"
+                       value="{{vm.signature}}">
             </div>
         </div>
     </form>

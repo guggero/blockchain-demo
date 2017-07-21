@@ -67,6 +67,8 @@ function CryptoPageController() {
     vm.error = null;
     var network = vm.network.config;
     vm.keyPair = new bitcoin.ECPair(vm.decimalKey, null, {compressed: true, network: network});
+    vm.pubKey = vm.keyPair.getPublicKeyBuffer();
+    vm.pubKeyDecimal = bitcoin.BigInteger.fromBuffer(vm.pubKey);
     vm.keyPairUncompressed = new bitcoin.ECPair(vm.decimalKey, null, {compressed: false, network: network});
     vm.wifUncompressed = vm.keyPairUncompressed.toWIF();
 
