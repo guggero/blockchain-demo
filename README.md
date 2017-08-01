@@ -5,18 +5,22 @@ Originally developed by [anders94](https://github.com/anders94), see [live demo 
 
 ## This fork
 
-This fork is just a static rebuild with AngularJS that can be hosted on GitHub Pages.
+[Live version](https://guggero.github.io/blockchain-demo/)
 
-[Live version of this fork](https://guggero.github.io/blockchain-demo/)
+This is a heavily modified fork of [Anders Brownworth's Blockchain Demo](https://github.com/anders94/blockchain-demo).
+Only the idea from his [excellent Demo Video](https://www.youtube.com/watch?v=_160oMzblY8) remain,
+the code has completely been rewritten.
 
 Changes in detail:
 * Static HTML/JS, so it can be served with GitHub Pages
 * Use AngularJS for rendering the page
+* Add explanations to most pages
 * Expert Mode that shows many details
 * Show/implement concept of mining difficulty (in Expert Mode)
 * Show duration and speed of mining process (in Expert Mode)
 * Toggle between TX/Coinbase and Data view
-* Crypto/Misc page
+* [Elliptic Curve Cryptography / Key Pair page](https://guggero.github.io/blockchain-demo/#!/ecc)
+* [Bitcoin Block Parser page](https://guggero.github.io/blockchain-demo/#!/bitcoin-block)
 
 ## Send Thanks
 
