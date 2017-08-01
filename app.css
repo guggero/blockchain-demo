@@ -160,6 +160,17 @@ ul.navbar-nav {
     border: 0;
 }
 
+.dropdown-menu {
+    background-color: #5a4d45;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover {
+    color: #fff;
+    background: #000;
+}
+
 :not(.input-group-btn) > button.btn {
     height: 40px;
     margin: 0;

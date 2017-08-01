@@ -1,13 +1,13 @@
 angular
   .module('app')
-  .component('cryptoPage', {
-    templateUrl: 'pages/crypto/crypto.html',
-    controller: CryptoPageController,
+  .component('eccPage', {
+    templateUrl: 'pages/ecc/ecc.html',
+    controller: EccPageController,
     controllerAs: 'vm',
     bindings: {}
   });
 
-function CryptoPageController() {
+function EccPageController() {
   var vm = this;
 
   vm.networks = [

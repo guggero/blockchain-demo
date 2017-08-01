@@ -15506,6 +15506,7 @@
         opcodes: require('bitcoin-ops'),
         script: require('./script'),
         BigInteger: require('./bigi'),
+        Buffer: require('./safe-buffer').Buffer,
       }
 
     }, {
@@ -15521,6 +15522,7 @@
       "./script": 20,
       "./transaction": 44,
       "./transaction_builder": 45,
+      "./safe-buffer": 88,
       "bitcoin-ops": 9
     }]
   }, {}, [])("bitcoinjs-lib")

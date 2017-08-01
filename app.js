@@ -32,11 +32,12 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/distributed', {template: '<distributed-page></distributed-page>', containerClass: 'container-fluid'})
     .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
     .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
-    .when('/crypto', {template: '<crypto-page></crypto-page>', containerClass: 'container'})
+    .when('/ecc', {template: '<ecc-page></ecc-page>', containerClass: 'container'})
+    .when('/bitcoin-block', {template: '<bitcoin-block-page></bitcoin-block-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
 
-function run($location, $rootScope, $route) {
+function run($location, $rootScope, $route, lodash) {
   var id = 0;
   $rootScope.difficulty = 4;
   $rootScope.$route = $route;
@@ -61,4 +62,19 @@ function run($location, $rootScope, $route) {
     }
     return result;
   };
+
+  $rootScope.hexPubKeyToBitcoinAddr = function (hex) {
+    var buffer = bitcoin.Buffer.from(hex, 'hex');
+    return bitcoin.address.toBase58Check(buffer, bitcoin.networks.bitcoin.pubKeyHash);
+  };
+
+  lodash.mixin({
+    deeply: function (map) {
+      return function (obj, fn) {
+        return map(lodash.mapValues(obj, function (v) {
+          return lodash.isPlainObject(v) ? lodash.deeply(map)(v, fn) : v;
+        }), fn);
+      }
+    }
+  });
 }
