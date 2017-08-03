@@ -1,15 +1,11 @@
 # Blockchain Demo
 A web-based demonstration of blockchain concepts.
 
-Originally developed by [anders94](https://github.com/anders94), see [live demo of original version here](http://anders.com/blockchain/).
-
-## This fork
-
 [Live version](https://guggero.github.io/blockchain-demo/)
 
-This is a heavily modified fork of [Anders Brownworth's Blockchain Demo](https://github.com/anders94/blockchain-demo).
-Only the idea from his [excellent Demo Video](https://www.youtube.com/watch?v=_160oMzblY8) remain,
-the code has completely been rewritten.
+This is a heavily modified version of [Anders Brownworth's Blockchain Demo](https://github.com/anders94/blockchain-demo).
+Basically only the idea shown in his [excellent Demo Video](https://www.youtube.com/watch?v=_160oMzblY8) remains,
+the code has completely been rewritten. That's why it's not a fork any more but a standalone repository.
 
 Changes in detail:
 * Static HTML/JS, so it can be served with GitHub Pages
