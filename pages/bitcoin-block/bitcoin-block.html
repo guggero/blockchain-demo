@@ -11,13 +11,11 @@
             Parse and examine a block from Bitcoin's network or by pasting the binary content
             as a hex string.
 
-            <h3>Sources and other useful information:</h3>
+            <h3>Sources, tools and other useful information:</h3>
             <ul>
-                <li>
-                    <a href="https://blockexplorer.com/api-ref">
-                        Blockchain Explorer API reference
-                    </a>
-                </li>
+                <li><a href="https://blockexplorer.com/api-ref">Blockchain Explorer API reference</a></li>
+                <li><a href="https://bitcoinjs.org/">BitcoinJS</a></li>
+                <li><a href="https://github.com/bitcoinjs/bitcoinjs-lib">BitcoinJS GitHub repo</a></li>
             </ul>
         </div>
     </div>
@@ -35,6 +33,23 @@
                        ng-class="{'well-error': vm.error}">
                 <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to examine</span>
                 <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-4">
+                Load other examples (might take a while to render!):
+                <ul>
+                    <li>
+                        <a ng-click="vm.hash = '000000000000000003d79e6973863cdb24ac6f3ddd526f61a8ff4fb684db1e9f'; vm.downloadBlock();">
+                            Block #371667, 51 transactions
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-click="vm.hash = '000000000000000006a62f827dd0a2caba98c178bebb175ec1fcd250e1a0159c'; vm.downloadBlock();">
+                            Block #371610, 168 transactions
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -62,6 +77,12 @@
             </div>
         </div>
     </form>
+</div>
+
+<div ng-show="!vm.error && vm.decodedBlock && vm.decodedBlock.transactions.length > 0">
+    <h3>Merkle Tree</h3>
+    <div id="merkleTree" class="row row-horizon"></div>
+    <div class="tooltip" id="tooltip"></div>
 </div>
 
 <div ng-if="!vm.error && vm.decodedBlock && vm.decodedBlock.transactions.length > 0">

@@ -263,3 +263,16 @@ button i {
 .no-left-padding {
     padding-left: 0;
 }
+
+svg .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+div.tooltip {
+    position: absolute;
+    min-width: 400px;
+    min-height: 50px;
+    pointer-events: none;
+}
