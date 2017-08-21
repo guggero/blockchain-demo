@@ -33,6 +33,7 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
     .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
     .when('/ecc', {template: '<ecc-page></ecc-page>', containerClass: 'container'})
+    .when('/hd-wallet', {template: '<hd-wallet-page></hd-wallet-page>', containerClass: 'container'})
     .when('/bitcoin-block', {template: '<bitcoin-block-page></bitcoin-block-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
