@@ -16,6 +16,7 @@ Changes in detail:
 * Show duration and speed of mining process (in Expert Mode)
 * Toggle between TX/Coinbase and Data view
 * [Elliptic Curve Cryptography / Key Pair page](https://guggero.github.io/blockchain-demo/#!/ecc)
+* [Hierarchical Deterministic Wallet page](https://guggero.github.io/blockchain-demo/#!/hd-wallet)
 * [Bitcoin Block Parser page](https://guggero.github.io/blockchain-demo/#!/bitcoin-block)
 
 ## Send Thanks
