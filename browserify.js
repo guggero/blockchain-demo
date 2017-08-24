@@ -20,5 +20,6 @@ module.exports = {
   base58: require('bs58'),
   bip38: require('bip38'),
   bip39: require('bip39'),
-  bip32utils: require('bip32-utils')
+  bip32utils: require('bip32-utils'),
+  pbkdf2: require('pbkdf2')
 };
