@@ -3,7 +3,7 @@
 //Bitcoin
 //from https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
 
-```
+```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
 base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
