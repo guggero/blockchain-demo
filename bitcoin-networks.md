@@ -3,11 +3,13 @@
 //Bitcoin
 //from https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
 
+```
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
 base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
 base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
 base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+```
 
 // Ethereum
 //from:
@@ -15,11 +17,13 @@ base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 //Bitcoin Cash (Bitcoin ABC)
 //From: https://github.com/Bitcoin-ABC/bitcoin-abc/blob/master/src/chainparams.cpp
 
+```
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 0);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 5);
 base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128);
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char>>();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char>>();
+```
 
 //Ripple
 //from: 
@@ -32,16 +36,18 @@ base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).
 //Doge
 //from: https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp#L132
 
+```
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);  // 0x1e
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,22);  // 0x16
 base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,158); // 0x9e
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0xfa)(0xca)(0xfd).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0xfa)(0xc3)(0x98).convert_to_container<std::vector<unsigned char> >();
-
+```
 
 //Dash
 //from https://github.com/dashpay/dash/blob/master/src/chainparams.cpp#L168
 
+```
 // Dash addresses start with 'X'
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);
 // Dash script addresses start with '7'
@@ -54,13 +60,14 @@ base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 // Dash BIP44 coin type is '5'
 base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).convert_to_container<std::vector<unsigned char> >();
-
+```
 
 
 //found a list of altcoin mapping....
 //maybe this helps
 //from: https://github.com/libbitcoin/libbitcoin/wiki/Altcoin-Version-Mappings
 
+```
       |  BIP 44    |      mainnet     |     mainnet     |     mainnet     |  EXT_SECRET_KEY   |
 Coin  | coin_type’ |    version_WIF   |  version_p2pkh  |  version_p2sh   | version_hd_secret | References
 ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -118,4 +125,4 @@ POT   |     81     |        183       |  55/('P')       |   5/('3')       |     
 XRP   |     NR     | 96?/'s'(116 bits)|96?/'r'(136 bits)|                 |                   | https://github.com/stevenzeiler/ripple-wallet (OMG - Is Ripple using 96 bit secret keys?)
 XMR   |    128     |        N/A       |    /('4')       |    N/A          |  ???              |
 ZEC   |    133     |        128       | (28 & b8)/('t1')| (28 & bd)/('t3')| 76066276/('xprv') | https://github.com/zcash/zcash/blob/master/src/chainparams.cpp#L105
-
+```
