@@ -5,6 +5,7 @@ var bitcoinNetworks = [
   {
     label: 'DASH (Dash)',
     config: {
+      messagePrefix: '???',
       bip32: { public: 0x0488b21e, private: 0x0488ade4 },
       pubKeyHash: 0x4C,
       scriptHash: 0x10,
@@ -14,6 +15,7 @@ var bitcoinNetworks = [
   {
     label: 'PIVX (PIVX)',
     config: {
+      messagePrefix: '???',
       bip32: { public: 0x0488b21e, private: 0x0488ade4 },
       pubKeyHash: 0x1E,
       scriptHash: 0x0D,
@@ -23,6 +25,7 @@ var bitcoinNetworks = [
   {
     label: 'XVG (Verge)',
     config: {
+      messagePrefix: '???',
       bip32: { public: 0x0488b21e, private: 0x0488ade4 },
       pubKeyHash: 0x1E,
       scriptHash: 0x21,
