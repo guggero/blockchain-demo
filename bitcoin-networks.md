@@ -1,71 +1,95 @@
-// List of altcoins and their base58 prefixes
+# List of altcoins and their base58 prefixes
 
-//Bitcoin
-//from https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
+This list contains the Source for the base58 implementations of various Altcoins in the HD Wallet.
+Also it contains essential part of the sources code
+
+There is no specific order, I orientated on [coinmarketcap](https://coinmarketcap.com/)
+
+## Bitcoin
+Source: https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
 
 ```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
-base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,128);
 base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
 base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 ```
 
-// Ethereum
-//from:
+## Ethereum
+Source:
 
-//Bitcoin Cash (Bitcoin ABC)
-//From: https://github.com/Bitcoin-ABC/bitcoin-abc/blob/master/src/chainparams.cpp
-
+```cpp
+//nothing found yet
 ```
+
+## Bitcoin Cash (Bitcoin ABC)
+Source: https://github.com/Bitcoin-ABC/bitcoin-abc/blob/master/src/chainparams.cpp
+
+```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 0);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 5);
-base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 128);
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char>>();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char>>();
 ```
 
-//Ripple
-//from: 
 
-//IOTA
-//from: 
+## Ripple
+Source:
 
-                
-                
-//Doge
-//from: https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp#L132
-
+```cpp
+//nothing found yet
 ```
+
+## IOTA
+Source:
+
+```cpp
+//nothing found yet
+```                 
+                
+## Doge
+Source: https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp#L132
+
+```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);  // 0x1e
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,22);  // 0x16
-base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,158); // 0x9e
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,158); // 0x9e
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0xfa)(0xca)(0xfd).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0xfa)(0xc3)(0x98).convert_to_container<std::vector<unsigned char> >();
 ```
 
-//Dash
-//from https://github.com/dashpay/dash/blob/master/src/chainparams.cpp#L168
+## Dash
+Source: https://github.com/dashpay/dash/blob/master/src/chainparams.cpp#L168
 
-```
-// Dash addresses start with 'X'
+```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);
-// Dash script addresses start with '7'
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
-// Dash private keys start with '7' or 'X'
 base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,204);
-// Dash BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-// Dash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
-// Dash BIP44 coin type is '5'
 base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).convert_to_container<std::vector<unsigned char> >();
 ```
 
+## PIVX
+Source: https://github.com/PIVX-Project/PIVX/blob/master/src/chainparams.cpp
 
-//found a list of altcoin mapping....
-//maybe this helps
-//from: https://github.com/libbitcoin/libbitcoin/wiki/Altcoin-Version-Mappings
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
+base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
+// 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
+```
+
+
+found a list of altcoin mapping....
+maybe this helps
+Source: https://github.com/libbitcoin/libbitcoin/wiki/Altcoin-Version-Mappings
 
 ```
       |  BIP 44    |      mainnet     |     mainnet     |     mainnet     |  EXT_SECRET_KEY   |
