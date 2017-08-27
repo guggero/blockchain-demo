@@ -50,7 +50,7 @@ function HdWalletPageController($http) {
     var pw = null;
     if (vm.passphrase) {
       pw = bitcoin.pbkdf2.pbkdf2Sync(
-        bitcoin.Buffer.from(vm.passphrase, 'binary'),
+        bitcoin.Buffer.from(vm.passphrase, 'utf8'),
         PBKDF2_SALT,
         PBKDF2_ROUNDS_APP,
         PBKDF2_HMACLEN,
