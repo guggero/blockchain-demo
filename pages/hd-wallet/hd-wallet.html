@@ -154,7 +154,7 @@
                 <div class="input-group">
                     <div class="input-group-addon">Coin type</div>
                     <select ng-model="vm.coinType"
-                            ng-options="key for (key, value) in vm.bip44Constants"
+                            ng-options="constant.value as constant.label for constant in vm.bip44Constants"
                             ng-change="vm.calculatePath()"
                             class="form-control">
                     </select>
