@@ -59,6 +59,7 @@ base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).
 
 //found a list of altcoin mapping....
 //maybe this helps
+//from: https://github.com/libbitcoin/libbitcoin/wiki/Altcoin-Version-Mappings
 
       |  BIP 44    |      mainnet     |     mainnet     |     mainnet     |  EXT_SECRET_KEY   |
 Coin  | coin_type’ |    version_WIF   |  version_p2pkh  |  version_p2sh   | version_hd_secret | References
