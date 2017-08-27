@@ -11,6 +11,9 @@ var PBKDF2_SALT = 'Digital Bitbox',
   PBKDF2_HMACLEN = 64,
   PBKDF2_ROUNDS_APP = 20480;
 
+var METHOD_NONE = 0,
+  METHOD_PBKDF2 = 1;
+
 function HdWalletPageController($http) {
   var vm = this;
 
@@ -32,6 +35,12 @@ function HdWalletPageController($http) {
   vm.change = 0;
   vm.index = 0;
   vm.path = 'm/44\'/0\'/0\'/0/0';
+  vm.strenghteningMethods = [
+    {label: 'None', id: METHOD_NONE},
+    {label: 'PBKDF2 (Digital Bitbox)', id: METHOD_PBKDF2}
+
+  ];
+  vm.strenghtening = vm.strenghteningMethods[0];
 
   vm.$onInit = function () {
     $http.get('https://raw.githubusercontent.com/bitcoinjs/bip44-constants/master/constants.json')
@@ -49,13 +58,17 @@ function HdWalletPageController($http) {
   vm.fromMnemonic = function () {
     var pw = null;
     if (vm.passphrase) {
-      pw = bitcoin.pbkdf2.pbkdf2Sync(
-        bitcoin.Buffer.from(vm.passphrase, 'utf8'),
-        PBKDF2_SALT,
-        PBKDF2_ROUNDS_APP,
-        PBKDF2_HMACLEN,
-        'sha512'
-      );
+      if (vm.strenghtening.id === METHOD_PBKDF2) {
+        pw = bitcoin.pbkdf2.pbkdf2Sync(
+          bitcoin.Buffer.from(vm.passphrase, 'utf8'),
+          PBKDF2_SALT,
+          PBKDF2_ROUNDS_APP,
+          PBKDF2_HMACLEN,
+          'sha512'
+        );
+      } else {
+        pw = bitcoin.Buffer.from(vm.passphrase, 'utf8');
+      }
     }
     vm.seed = bitcoin.bip39.mnemonicToSeed(vm.mnemonic, (pw ? pw.toString('hex') : pw));
     vm.fromSeed();

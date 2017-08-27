@@ -67,6 +67,12 @@
                         {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
                     </button>
                 </span>
+                <div class="input-group-addon">Strenghtening</div>
+                <select ng-model="vm.strenghtening"
+                        ng-change="vm.fromMnemonic()"
+                        ng-options="s.label for s in vm.strenghteningMethods"
+                        class="form-control">
+                </select>
             </div>
         </div>
 
