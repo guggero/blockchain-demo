@@ -60,6 +60,16 @@ base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0xfa)(0xca)(0xfd).
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0xfa)(0xc3)(0x98).convert_to_container<std::vector<unsigned char> >();
 ```
 
+found an other source: https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,113); // 0x71
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196); // 0xc4
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,241); // 0xf1
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xcf).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
 ## Dash
 Source: https://github.com/dashpay/dash/blob/master/src/chainparams.cpp#L168
 
@@ -84,6 +94,18 @@ base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
 // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
+```
+
+## DigiByte
+Source: https://github.com/digibyte/digibyte/blob/master/src/chainparams.cpp
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+base58Prefixes[SECRET_KEY_OLD] = std::vector<unsigned char>(1,158);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 ```
 
 
