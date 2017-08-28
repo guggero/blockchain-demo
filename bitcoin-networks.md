@@ -5,7 +5,7 @@ Also it contains essential part of the sources code
 
 There is no specific order, I orientated on [coinmarketcap](https://coinmarketcap.com/)
 
-## Bitcoin
+## Bitcoin (BTC)
 Source: https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
 
 ```cpp
@@ -16,14 +16,14 @@ base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
 base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 ```
 
-## Ethereum
+## Ethereum (ETH)
 Source:
 
 ```cpp
 //nothing found yet
 ```
 
-## Bitcoin Cash (Bitcoin ABC)
+## Bitcoin Cash (Bitcoin ABC) (BCH)
 Source: https://github.com/Bitcoin-ABC/bitcoin-abc/blob/master/src/chainparams.cpp
 
 ```cpp
@@ -35,7 +35,7 @@ base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).
 ```
 
 
-## Ripple
+## Ripple (XRP)
 Source:
 
 ```cpp
@@ -49,7 +49,7 @@ Source:
 //nothing found yet
 ```                 
                 
-## Doge
+## DogeCoin (DOGE)
 Source: https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp#L132
 
 ```cpp
@@ -65,52 +65,101 @@ found an other source: https://github.com/dogecoin/dogecoin/blob/master/src/chai
 ```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,113); // 0x71
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196); // 0xc4
-base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,241); // 0xf1
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,241); // 0xf1
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xcf).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 ```
 
-## Dash
+## Dash (DASH)
 Source: https://github.com/dashpay/dash/blob/master/src/chainparams.cpp#L168
 
 ```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
-base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,204);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,204);
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).convert_to_container<std::vector<unsigned char> >();
 ```
 
-## PIVX
+## PIVX (PIVX)
 Source: https://github.com/PIVX-Project/PIVX/blob/master/src/chainparams.cpp
 
 
 ```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
-base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 212);
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
 // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
 ```
 
-## DigiByte
+## DigiByte (DGB)
 Source: https://github.com/digibyte/digibyte/blob/master/src/chainparams.cpp
 
 ```cpp
 base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);
 base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
-base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,128);
 base58Prefixes[SECRET_KEY_OLD] = std::vector<unsigned char>(1,158);
 base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 ```
 
+## BlackCoin (BLK)
+Source: 
 
-found a list of altcoin mapping....
-maybe this helps
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 85);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 153);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+## Stratis (STRAT)
+Source: https://github.com/startcoin-project/startcoin/blob/master/src/base58.h
+
+```h
+PUBKEY_ADDRESS      = 125, // address begins with s
+SCRIPT_ADDRESS      = 5,
+PUBKEY_ADDRESS_TEST = 127, // address begins with t
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## ReddCoin (RDD)
+Source: https://github.com/reddcoin-project/reddcoin/blob/master/src/chainparams.cpp
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(61);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
+base58Prefixes[SECRET_KEY]     = list_of(189);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
+```
+
+An other source: https://github.com/reddcoin-project/rddnet/blob/master/params.go
+param identical!
+
+```cpp
+	// Address encoding magics
+	PubKeyHashAddrID: 0x3d, // starts with R
+	ScriptHashAddrID: 0x05, // starts with 3
+	PrivateKeyID:     0xbd, // starts with V (compressed)
+
+	// BIP32 hierarchical deterministic extended key magics
+	HDPrivateKeyID: [4]byte{0x04, 0x88, 0xad, 0xe4}, // starts with xprv
+	HDPublicKeyID:  [4]byte{0x04, 0x88, 0xb2, 0x1e}, // starts with xpub
+
+	// BIP44 coin type used in the hierarchical deterministic path for
+	// address generation.
+	HDCoinType: 4,
+```
+
+## Mapping list
+found a list of altcoin mapping....maybe this helps
 Source: https://github.com/libbitcoin/libbitcoin/wiki/Altcoin-Version-Mappings
 
 ```
