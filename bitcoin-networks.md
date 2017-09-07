@@ -5,6 +5,9 @@ Also it contains essential part of the sources code
 
 There is no specific order, I orientated on [coinmarketcap](https://coinmarketcap.com/)
 
+@guggerf
+have a look here: https://github.com/iancoleman/bip39/blob/master/src/js/bitcoinjs-extensions.js
+
 ## Bitcoin (BTC)
 Source: https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp#L104
 
