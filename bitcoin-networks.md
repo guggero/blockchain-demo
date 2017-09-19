@@ -529,6 +529,46 @@ base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).
 
 ```
 
+## BuzzCoin (BUZZ)
+Source: https://github.com/BUZZCOINproject/buzzcoin/blob/master/src/chainparams.cpp#L88
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(25);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(85);
+base58Prefixes[SECRET_KEY] =     list_of(153);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xC2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xA0)(0xE4);
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(127);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+base58Prefixes[SECRET_KEY]     = list_of(239);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
+```
+
+## EmberCoin (EMB)
+Source: https://github.com/EmberCoin/Ember/blob/master/src/chainparams.cpp#L93
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,92);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,110);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,50);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,93);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,111);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,51);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
 ## addCoin
 Source: 
 
@@ -541,6 +581,17 @@ Testnet:
 
 ```
 
+## addCoin
+Source: 
+
+```cpp
+
+```
+
+Testnet:
+```cpp
+
+```
 
 
 ## Mapping list
