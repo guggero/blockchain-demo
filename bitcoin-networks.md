@@ -569,6 +569,439 @@ base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 ```
 
+## Digitalcon (DGC)
+Source: https://github.com/DGCDev/digitalcoin/blob/master/src/chainparams.cpp#L74
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(30);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
+base58Prefixes[SECRET_KEY] =     list_of(0x9e);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
+```
+
+## Cannation (CNNC
+Source: https://github.com/cannationproject/cannation/blob/master/src/base58.h#L279
+
+```cpp
+PUBKEY_ADDRESS = 28,
+SCRIPT_ADDRESS = 85,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## MonaCoin (MONA)
+Source: https://github.com/monacoinproject/monacoin/blob/master-0.10/src/chainparams.cpp#L161
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(50);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
+base58Prefixes[SECRET_KEY] =     list_of(176);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(111);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+base58Prefixes[SECRET_KEY]     = list_of(239);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
+```
+
+## Clams (CLAM)
+Source: https://github.com/nochowderforyou/clams/blob/master/src/chainparams.cpp#L93
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,137);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,13);
+//CLAM Secret key, from old base58.h (release 1.4.2.1)  == 5 + 128
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,133);
+//BTC, LTC and DOGE secret keys
+base58Prefixes[SECRET_KEY_BTC] = std::vector<unsigned char>(1,128);
+base58Prefixes[SECRET_KEY_LTC] = std::vector<unsigned char>(1,176);
+base58Prefixes[SECRET_KEY_DOGE] = std::vector<unsigned char>(1,158);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,239);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
+## Primecoin (XPM)
+Source: https://github.com/primecoin/primecoin/blob/master/src/base58.h#L275
+
+```cpp
+PUBKEY_ADDRESS = 23,  // primecoin: pubkey address starts with 'A'
+SCRIPT_ADDRESS = 83,  // primecoin: script address starts with 'a'
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## NeosCoin (NEOS)
+Source: https://github.com/neoscoin/neos-core/blob/master/src/chainparams.cpp#L83
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,53);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,177);
+base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1,40);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+ base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,33);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,137);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,161);
+base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1,40);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
+## zifterCOIN
+Source: https://github.com/ZiftrCOIN/ziftrcoin/blob/master/src/chainparams.cpp#L159
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(80);  // P2PKH addresses start with 'Z'
+base58Prefixes[SCRIPT_ADDRESS] = list_of(5);   // P2SH  addresses start with '3'
+base58Prefixes[SECRET_KEY] =     list_of(208); // Priv keys prefixed with 80 + 128
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(111);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+base58Prefixes[SECRET_KEY]     = list_of(239);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
+```
+
+## Vertcoin (VTC)
+Source: https://github.com/vertcoin/vertcoin/blob/master/src/chainparams.cpp#L135
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,71);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+ base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,74);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+
+```
+
+## MonetaryUnit (MUE)
+Source: https://github.com/muecoin/MUECore/blob/master/src/chainparams.cpp#L130
+
+```cpp
+// MonetaryUnit addresses start with '7'
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 16);
+// MonetaryUnit script addresses start with 'X'
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 76);
+// MonetaryUnit private keys start with 's' or 't'
+base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 126);
+// MonetaryUnit BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+// MonetaryUnit BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+// MonetaryUnit BIP44 coin type is '5' <== Should be migrated to 31 SLIP-44 MonetaryUnit
+base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+// MonetaryUnit addresses start with 'G'
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 38);
+// MonetaryUnit script addresses start with '8' or '9'
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
+// MonetaryUnit private keys start with 'S' or 'T'
+base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 64);
+// Testnet MonetaryUnit BIP32 pubkeys
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+// Testnet MonetaryUnit BIP32 prvkeys
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+// Testnet MonetaryUnit BIP44 coin type is '1' (All coin's testnet default)
+base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
+```
+
+## Zoom (ZOOM)
+Source: https://github.com/zoom-c/zoom/blob/master/src/base58.h#L275
+
+```cpp
+PUBKEY_ADDRESS = 103, // Zoom addresses start with i
+SCRIPT_ADDRESS = 92,  // script addresses start with e
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 74,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## VPNCoin (VASH)
+Source: https://github.com/Bit-Net/VpnCoin/blob/master/src/base58.h#L279
+
+```cpp
+PUBKEY_ADDRESS = 71, // Vpncoin addresses start with V
+SCRIPT_ADDRESS = 5,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## Canada eCoin (CDN)
+Source: https://github.com/ThisIsOurCoin/canadaecoin/blob/master/src/base58.h#L275
+
+```cpp
+PUBKEY_ADDRESS = 28, // Canada eCoin addresses start with C
+SCRIPT_ADDRESS = 5,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 87, // testnet keys start with c
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## ShadowCash
+Source: https://github.com/shadowproject/shadow/blob/master/src/chainparams.cpp#L176
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS]      = list_of(63).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SCRIPT_ADDRESS]      = list_of(125).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SECRET_KEY]          = list_of(191).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[STEALTH_ADDRESS]     = list_of(40).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_PUBLIC_KEY]      = list_of(0xEE)(0x80)(0x28)(0x6A).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY]      = list_of(0xEE)(0x80)(0x31)(0xE8).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_KEY_HASH]        = list_of(137).convert_to_container<std::vector<unsigned char> >();         // x
+base58Prefixes[EXT_ACC_HASH]        = list_of(83).convert_to_container<std::vector<unsigned char> >();          // a
+base58Prefixes[EXT_PUBLIC_KEY_BTC]  = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >(); // xprv
+base58Prefixes[EXT_SECRET_KEY_BTC]  = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >(); // xpub
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS]      = list_of(127).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SCRIPT_ADDRESS]      = list_of(196).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SECRET_KEY]          = list_of(255).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[STEALTH_ADDRESS]     = list_of(40).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_PUBLIC_KEY]      = list_of(0x76)(0xC0)(0xFD)(0xFB).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY]      = list_of(0x76)(0xC1)(0x07)(0x7A).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_KEY_HASH]        = list_of(75).convert_to_container<std::vector<unsigned char> >();          // X
+base58Prefixes[EXT_ACC_HASH]        = list_of(23).convert_to_container<std::vector<unsigned char> >();          // A
+base58Prefixes[EXT_PUBLIC_KEY_BTC]  = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >(); // tprv
+base58Prefixes[EXT_SECRET_KEY_BTC]  = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >(); // tpub
+```
+
+## ParkByte (PKB)
+Source: https://github.com/parkbyte/ParkByte/blob/master/src/base58.h#L278
+
+```cpp
+PUBKEY_ADDRESS = 55,  // ParkByte addresses begin with 'P'
+SCRIPT_ADDRESS = 28,  
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## Pandacoin (PND)
+Source: https://github.com/DigitalPandacoin/pandacoin/blob/master/src/base58.h#L279
+
+```cpp
+PUBKEY_ADDRESS = 55,
+SCRIPT_ADDRESS = 22,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 113,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## Startcoin (START)
+Source: https://github.com/startcoin-project/startcoin/blob/master/src/base58.h#L275
+
+```cpp
+PUBKEY_ADDRESS = 125, // address begins with s
+SCRIPT_ADDRESS = 5,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 127, // address begins with t
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## Global Currency Reserve (GCR)
+Source: https://github.com/globalcurrencyreserve/gcr/blob/master/src/chainparams.cpp#L88
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(38);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(97);
+base58Prefixes[SECRET_KEY] =     list_of(154);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(111);
+base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
+base58Prefixes[SECRET_KEY]     = list_of(239);
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
+```
+
+## Novacoin (NVC)
+Source: https://github.com/novacoin-project/novacoin/blob/master/src/base58.h#L106
+
+```cpp
+PUBKEY_PAIR_ADDRESS = 1,
+PUBKEY_ADDRESS = 8,
+SCRIPT_ADDRESS = 20,
+```
+
+Testnet:
+```cpp
+PUBKEY_PAIR_ADDRESS_TEST = 6,
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196
+```
+
+## AsiaCoin (AC)
+Source: https://github.com/AsiaCoin/AsiaCoinFix/blob/master/src/base58.h#L279
+
+```cpp
+PUBKEY_ADDRESS = 23,  // AsiaCoin: address begin with 'A'
+SCRIPT_ADDRESS = 8,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## BitcoinDark (BTCD)
+Source: https://github.com/jl777/btcd/blob/master/src/base58.h#L278
+
+```cpp
+PUBKEY_ADDRESS = 60,
+SCRIPT_ADDRESS = 85,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
+## DopeCoin (DOPE)
+Source: https://github.com/dopecoin-dev/DopeCoinGold/blob/master/src/chainparams.cpp#L90
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30); // first letter "D"
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 5); 
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 158);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
+## OKCash (OK)
+Source: https://github.com/okcashpro/okcash/blob/master/src/chainparams.cpp#L194
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(55).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SCRIPT_ADDRESS] = list_of(28).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SECRET_KEY]     = list_of(183).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x03)(0xCC)(0x23)(0xD7).convert_to_container<std::vector<unsigned char> >();  // need to change, to  okub
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x03)(0xCC)(0x1C)(0x73).convert_to_container<std::vector<unsigned char> >();  // need to change to okpv
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = list_of(68).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SCRIPT_ADDRESS] = list_of(73).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[SECRET_KEY]     = list_of(196).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x34)(0x18)(0xBB).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x34)(0x11)(0x56).convert_to_container<std::vector<unsigned char> >();
+```
+
+## e-GULDEN (EFL)
+Source: https://github.com/Electronic-Gulden-Foundation/egulden/blob/master/src/chainparams.cpp#L139
+
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,176);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
+base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
+## PotCoin (POT)
+Source: https://github.com/potcoin/Potcoin/blob/master/src/base58.h#L275
+
+```cpp
+PUBKEY_ADDRESS = 55, // Potcoin addresses start with P
+SCRIPT_ADDRESS = 5,
+```
+
+Testnet:
+```cpp
+PUBKEY_ADDRESS_TEST = 111,
+SCRIPT_ADDRESS_TEST = 196,
+```
+
 ## addCoin
 Source: 
 
@@ -580,19 +1013,6 @@ Testnet:
 ```cpp
 
 ```
-
-## addCoin
-Source: 
-
-```cpp
-
-```
-
-Testnet:
-```cpp
-
-```
-
 
 ## Mapping list
 found a list of altcoin mapping....maybe this helps
