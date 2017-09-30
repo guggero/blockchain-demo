@@ -14,7 +14,7 @@ var PBKDF2_SALT = 'Digital Bitbox',
 var METHOD_NONE = 0,
   METHOD_PBKDF2 = 1;
 
-function HdWalletPageController($http, lodash) {
+function HdWalletPageController($http, lodash, bitcoinNetworks) {
   var vm = this;
 
   vm.networks = bitcoinNetworks;
@@ -29,7 +29,6 @@ function HdWalletPageController($http, lodash) {
   vm.privKeyWif = null;
   vm.publicKeyWif = null;
   vm.address = null;
-  vm.bip44Constants = {};
   vm.coinType = 0;
   vm.account = 0;
   vm.change = 0;
@@ -43,15 +42,6 @@ function HdWalletPageController($http, lodash) {
   vm.strenghtening = vm.strenghteningMethods[0];
 
   vm.$onInit = function () {
-    $http.get('https://raw.githubusercontent.com/bitcoinjs/bip44-constants/master/constants.json')
-      .then(function (response) {
-        vm.bip44Constants = lodash.map(response.data, function (value, key) {
-          return {
-            label: key,
-            value: parseInt(value.substring(3), 16)
-          };
-        });
-      });
     vm.newSeed();
   };
 
@@ -82,7 +72,9 @@ function HdWalletPageController($http, lodash) {
   vm.fromSeed = function () {
     if (vm.seed) {
       vm.seedHex = vm.seed.toString('hex');
-      vm.node = bitcoin.HDNode.fromSeedBuffer(vm.seed, vm.network.config);
+
+      // always use bitcoin network for master key
+      vm.node = bitcoin.HDNode.fromSeedBuffer(vm.seed, bitcoin.networks.bitcoin);
       vm.nodeBase58 = vm.node.toBase58();
       vm.fromNode();
     }
@@ -97,7 +89,7 @@ function HdWalletPageController($http, lodash) {
   vm.fromBase58Seed = function () {
     vm.error = null;
     try {
-      vm.node = bitcoin.HDNode.fromBase58(vm.nodeBase58, vm.network.config);
+      vm.node = bitcoin.HDNode.fromBase58(vm.nodeBase58, bitcoin.networks.bitcoin);
       vm.seed = null;
       vm.seedHex = 'Cannot be reversed! Seed is hashed to create HD node';
       vm.mnemonic = 'Cannot be reversed! Mnemonic to seed is a one way street...';
@@ -108,6 +100,7 @@ function HdWalletPageController($http, lodash) {
   };
 
   vm.fromNode = function () {
+    vm.node.keyPair.network = vm.network.config;
     vm.privKeyWif = vm.node.keyPair.toWIF();
     vm.publicKeyWif = vm.node.neutered().toBase58();
     vm.address = vm.node.keyPair.getAddress();
@@ -115,7 +108,7 @@ function HdWalletPageController($http, lodash) {
   };
 
   vm.calculatePath = function () {
-    vm.path = 'm/44\'/' + vm.coinType + '\'/' + vm.account + '\'/' + vm.change + '/' + vm.index;
+    vm.path = 'm/44\'/' + vm.network.config.bip44 + '\'/' + vm.account + '\'/' + vm.change + '/' + vm.index;
     vm.fromPath();
   };
 

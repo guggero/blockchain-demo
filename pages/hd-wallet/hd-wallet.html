@@ -86,20 +86,9 @@
             </div>
         </div>
 
+        <!-- root key base58 -->
         <div class="form-group">
-            <label class="col-sm-3 control-label">Format key for network:</label>
-            <div class="col-sm-9 input-group">
-                <select ng-model="vm.network"
-                        ng-change="vm.fromSeed()"
-                        ng-options="network.label for network in vm.networks"
-                        class="form-control">
-                </select>
-            </div>
-        </div>
-
-        <!-- base58 -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">HD node base58:</label>
+            <label class="col-sm-3 control-label">HD node root key base58:</label>
             <div class="col-sm-9 input-group">
                 <input class="form-control"
                        ng-model="vm.nodeBase58"
@@ -153,9 +142,9 @@
             <div class="col-sm-9">
                 <div class="input-group">
                     <div class="input-group-addon">Coin type</div>
-                    <select ng-model="vm.coinType"
-                            ng-options="constant.value as constant.label for constant in vm.bip44Constants"
-                            ng-change="vm.calculatePath()"
+                    <select ng-model="vm.network"
+                            ng-options="network.label for network in vm.networks"
+                            ng-change="vm.fromNode()"
                             class="form-control">
                     </select>
                     <div class="input-group-addon">Account</div>
