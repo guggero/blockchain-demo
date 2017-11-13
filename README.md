@@ -26,5 +26,5 @@ Original author, [anders94](https://github.com/anders94):
 * ETH: `0x84a90e21d9d02e30ddcea56d618aa75ba90331ff`
 
 Fork author, [guggero](https://github.com/guggero):
-* BTC: `1JbcYigycKAhndt4bP2ULRroqfWaJJrNwj`
-* PIVX: `D6QXCF5kvbpzwxrq7DsYK6bx83t98Xe8sR`
+* BTC: `1GuggerownoWdKkMUA8C2ySkA8AK7Ucn7n`
+* PIVX: `DGuggerovpXAZcsUT2sMtcGNSwrjTudFEE`
