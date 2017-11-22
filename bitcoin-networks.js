@@ -139,6 +139,16 @@ var bitcoinNetworks = [{
     bip44: 0x69
   }
 }, {
+  label: 'SMART (SmartCash)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    pubKeyHash: 0x3f,
+    scriptHash: 0x12,
+    wif: 0xbf,
+    bip44: 0xe0
+  }
+}, {
   label: 'PIVX (PIVX)',
   config: {
     messagePrefix: 'unused',
