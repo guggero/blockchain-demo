@@ -1,0 +1,1 @@
+node_modules\.bin\browserify.cmd -o libs\js\bitcoin.js browserify.js --standalone bitcoin

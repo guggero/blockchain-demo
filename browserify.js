@@ -16,10 +16,11 @@ module.exports = {
   BigInteger: require('bigi'),
   Buffer: require('safe-buffer').Buffer,
   fastRoot: require('merkle-lib/fastRoot'),
+  bs58check: require('bs58check'),
   wif: require('wif'),
-  base58: require('bs58'),
   bip38: require('bip38'),
   bip39: require('bip39'),
   bip32utils: require('bip32-utils'),
-  pbkdf2: require('pbkdf2')
+  pbkdf2: require('pbkdf2'),
+  sha3: require('js-sha3').keccak256
 };
