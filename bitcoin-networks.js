@@ -146,7 +146,8 @@ var bitcoinNetworks = [{
     pubKeyHash: 0x3f,
     scriptHash: 0x12,
     wif: 0xbf,
-    bip44: 0xe0
+    bip44: 0xe0,
+    customHash: 'keccak256'
   }
 }, {
   label: 'PIVX (PIVX)',
@@ -181,3 +182,44 @@ var bitcoinNetworks = [{
     bip44: 0x0e
   }
 }];
+
+function customToWIF(keyPair, network) {
+  if (network.customHash) {
+    if (!keyPair.d) {
+      throw new Error('Missing private key')
+    }
+    return getCustomBs58(network).encode(bitcoin.wif.encodeRaw(network.wif, keyPair.d.toBuffer(32), keyPair.compressed));
+  } else {
+    return keyPair.toWIF();
+  }
+}
+
+function customGetAddress(keyPair, network) {
+  if (network.customHash) {
+    var hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    var payload = bitcoin.Buffer.allocUnsafe(21)
+    payload.writeUInt8(network.pubKeyHash, 0)
+    hash.copy(payload, 1)
+
+    return getCustomBs58(network).encode(payload);
+  } else {
+    return keyPair.getAddress();
+  }
+}
+
+function customImportFromWif(wifUncompressed, network) {
+  if (network.customHash) {
+    var decoded = bitcoin.wif.decodeRaw(getCustomBs58(network).decode(wifUncompressed));
+    return bitcoin.BigInteger.fromBuffer(decoded.privateKey);
+  } else {
+    return bitcoin.ECPair.fromWIF(wifUncompressed, network).d;
+  }
+}
+
+function getCustomBs58(network) {
+  var customBs58Check = bitcoin.customBs58Check[network.customHash];
+  if (!customBs58Check) {
+    throw new Error('Unknown customHash');
+  }
+  return customBs58Check;
+}

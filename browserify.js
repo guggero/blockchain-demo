@@ -1,3 +1,14 @@
+var bs58checkBase = require('bs58check/base');
+var sha3 = require('js-sha3');
+var Buffer = require('safe-buffer').Buffer;
+
+var customBs58Check = {
+  keccak256: bs58checkBase(function (buffer) {
+    var tmp = new sha3.keccak256.update(buffer);
+    return new Buffer(tmp.digest('hex'), 'hex');
+  })
+};
+
 module.exports = {
   Block: require('bitcoinjs-lib/src/block'),
   ECPair: require('bitcoinjs-lib/src/ecpair'),
@@ -14,13 +25,13 @@ module.exports = {
   script: require('bitcoinjs-lib/src/script'),
   ecurve: require('ecurve'),
   BigInteger: require('bigi'),
-  Buffer: require('safe-buffer').Buffer,
+  Buffer: Buffer,
   fastRoot: require('merkle-lib/fastRoot'),
   bs58check: require('bs58check'),
+  customBs58Check: customBs58Check,
   wif: require('wif'),
   bip38: require('bip38'),
   bip39: require('bip39'),
   bip32utils: require('bip32-utils'),
-  pbkdf2: require('pbkdf2'),
-  sha3: require('js-sha3').keccak256
+  pbkdf2: require('pbkdf2')
 };

@@ -177,7 +177,7 @@
             <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
             <div class="col-sm-9 input-group">
                 <input class="form-control"
-                       value="{{vm.derivedPrivKeyWif}}"
+                       value="{{vm.derivedKeyPair.wif}}"
                        ng-disabled="true">
             </div>
         </div>
@@ -187,7 +187,7 @@
             <label class="col-sm-3 control-label">P2PKH address:</label>
             <div class="col-sm-9 input-group">
                 <input class="form-control"
-                       value="{{vm.derivedAddress}}"
+                       value="{{vm.derivedKeyPair.address}}"
                        ng-disabled="true">
             </div>
         </div>

@@ -113,8 +113,8 @@ function HdWalletPageController($http, lodash, bitcoinNetworks) {
   };
 
   vm.fromPath = function () {
-    var derivedNode = vm.node.derivePath(vm.path);
-    vm.derivedPrivKeyWif = derivedNode.keyPair.toWIF();
-    vm.derivedAddress = derivedNode.keyPair.getAddress();
+    vm.derivedKeyPair = vm.node.derivePath(vm.path).keyPair;
+    vm.derivedKeyPair.wif = customToWIF(vm.derivedKeyPair, vm.network.config);
+    vm.derivedKeyPair.address = customGetAddress(vm.derivedKeyPair, vm.network.config);
   }
 }
