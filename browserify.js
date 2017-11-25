@@ -4,8 +4,7 @@ var Buffer = require('safe-buffer').Buffer;
 
 var customBs58Check = {
   keccak256: bs58checkBase(function (buffer) {
-    var tmp = new sha3.keccak256.update(buffer);
-    return new Buffer(tmp.digest('hex'), 'hex');
+    return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
   })
 };
 
