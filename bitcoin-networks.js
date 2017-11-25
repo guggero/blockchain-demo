@@ -158,7 +158,7 @@ var bitcoinNetworks = [{
     pubKeyHash: 65,
     scriptHash: 196,
     wif: 193,
-    bip44: pubKeyHash
+    bip44: 0x69
   }
 }, {
   label: "TRC (Terracoin)",
