@@ -1044,6 +1044,26 @@ Testnet:
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 ```
 
+## HTMLCOIN (HTML5)
+Source: https://github.com/HTMLCOIN/HTML5/blob/master-2.x/src/chainparams.cpp#L173
+
+```cpp
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,41);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,100);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,169);
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x13)(0x97)(0xC1)(0x0D).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x13)(0x97)(0xBC)(0xF3).convert_to_container<std::vector<unsigned char> >();
+```
+
+Testnet:
+```cpp
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,120);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,110);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+```
+
 ## addCoin
 Source: 
 

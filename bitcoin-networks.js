@@ -90,6 +90,16 @@ var bitcoinNetworks = [{
     bip44: 0xaa
   }
 }, {
+  label: "HTML5 (HTMLCOIN)",
+  config: {
+    messagePrefix: "unused",
+    bip32: {public: 0x1397c10d, private: 0x1397bcf3},
+    pubKeyHash: 41,
+    scriptHash: 100,
+    wif: 169,
+    bip44: 0xab
+  }
+}, {
   label: "LTC (Litecoin Testnet)",
   config: {
     messagePrefix: "\u0019Litecoin Signed Message:\n",
@@ -206,9 +216,9 @@ function customToWIF(keyPair, network) {
 function customGetAddress(keyPair, network) {
   if (network.customHash) {
     var hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
-    var payload = bitcoin.Buffer.allocUnsafe(21)
-    payload.writeUInt8(network.pubKeyHash, 0)
-    hash.copy(payload, 1)
+    var payload = bitcoin.Buffer.allocUnsafe(21);
+    payload.writeUInt8(network.pubKeyHash, 0);
+    hash.copy(payload, 1);
 
     return getCustomBs58(network).encode(payload);
   } else {
