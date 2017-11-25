@@ -7,11 +7,11 @@ angular
     bindings: {}
   });
 
-function EccPageController(bitcoinNetworks) {
+function EccPageController(lodash, bitcoinNetworks) {
   var vm = this;
 
   vm.networks = bitcoinNetworks;
-  vm.network = vm.networks[0];
+  vm.network = lodash.find(vm.networks, ['label', 'BTC (Bitcoin)']);
   vm.message = 'Insert famous quote here!';
   vm.qrPrivUncompressed = new QRCode('qrPrivUncompressed');
   vm.qrPrivCompressed = new QRCode('qrPrivCompressed');

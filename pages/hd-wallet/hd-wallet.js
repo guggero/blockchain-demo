@@ -14,11 +14,11 @@ var PBKDF2_SALT = 'Digital Bitbox',
 var METHOD_NONE = 0,
   METHOD_PBKDF2 = 1;
 
-function HdWalletPageController($http, lodash, bitcoinNetworks) {
+function HdWalletPageController(lodash, bitcoinNetworks) {
   var vm = this;
 
   vm.networks = bitcoinNetworks;
-  vm.network = vm.networks[0];
+  vm.network = lodash.find(vm.networks, ['label', 'BTC (Bitcoin)']);
   vm.mnemonic = null;
   vm.asPassword = true;
   vm.passphrase = null;
