@@ -37,6 +37,20 @@ base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).
 base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char>>();
 ```
 
+## Ark (ARK)
+Source: https://github.com/ArkEcosystem/ark-js/blob/master/lib/networks.js
+
+```javascript
+  ark: {
+    messagePrefix: '\x18Ark Signed Message:\n',
+    bip32: {
+      public: 0x2bf4968, // base58 will have a prefix 'apub'
+      private: 0x2bf4530 // base58Priv will have a prefix 'apriv'
+    },
+    pubKeyHash: 0x17, // Addresses will begin with 'A'
+    wif: 0xaa // Network prefix for wif generation
+  },
+```
 
 ## Ripple (XRP)
 

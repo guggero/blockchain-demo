@@ -1,9 +1,19 @@
 // sorted by label, not by preference ;-)
 var bitcoinNetworks = [{
+  label: 'ARK (Ark)',
+  config: {
+    messagePrefix: '\x18Ark Signed Message:\n',
+    bip32: { public: 0x2bf4968, private: 0x2bf4530 },
+    pubKeyHash: 23,
+    scriptHash: -1, // not used by ark
+    wif: 170,
+    bip44: 0x6f
+  }
+}, {
   label: 'BCH (BitcoinCash)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 0,
     scriptHash: 5,
     wif: 128,
@@ -13,7 +23,7 @@ var bitcoinNetworks = [{
   label: 'BLK (BlackCoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 25,
     scriptHash: 85,
     wif: 153,
@@ -23,7 +33,7 @@ var bitcoinNetworks = [{
   label: 'BTC (Bitcoin Testnet)',
   config: {
     messagePrefix: '\u0018Bitcoin Signed Message:\n',
-    bip32: {public: 0x043587cf, private: 0x04358394},
+    bip32: { public: 0x043587cf, private: 0x04358394 },
     pubKeyHash: 111,
     scriptHash: 196,
     wif: 239,
@@ -33,7 +43,7 @@ var bitcoinNetworks = [{
   label: 'BTC (Bitcoin)',
   config: {
     messagePrefix: '\u0018Bitcoin Signed Message:\n',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 0,
     scriptHash: 5,
     wif: 128,
@@ -43,7 +53,7 @@ var bitcoinNetworks = [{
   label: 'BUZZ (BuzzCoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488c21e, private: 0x0488a0e4},
+    bip32: { public: 0x0488c21e, private: 0x0488a0e4 },
     pubKeyHash: 25,
     scriptHash: 85,
     wif: 153,
@@ -53,7 +63,7 @@ var bitcoinNetworks = [{
   label: 'DASH (Dash)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 76,
     scriptHash: 16,
     wif: 204,
@@ -63,7 +73,7 @@ var bitcoinNetworks = [{
   label: 'DGB (DigiByte)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 30,
     scriptHash: 5,
     wif: 128,
@@ -73,7 +83,7 @@ var bitcoinNetworks = [{
   label: 'DOGE (Dogecoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x02facafd, private: 0x02fac398},
+    bip32: { public: 0x02facafd, private: 0x02fac398 },
     pubKeyHash: 30,
     scriptHash: 22,
     wif: 158,
@@ -83,7 +93,7 @@ var bitcoinNetworks = [{
   label: 'EMB (EmberCoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 92,
     scriptHash: 110,
     wif: 50,
@@ -93,7 +103,7 @@ var bitcoinNetworks = [{
   label: 'HTML5 (HTMLCOIN)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x1397c10d, private: 0x1397bcf3},
+    bip32: { public: 0x1397c10d, private: 0x1397bcf3 },
     pubKeyHash: 41,
     scriptHash: 100,
     wif: 169,
@@ -103,7 +113,7 @@ var bitcoinNetworks = [{
   label: 'LTC (Litecoin Testnet)',
   config: {
     messagePrefix: '\u0019Litecoin Signed Message:\n',
-    bip32: {public: 0x043587cf, private: 0x04358394},
+    bip32: { public: 0x043587cf, private: 0x04358394 },
     pubKeyHash: 111,
     scriptHash: 58,
     wif: 239,
@@ -113,7 +123,7 @@ var bitcoinNetworks = [{
   label: 'LTC (Litecoin)',
   config: {
     messagePrefix: '\u0019Litecoin Signed Message:\n',
-    bip32: {public: 0x019da462, private: 0x019d9cfe},
+    bip32: { public: 0x019da462, private: 0x019d9cfe },
     pubKeyHash: 48,
     scriptHash: 50,
     wif: 176,
@@ -123,7 +133,7 @@ var bitcoinNetworks = [{
   label: 'PIVX (PIVX)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x022d2533, private: 0x0221312b},
+    bip32: { public: 0x022d2533, private: 0x0221312b },
     pubKeyHash: 30,
     scriptHash: 13,
     wif: 212,
@@ -133,7 +143,7 @@ var bitcoinNetworks = [{
   label: 'RDD (ReddCoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 61,
     scriptHash: 5,
     wif: 189,
@@ -143,7 +153,7 @@ var bitcoinNetworks = [{
   label: 'SMART (SmartCash)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 63,
     scriptHash: 18,
     wif: 191,
@@ -154,7 +164,7 @@ var bitcoinNetworks = [{
   label: 'START (StartCOIN)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x00, private: 0x00},
+    bip32: { public: 0x00, private: 0x00 },
     pubKeyHash: 125,
     scriptHash: 5,
     wif: 253,
@@ -164,7 +174,7 @@ var bitcoinNetworks = [{
   label: 'STRAT (Stratis)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x043587cf, private: 0x04358394},
+    bip32: { public: 0x043587cf, private: 0x04358394 },
     pubKeyHash: 65,
     scriptHash: 196,
     wif: 193,
@@ -174,7 +184,7 @@ var bitcoinNetworks = [{
   label: 'TRC (Terracoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 0,
     scriptHash: 5,
     wif: 128,
@@ -184,7 +194,7 @@ var bitcoinNetworks = [{
   label: 'VIA (Viacoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 71,
     scriptHash: 33,
     wif: 199,
@@ -194,7 +204,7 @@ var bitcoinNetworks = [{
   label: 'XVG (Verge)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x0488b21e, private: 0x0488ade4},
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 30,
     scriptHash: 33,
     wif: 158,
