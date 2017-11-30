@@ -81,6 +81,9 @@ function BitcoinBlockPageController($http, lodash) {
         lodash.forEach(tx.ins, function (txIn, index) {
           txIn.hash = txIn.hash.toString('hex');
           txIn.script = txIn.script.toString('hex');
+          txIn.witness = txIn.witness.map(function (witness) {
+            return witness.toString('hex');
+          });
         });
         lodash.forEach(tx.outs, function (txOut, index) {
           var chunks = bitcoin.script.decompile(txOut.script);
@@ -127,6 +130,9 @@ function BitcoinBlockPageController($http, lodash) {
   }
 
   function paintMerkleTree() {
+    if (vm.decodedBlock.transactions > 200) {
+      return;
+    }
     var numLeaves = vm.decodedBlock.transactions.length;
     var width = (numLeaves * 100) + 200;
     var height = ((Math.log2(numLeaves) + 1) * 100) + 200;
