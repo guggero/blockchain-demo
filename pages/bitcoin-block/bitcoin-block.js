@@ -7,7 +7,7 @@ angular
     bindings: {}
   });
 
-var API_URL_BLOCK = 'https://blockexplorer.com/api/rawblock/';
+var API_URL_BLOCK = 'https://bitcoin.gugger.guru/rest/block/';
 
 function BitcoinBlockPageController($http, lodash) {
   var vm = this;
@@ -23,9 +23,9 @@ function BitcoinBlockPageController($http, lodash) {
   vm.downloadBlock = function () {
     vm.error = null;
     vm.raw = 'loading...';
-    $http.get(API_URL_BLOCK + vm.hash)
+    $http.get(API_URL_BLOCK + vm.hash + '.hex')
       .then(function (response) {
-        vm.raw = response.data.rawblock;
+        vm.raw = response.data.trim();
         vm.parseBlock();
       })
       .catch(function (error) {
@@ -137,7 +137,7 @@ function BitcoinBlockPageController($http, lodash) {
       .attr('width', width)
       .attr('height', height)
       .append('svg:g')
-      .attr("transform", "translate(-40, 30)");
+      .attr('transform', 'translate(-40, 30)');
 
     var tree = d3.layout.tree().size([width - 100, height - 100]);
     var diagonal = d3.svg.diagonal();
@@ -146,38 +146,38 @@ function BitcoinBlockPageController($http, lodash) {
     var links = tree.links(nodes);
 
     // Add tooltip div
-    var div = d3.select("#tooltip").style("opacity", 1e-6);
+    var div = d3.select('#tooltip').style('opacity', 1e-6);
 
-    var link = svg.selectAll("pathlink")
+    var link = svg.selectAll('pathlink')
       .data(links)
-      .enter().append("svg:path")
-      .attr("class", "link")
-      .attr("d", diagonal);
+      .enter().append('svg:path')
+      .attr('class', 'link')
+      .attr('d', diagonal);
 
-    var node = svg.selectAll("g.node")
+    var node = svg.selectAll('g.node')
       .data(nodes)
-      .enter().append("svg:g")
-      .attr("transform", function (d) {
-        return "translate(" + d.x + "," + d.y + ")";
+      .enter().append('svg:g')
+      .attr('transform', function (d) {
+        return 'translate(' + d.x + ',' + d.y + ')';
       });
 
     // Add the dot at every node
-    node.append("svg:circle")
-      .on("mouseover", function () {
-        div.transition().duration(300).style("opacity", 1);
+    node.append('svg:circle')
+      .on('mouseover', function () {
+        div.transition().duration(300).style('opacity', 1);
       })
-      .on("mousemove", function (d) {
-        div.html(d.info).style("left", (d3.event.pageX + 20) + "px").style("top", (d3.event.pageY + 20) + "px");
+      .on('mousemove', function (d) {
+        div.html(d.info).style('left', (d3.event.pageX + 20) + 'px').style('top', (d3.event.pageY + 20) + 'px');
       })
-      .on("mouseout", function () {
-        div.transition().duration(300).style("opacity", 1e-6);
+      .on('mouseout', function () {
+        div.transition().duration(300).style('opacity', 1e-6);
       })
-      .attr("fill", "red")
-      .attr("r", 5.5);
+      .attr('fill', 'red')
+      .attr('r', 5.5);
 
-    node.append("svg:text")
-      .attr("dx", 8)
-      .attr("dy", 3)
+    node.append('svg:text')
+      .attr('dx', 8)
+      .attr('dy', 3)
       .text(function (d) {
         return d.name;
       });
