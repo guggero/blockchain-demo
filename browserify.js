@@ -2,10 +2,12 @@ var bs58checkBase = require('bs58check/base');
 var sha3 = require('js-sha3');
 var Buffer = require('safe-buffer').Buffer;
 
+var keccak256 = function (buffer) {
+  return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
+};
+
 var customBs58Check = {
-  keccak256: bs58checkBase(function (buffer) {
-    return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
-  })
+  keccak256: bs58checkBase(keccak256)
 };
 
 module.exports = {
@@ -32,5 +34,7 @@ module.exports = {
   bip38: require('bip38'),
   bip39: require('bip39'),
   bip32utils: require('bip32-utils'),
-  pbkdf2: require('pbkdf2')
+  pbkdf2: require('pbkdf2'),
+  sha3: sha3,
+  keccak256: keccak256
 };

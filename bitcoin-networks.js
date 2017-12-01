@@ -100,6 +100,17 @@ var bitcoinNetworks = [{
     bip44: 0xaa
   }
 }, {
+  label: 'ETH (Ethereum)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: {public: 0x00, private: 0x00},
+    pubKeyHash: 0,
+    scriptHash: 0,
+    wif: 0,
+    bip44: 0x3c,
+    noBase58: true
+  }
+}, {
   label: 'HTML5 (HTMLCOIN)',
   config: {
     messagePrefix: 'unused',
@@ -218,19 +229,27 @@ function customToWIF(keyPair, network) {
       throw new Error('Missing private key')
     }
     return getCustomBs58(network).encode(bitcoin.wif.encodeRaw(network.wif, keyPair.d.toBuffer(32), keyPair.compressed));
+  } else if (network.noBase58) {
+    return keyPair.d.toBuffer(32).toString('hex');
   } else {
     return keyPair.toWIF();
   }
 }
 
 function customGetAddress(keyPair, network) {
+  var hash = null;
   if (network.customHash) {
-    var hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
     var payload = bitcoin.Buffer.allocUnsafe(21);
     payload.writeUInt8(network.pubKeyHash, 0);
     hash.copy(payload, 1);
 
     return getCustomBs58(network).encode(payload);
+  } else if (network.noBase58) {
+    var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, {compressed: false, network: network});
+    var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
+    hash = bitcoin.keccak256(pubKeyUncompressed).slice(-20);
+    return '0x' + bitcoin.Buffer.from(hash).toString('hex');
   } else {
     return keyPair.getAddress();
   }
@@ -240,6 +259,9 @@ function customImportFromWif(wifUncompressed, network) {
   if (network.customHash) {
     var decoded = bitcoin.wif.decodeRaw(getCustomBs58(network).decode(wifUncompressed));
     return bitcoin.BigInteger.fromBuffer(decoded.privateKey);
+  } else if (network.noBase58) {
+    var hex = wifUncompressed.slice(0, 2) === '0x' ? wifUncompressed.substring(2) : wifUncompressed;
+    return bitcoin.BigInteger.fromBuffer(bitcoin.Buffer.from(hex, 'hex'));
   } else {
     return bitcoin.ECPair.fromWIF(wifUncompressed, network).d;
   }

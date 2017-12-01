@@ -3,10 +3,12 @@ var bs58checkBase = require('bs58check/base');
 var sha3 = require('js-sha3');
 var Buffer = require('safe-buffer').Buffer;
 
+var keccak256 = function (buffer) {
+  return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
+};
+
 var customBs58Check = {
-  keccak256: bs58checkBase(function (buffer) {
-    return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
-  })
+  keccak256: bs58checkBase(keccak256)
 };
 
 module.exports = {
@@ -33,7 +35,9 @@ module.exports = {
   bip38: require('bip38'),
   bip39: require('bip39'),
   bip32utils: require('bip32-utils'),
-  pbkdf2: require('pbkdf2')
+  pbkdf2: require('pbkdf2'),
+  sha3: sha3,
+  keccak256: keccak256
 };
 
 },{"bigi":7,"bip32-utils":12,"bip38":13,"bip39":15,"bitcoin-ops":24,"bitcoinjs-lib/src/address":27,"bitcoinjs-lib/src/block":28,"bitcoinjs-lib/src/bufferutils":29,"bitcoinjs-lib/src/crypto":30,"bitcoinjs-lib/src/ecpair":32,"bitcoinjs-lib/src/ecsignature":33,"bitcoinjs-lib/src/hdnode":34,"bitcoinjs-lib/src/networks":36,"bitcoinjs-lib/src/script":37,"bitcoinjs-lib/src/transaction":61,"bitcoinjs-lib/src/transaction_builder":62,"bs58check":82,"bs58check/base":81,"ecurve":94,"js-sha3":104,"merkle-lib/fastRoot":105,"pbkdf2":106,"safe-buffer":129,"wif":151}],2:[function(require,module,exports){
