@@ -34,6 +34,7 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   vm.change = 0;
   vm.index = 0;
   vm.path = 'm/44\'/0\'/0\'/0/0';
+  vm.customPath = '0/0';
   vm.strenghteningMethods = [
     {label: 'None', id: METHOD_NONE},
     {label: 'PBKDF2 (Digital Bitbox)', id: METHOD_PBKDF2}
@@ -76,7 +77,9 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
       // always use bitcoin network for master key
       vm.node = bitcoin.HDNode.fromSeedBuffer(vm.seed, bitcoin.networks.bitcoin);
       vm.nodeBase58 = vm.node.toBase58();
+      vm.customParentBase58 = vm.node.toBase58();
       vm.fromNode();
+      vm.fromCustomParent();
     }
   };
 
@@ -113,8 +116,25 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   };
 
   vm.fromPath = function () {
-    vm.derivedKeyPair = vm.node.derivePath(vm.path).keyPair;
-    vm.derivedKeyPair.wif = customToWIF(vm.derivedKeyPair, vm.network.config);
-    vm.derivedKeyPair.address = customGetAddress(vm.derivedKeyPair, vm.network.config);
-  }
+    vm.derivedKey = vm.node.derivePath(vm.path);
+    vm.derivedKey.keyPair.wif = customToWIF(vm.derivedKey.keyPair, vm.network.config);
+    vm.derivedKey.keyPair.address = customGetAddress(vm.derivedKey.keyPair, vm.network.config);
+  };
+
+  vm.fromCustomParent = function () {
+    vm.customParentError = null;
+    try {
+      vm.customParent = bitcoin.HDNode.fromBase58(vm.customParentBase58, bitcoin.networks.bitcoin);
+      vm.customPath = '0/0';
+      vm.fromCustomPath();
+    } catch (e) {
+      vm.customParentError = e;
+    }
+  };
+
+  vm.fromCustomPath = function () {
+    vm.customDerivedKey = vm.customParent.derivePath(vm.customPath, bitcoin.networks.bitcoin);
+    vm.customDerivedKey.keyPair.wif = customToWIF(vm.customDerivedKey.keyPair, bitcoin.networks.bitcoin);
+    vm.customDerivedKey.keyPair.address = customGetAddress(vm.customDerivedKey.keyPair, bitcoin.networks.bitcoin);
+  };
 }

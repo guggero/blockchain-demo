@@ -1,195 +1,263 @@
 <h1>Hierarchical Deterministic Wallet (BIP32, BIP38, BIP39, BIP44)</h1>
 
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
-        </h4>
-    </div>
-    <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
-        <div class="panel-body">
-            Here we show how deterministic wallets are created and used.
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
+    <div class="panel-body">
+      Here we show how deterministic wallets are created and used.
 
-            <h3>Links:</h3>
-            <ul>
-                <li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32: Hierarchical Deterministic
-                    Wallets</a></li>
-                <li><a href="https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki">BIP38: Passphrase-protected private
-                    key</a></li>
-                <li>
-                    <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">
-                        BIP39: Mnemonic code for generating deterministic keys
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">
-                        BIP44: Multi-Account Hierarchy for Deterministic Wallets</a>
-                </li>
-                <li><a href="https://github.com/bitcoinjs/bip38">bitcoinjs/bip38</a></li>
-                <li><a href="https://github.com/bitcoinjs/bip39">bitcoinjs/bip39</a></li>
-                <li><a href="https://github.com/bitcoinjs/bip44-constants">bitcoinjs/bip44-constants</a></li>
-            </ul>
-        </div>
+      <h3>Links:</h3>
+      <ul>
+        <li><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32: Hierarchical Deterministic
+          Wallets</a></li>
+        <li><a href="https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki">BIP38: Passphrase-protected private
+          key</a></li>
+        <li>
+          <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">
+            BIP39: Mnemonic code for generating deterministic keys
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">
+            BIP44: Multi-Account Hierarchy for Deterministic Wallets</a>
+        </li>
+        <li><a href="https://github.com/bitcoinjs/bip38">bitcoinjs/bip38</a></li>
+        <li><a href="https://github.com/bitcoinjs/bip39">bitcoinjs/bip39</a></li>
+        <li><a href="https://github.com/bitcoinjs/bip44-constants">bitcoinjs/bip44-constants</a></li>
+      </ul>
     </div>
+  </div>
 </div>
 
 <div class="alert alert-warning">
-    <strong>Warning</strong>: Any generated keys are for demonstration only.
-    Your browser's random number generator might be too predictable to trust!
+  <strong>Warning</strong>: Any generated keys are for demonstration only.
+  Your browser's random number generator might be too predictable to trust!
 </div>
 
 <div class="well">
-    <form class="form-horizontal">
+  <form class="form-horizontal">
 
-        <!-- mnemonic -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Seed Mnemonic (BIP39):</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       ng-model="vm.mnemonic"
-                       ng-change="vm.fromMnemonic()">
-                <span class="input-group-btn">
+    <!-- mnemonic -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Seed Mnemonic (BIP39):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.mnemonic"
+               ng-change="vm.fromMnemonic()">
+        <span class="input-group-btn">
                     <button class="btn btn-primary" ng-click="vm.newSeed()">Generate new</button>
                 </span>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <!-- passphrase -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Passphrase:</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       ng-model="vm.passphrase"
-                       ng-change="vm.fromMnemonic()"
-                       type="{{vm.asPassword ? 'password' : 'text'}}">
-                <span class="input-group-btn">
+    <!-- passphrase -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Passphrase:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.passphrase"
+               ng-change="vm.fromMnemonic()"
+               type="{{vm.asPassword ? 'password' : 'text'}}">
+        <span class="input-group-btn">
                     <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
                         {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
                     </button>
                 </span>
-                <div class="input-group-addon">Strenghtening</div>
-                <select ng-model="vm.strenghtening"
-                        ng-change="vm.fromMnemonic()"
-                        ng-options="s.label for s in vm.strenghteningMethods"
-                        class="form-control">
-                </select>
-            </div>
-        </div>
+        <div class="input-group-addon">Strenghtening</div>
+        <select ng-model="vm.strenghtening"
+                ng-change="vm.fromMnemonic()"
+                ng-options="s.label for s in vm.strenghteningMethods"
+                class="form-control">
+        </select>
+      </div>
+    </div>
 
-        <!-- seed hex -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Seed hex:</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       ng-model="vm.seedHex"
-                       ng-change="vm.fromHexSeed()">
-            </div>
-        </div>
+    <!-- seed hex -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Seed hex:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.seedHex"
+               ng-change="vm.fromHexSeed()">
+      </div>
+    </div>
 
-        <!-- root key base58 -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">HD node root key base58:</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       ng-model="vm.nodeBase58"
-                       ng-class="{'well-error': vm.error}"
-                       ng-change="vm.fromBase58Seed()">
-                <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to import</span>
-                <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
-            </div>
-        </div>
+    <!-- root key base58 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">HD node root key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.nodeBase58"
+               ng-class="{'well-error': vm.error}"
+               ng-change="vm.fromBase58Seed()">
+        <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to import</span>
+        <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+      </div>
+    </div>
 
-        <!-- priv key WIF -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       value="{{vm.privKeyWif}}"
-                       ng-disabled="true">
-            </div>
-        </div>
+    <!-- priv key WIF -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.privKeyWif}}"
+               ng-disabled="true">
+      </div>
+    </div>
 
-        <!-- extended pubkey -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Public key (WIF, compressed):</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       value="{{vm.publicKeyWif}}"
-                       ng-disabled="true">
-            </div>
-        </div>
+    <!-- extended pubkey -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Public key (WIF, compressed):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.publicKeyWif}}"
+               ng-disabled="true">
+      </div>
+    </div>
 
 
-        <!-- address -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">P2PKH address:</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       value="{{vm.address}}"
-                       ng-disabled="true">
-            </div>
-        </div>
-    </form>
+    <!-- address -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">P2PKH address:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.address}}"
+               ng-disabled="true">
+      </div>
+    </div>
+  </form>
 </div>
 
 
 <div class="well">
-    <form class="form-horizontal">
+  <form class="form-horizontal">
 
-        <!-- derive -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">BIP44 parameters to derive keys:</label>
-            <div class="col-sm-9">
-                <div class="input-group">
-                    <div class="input-group-addon">Coin type</div>
-                    <select ng-model="vm.network"
-                            ng-options="network.label for network in vm.networks"
-                            ng-change="vm.fromNode()"
-                            class="form-control">
-                    </select>
-                    <div class="input-group-addon">Account</div>
-                    <input class="form-control"
-                           ng-model="vm.account"
-                           ng-change="vm.calculatePath()"
-                           type="number">
-                    <div class="input-group-addon">Change</div>
-                    <input class="form-control"
-                           ng-model="vm.change"
-                           ng-change="vm.calculatePath()"
-                           type="number">
-                    <div class="input-group-addon">Index</div>
-                    <input class="form-control"
-                           ng-model="vm.index"
-                           ng-change="vm.calculatePath()"
-                           type="number">
-                </div>
-                <div class="input-group">
-                    <div class="input-group-addon">Path</div>
-                    <input class="form-control"
-                           ng-model="vm.path"
-                           ng-change="vm.fromPath()">
-                </div>
-            </div>
+    <!-- derive -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">BIP44 parameters to derive keys:</label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">Coin type</div>
+          <select ng-model="vm.network"
+                  ng-options="network.label for network in vm.networks"
+                  ng-change="vm.fromNode()"
+                  class="form-control">
+          </select>
+          <div class="input-group-addon">Account</div>
+          <input class="form-control"
+                 ng-model="vm.account"
+                 ng-change="vm.calculatePath()"
+                 type="number">
+          <div class="input-group-addon">Change</div>
+          <input class="form-control"
+                 ng-model="vm.change"
+                 ng-change="vm.calculatePath()"
+                 type="number">
+          <div class="input-group-addon">Index</div>
+          <input class="form-control"
+                 ng-model="vm.index"
+                 ng-change="vm.calculatePath()"
+                 type="number">
         </div>
+        <div class="input-group">
+          <div class="input-group-addon">Path</div>
+          <input class="form-control"
+                 ng-model="vm.path"
+                 ng-change="vm.fromPath()">
+        </div>
+      </div>
+    </div>
 
-        <!-- priv key WIF -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       value="{{vm.derivedKeyPair.wif}}"
-                       ng-disabled="true">
-            </div>
-        </div>
+    <!-- derived key base58 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Derived key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.derivedKey.toBase58()}}"
+               ng-disabled="true">
+      </div>
+    </div>
 
-        <!-- address -->
-        <div class="form-group">
-            <label class="col-sm-3 control-label">P2PKH address:</label>
-            <div class="col-sm-9 input-group">
-                <input class="form-control"
-                       value="{{vm.derivedKeyPair.address}}"
-                       ng-disabled="true">
-            </div>
-        </div>
-    </form>
+    <!-- priv key WIF -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.derivedKey.keyPair.wif}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+    <!-- address -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">P2PKH address:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.derivedKey.keyPair.address}}"
+               ng-disabled="true">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="well">
+  <form class="form-horizontal">
+
+    <!-- parent key -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Parent key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.customParentBase58"
+               ng-class="{'well-error': vm.customParentError}"
+               ng-change="vm.fromCustomParent()">
+        <span class="input-group-addon" ng-if="!vm.customParentError">Hint: paste here to import</span>
+        <span class="input-group-addon" ng-if="vm.customParentError" class="well-error"> {{vm.customParentError}}</span>
+      </div>
+    </div>
+
+    <!-- derive -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Custom derivation path:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.customPath"
+               ng-change="vm.fromCustomPath()">
+      </div>
+    </div>
+
+    <!-- derived key base58 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Derived key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.customDerivedKey.toBase58()}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+    <!-- priv key WIF -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Private key (WIF, compressed):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.customDerivedKey.keyPair.wif}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+    <!-- address -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">P2PKH address:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.customDerivedKey.keyPair.address}}"
+               ng-disabled="true">
+      </div>
+    </div>
+  </form>
 </div>
