@@ -103,7 +103,7 @@ var bitcoinNetworks = [{
   label: 'ETH (Ethereum)',
   config: {
     messagePrefix: 'unused',
-    bip32: {public: 0x00, private: 0x00},
+    bip32: { public: 0x00, private: 0x00 },
     pubKeyHash: 0,
     scriptHash: 0,
     wif: 0,
@@ -246,12 +246,37 @@ function customGetAddress(keyPair, network) {
 
     return getCustomBs58(network).encode(payload);
   } else if (network.noBase58) {
-    var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, {compressed: false, network: network});
+    var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
     hash = bitcoin.keccak256(pubKeyUncompressed).slice(-20);
     return '0x' + bitcoin.Buffer.from(hash).toString('hex');
   } else {
     return keyPair.getAddress();
+  }
+}
+
+function customGetScriptAddress(keyPair, network) {
+  var hash = null;
+  var payload = null;
+  if (network.customHash) {
+    hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    payload = bitcoin.Buffer.allocUnsafe(21);
+    payload.writeUInt8(network.scriptHash, 0);
+    hash.copy(payload, 1);
+
+    return getCustomBs58(network).encode(payload);
+  } else if (network.noBase58) {
+    var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
+    var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
+    hash = bitcoin.keccak256(pubKeyUncompressed).slice(-20);
+    return '0x' + bitcoin.Buffer.from(hash).toString('hex');
+  } else {
+    hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    payload = bitcoin.Buffer.allocUnsafe(21);
+    payload.writeUInt8(network.scriptHash, 0);
+    hash.copy(payload, 1);
+
+    return bitcoin.bs58check.encode(payload);
   }
 }
 

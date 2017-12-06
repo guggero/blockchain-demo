@@ -35,6 +35,7 @@ function EccPageController(lodash, bitcoinNetworks) {
     vm.keyPair = new bitcoin.ECPair(vm.decimalKey, null, {compressed: true, network: network});
     vm.keyPair.wif = customToWIF(vm.keyPair, network);
     vm.keyPair.address = customGetAddress(vm.keyPair, network);
+    vm.keyPair.scriptAddress = customGetScriptAddress(vm.keyPair, network);
     vm.pubKey = vm.keyPair.getPublicKeyBuffer();
     vm.pubKeyDecimal = bitcoin.BigInteger.fromBuffer(vm.pubKey);
     vm.keyPairUncompressed = new bitcoin.ECPair(vm.decimalKey, null, {compressed: false, network: network});
