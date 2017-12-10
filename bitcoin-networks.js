@@ -33,6 +33,7 @@ var bitcoinNetworks = [{
   label: 'BTC (Bitcoin Testnet)',
   config: {
     messagePrefix: '\u0018Bitcoin Signed Message:\n',
+    bech32: 'tb',
     bip32: { public: 0x043587cf, private: 0x04358394 },
     pubKeyHash: 111,
     scriptHash: 196,
@@ -43,6 +44,7 @@ var bitcoinNetworks = [{
   label: 'BTC (Bitcoin)',
   config: {
     messagePrefix: '\u0018Bitcoin Signed Message:\n',
+    bech32: 'bc',
     bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 0,
     scriptHash: 5,
@@ -298,4 +300,17 @@ function getCustomBs58(network) {
     throw new Error('Unknown customHash');
   }
   return customBs58Check;
+}
+
+function getP2WPKHAddress(keyPair, network) {
+  var pubKey = keyPair.getPublicKeyBuffer();
+  var scriptPubKey = bitcoin.script.witnessPubKeyHash.output.encode(bitcoin.crypto.hash160(pubKey));
+  return bitcoin.address.fromOutputScript(scriptPubKey, network);
+}
+
+function getNestedP2WPKHAddress(keyPair, network) {
+  var pubKey = keyPair.getPublicKeyBuffer();
+  var witnessScript = bitcoin.script.witnessPubKeyHash.output.encode(bitcoin.crypto.hash160(pubKey));
+  var scriptPubKey = bitcoin.script.scriptHash.output.encode(bitcoin.crypto.hash160(witnessScript));
+  return bitcoin.address.fromOutputScript(scriptPubKey, network);
 }
