@@ -39,6 +39,12 @@ function BitcoinBlockPageController($http, lodash) {
 
     try {
       vm.block = bitcoin.Block.fromHex(vm.raw);
+      vm.block.weight = lodash.sumBy(vm.block.transactions, function (tx) {
+        return tx.weight();
+      });
+      vm.block.legacySize = 80 + bitcoin.varuint.encodingLength(vm.block.transactions.length) + vm.block.transactions.reduce(function (a, x) {
+        return a + x.__byteLength(false);
+      }, 0);
       vm.decodedBlock = lodash.deeply(lodash.mapValues)(angular.copy(vm.block), bufferToString);
       paintMerkleTree();
     } catch (e) {

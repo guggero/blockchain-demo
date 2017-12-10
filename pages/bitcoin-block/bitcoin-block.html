@@ -61,21 +61,45 @@
     <div class="form-group">
       <label class="col-sm-4 control-label" for="raw">Raw hex value:</label>
       <div class="col-sm-8 input-group">
-              <textarea id="raw"
-                        rows="10"
-                        ng-model="vm.raw"
-                        ng-trim="false"
-                        ng-change="vm.parseBlock()"
-                        class="form-control"
-                        ng-class="{'well-error': vm.error}">
-                </textarea>
+        <textarea id="raw"
+                  rows="10"
+                  ng-model="vm.raw"
+                  ng-trim="false"
+                  ng-change="vm.parseBlock()"
+                  class="form-control"
+                  ng-class="{'well-error': vm.error}">
+          </textarea>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label" for="json">Decoded as JSON:</label>
-      <div class="col-sm-8 input-group">
+      <label class="col-sm-4 control-label" for="json">
+        <a ng-click="vm.showDecoded = !vm.showDecoded">Decoded as JSON:</a>
+      </label>
+      <div class="col-sm-8 input-group" ng-if="vm.showDecoded">
         <textarea id="json" rows="20" ng-disabled="true" class="form-control">{{vm.decodedBlock | json}}</textarea>
+      </div>
+      <div class="col-sm-8 input-group" ng-if="!vm.showDecoded">
+        <textarea id="json" rows="1" ng-disabled="true" class="form-control">(hidden for performance reasons, click the link to show)</textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="json">Block size as seen by pre-SegWit nodes:</label>
+      <div class="col-sm-8 input-group">
+        <input ng-disabled="true" value="{{vm.block.legacySize}}" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="json">Real block size with SegWit:</label>
+      <div class="col-sm-8 input-group">
+        <input ng-disabled="true" value="{{vm.block.byteLength()}}" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label" for="json">Block weight:</label>
+      <div class="col-sm-8 input-group">
+        <input ng-disabled="true" value="{{vm.block.weight}}" class="form-control">
       </div>
     </div>
   </form>
@@ -116,7 +140,7 @@
           <label class="col-sm-3 control-label" for="raw">Misc:</label>
           <div class="col-sm-9 input-group">
             <span class="form-control" disabled>
-                Version: {{::tx.version}}, Locktime: {{::tx.locktime}}, is coinbase TX: {{::origTx.isCoinbase()}}
+                Version: {{::tx.version}}, Locktime: {{::tx.locktime}}, is coinbase TX: {{::origTx.isCoinbase()}}, weight: {{::origTx.weight()}}
             </span>
           </div>
         </div>
@@ -144,6 +168,10 @@
                 <div class="input-group" ng-if="origTx.isCoinbase()">
                   <span class="input-group-addon">Data:</span>
                   <input ng-disabled="true" value="{{::vm.getRawString(input.script)}}" class="form-control">
+                </div>
+                <div class="input-group" ng-if="origTx.hasWitnesses()">
+                  <span class="input-group-addon">Witness:</span>
+                  <input ng-disabled="true" value="{{::input.witness}}" class="form-control">
                 </div>
               </div>
             </div>

@@ -25,6 +25,7 @@ module.exports = {
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
   ecurve: require('ecurve'),
+  varuint: require('varuint-bitcoin'),
   BigInteger: require('bigi'),
   Buffer: Buffer,
   fastRoot: require('merkle-lib/fastRoot'),

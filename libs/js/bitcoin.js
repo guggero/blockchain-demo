@@ -26,6 +26,7 @@ module.exports = {
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
   ecurve: require('ecurve'),
+  varuint: require('varuint-bitcoin'),
   BigInteger: require('bigi'),
   Buffer: Buffer,
   fastRoot: require('merkle-lib/fastRoot'),
@@ -40,7 +41,7 @@ module.exports = {
   keccak256: keccak256
 };
 
-},{"bigi":8,"bip32-utils":13,"bip38":14,"bip39":16,"bitcoin-ops":30,"bitcoinjs-lib/src/address":32,"bitcoinjs-lib/src/block":33,"bitcoinjs-lib/src/bufferutils":34,"bitcoinjs-lib/src/crypto":35,"bitcoinjs-lib/src/ecpair":37,"bitcoinjs-lib/src/ecsignature":38,"bitcoinjs-lib/src/hdnode":39,"bitcoinjs-lib/src/networks":41,"bitcoinjs-lib/src/script":42,"bitcoinjs-lib/src/transaction":66,"bitcoinjs-lib/src/transaction_builder":67,"bs58check":87,"bs58check/base":86,"ecurve":99,"js-sha3":109,"merkle-lib/fastRoot":110,"pbkdf2":111,"safe-buffer":134,"wif":161}],2:[function(require,module,exports){
+},{"bigi":8,"bip32-utils":13,"bip38":14,"bip39":16,"bitcoin-ops":30,"bitcoinjs-lib/src/address":32,"bitcoinjs-lib/src/block":33,"bitcoinjs-lib/src/bufferutils":34,"bitcoinjs-lib/src/crypto":35,"bitcoinjs-lib/src/ecpair":37,"bitcoinjs-lib/src/ecsignature":38,"bitcoinjs-lib/src/hdnode":39,"bitcoinjs-lib/src/networks":41,"bitcoinjs-lib/src/script":42,"bitcoinjs-lib/src/transaction":66,"bitcoinjs-lib/src/transaction_builder":67,"bs58check":87,"bs58check/base":86,"ecurve":99,"js-sha3":109,"merkle-lib/fastRoot":110,"pbkdf2":111,"safe-buffer":134,"varuint-bitcoin":160,"wif":161}],2:[function(require,module,exports){
 (function (global){
 'use strict';
 
