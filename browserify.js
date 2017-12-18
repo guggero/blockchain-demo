@@ -1,13 +1,28 @@
 var bs58checkBase = require('bs58check/base');
 var sha3 = require('js-sha3');
+var crypto = require('bitcoinjs-lib/src/crypto');
 var Buffer = require('safe-buffer').Buffer;
+var hash256 = require('bitcoinjs-lib/src/crypto').hash256;
 
 var keccak256 = function (buffer) {
   return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
 };
 
+var noHash = function (buffer) {
+  return buffer;
+};
+
 var customBs58Check = {
-  keccak256: bs58checkBase(keccak256)
+  keccak256: {
+    wif: bs58checkBase(keccak256),
+    address: bs58checkBase(keccak256),
+    pubKeyHash: crypto.hash160
+  },
+  noHashAddress: {
+    wif: bs58checkBase(hash256),
+    address: bs58checkBase(noHash),
+    pubKeyHash: crypto.ripemd160
+  }
 };
 
 module.exports = {
@@ -20,7 +35,7 @@ module.exports = {
 
   address: require('bitcoinjs-lib/src/address'),
   bufferutils: require('bitcoinjs-lib/src/bufferutils'), // TODO: remove in 4.0.0
-  crypto: require('bitcoinjs-lib/src/crypto'),
+  crypto: crypto,
   networks: require('bitcoinjs-lib/src/networks'),
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),

@@ -5,9 +5,10 @@ var bitcoinNetworks = [{
     messagePrefix: '\x18Ark Signed Message:\n',
     bip32: { public: 0x2bf4968, private: 0x2bf4530 },
     pubKeyHash: 23,
-    scriptHash: -1, // not used by ark
+    scriptHash: 23, // not used by ark
     wif: 170,
-    bip44: 0x6f
+    bip44: 0x6f,
+    customHash: 'noHashAddress'
   }
 }, {
   label: 'BCH (BitcoinCash)',
@@ -230,7 +231,7 @@ function customToWIF(keyPair, network) {
     if (!keyPair.d) {
       throw new Error('Missing private key')
     }
-    return getCustomBs58(network).encode(bitcoin.wif.encodeRaw(network.wif, keyPair.d.toBuffer(32), keyPair.compressed));
+    return getCustomBs58(network).wif.encode(bitcoin.wif.encodeRaw(network.wif, keyPair.d.toBuffer(32), keyPair.compressed));
   } else if (network.noBase58) {
     return keyPair.d.toBuffer(32).toString('hex');
   } else {
@@ -241,12 +242,13 @@ function customToWIF(keyPair, network) {
 function customGetAddress(keyPair, network) {
   var hash = null;
   if (network.customHash) {
-    hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    var customBs58 = getCustomBs58(network);
+    hash = customBs58.pubKeyHash(keyPair.getPublicKeyBuffer());
     var payload = bitcoin.Buffer.allocUnsafe(21);
     payload.writeUInt8(network.pubKeyHash, 0);
     hash.copy(payload, 1);
 
-    return getCustomBs58(network).encode(payload);
+    return customBs58.address.encode(payload);
   } else if (network.noBase58) {
     var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
@@ -266,7 +268,7 @@ function customGetScriptAddress(keyPair, network) {
     payload.writeUInt8(network.scriptHash, 0);
     hash.copy(payload, 1);
 
-    return getCustomBs58(network).encode(payload);
+    return getCustomBs58(network).address.encode(payload);
   } else if (network.noBase58) {
     var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
@@ -284,7 +286,7 @@ function customGetScriptAddress(keyPair, network) {
 
 function customImportFromWif(wifUncompressed, network) {
   if (network.customHash) {
-    var decoded = bitcoin.wif.decodeRaw(getCustomBs58(network).decode(wifUncompressed));
+    var decoded = bitcoin.wif.decodeRaw(getCustomBs58(network).wif.decode(wifUncompressed));
     return bitcoin.BigInteger.fromBuffer(decoded.privateKey);
   } else if (network.noBase58) {
     var hex = wifUncompressed.slice(0, 2) === '0x' ? wifUncompressed.substring(2) : wifUncompressed;

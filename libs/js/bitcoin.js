@@ -1,14 +1,29 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bitcoin = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var bs58checkBase = require('bs58check/base');
 var sha3 = require('js-sha3');
+var crypto = require('bitcoinjs-lib/src/crypto');
 var Buffer = require('safe-buffer').Buffer;
+var hash256 = require('bitcoinjs-lib/src/crypto').hash256;
 
 var keccak256 = function (buffer) {
   return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
 };
 
+var noHash = function (buffer) {
+  return buffer;
+};
+
 var customBs58Check = {
-  keccak256: bs58checkBase(keccak256)
+  keccak256: {
+    wif: bs58checkBase(keccak256),
+    address: bs58checkBase(keccak256),
+    pubKeyHash: crypto.hash160
+  },
+  noHashAddress: {
+    wif: bs58checkBase(hash256),
+    address: bs58checkBase(noHash),
+    pubKeyHash: crypto.ripemd160
+  }
 };
 
 module.exports = {
@@ -21,7 +36,7 @@ module.exports = {
 
   address: require('bitcoinjs-lib/src/address'),
   bufferutils: require('bitcoinjs-lib/src/bufferutils'), // TODO: remove in 4.0.0
-  crypto: require('bitcoinjs-lib/src/crypto'),
+  crypto: crypto,
   networks: require('bitcoinjs-lib/src/networks'),
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
