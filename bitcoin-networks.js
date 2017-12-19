@@ -8,7 +8,7 @@ var bitcoinNetworks = [{
     scriptHash: 23, // not used by ark
     wif: 170,
     bip44: 0x6f,
-    customHash: 'noHashAddress'
+    customHash: 'dontSHA256HashPubkey'
   }
 }, {
   label: 'BCH (BitcoinCash)',
@@ -263,12 +263,13 @@ function customGetScriptAddress(keyPair, network) {
   var hash = null;
   var payload = null;
   if (network.customHash) {
-    hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
+    var customBs58 = getCustomBs58(network);
+    hash = customBs58.pubKeyHash(keyPair.getPublicKeyBuffer());
     payload = bitcoin.Buffer.allocUnsafe(21);
     payload.writeUInt8(network.scriptHash, 0);
     hash.copy(payload, 1);
 
-    return getCustomBs58(network).address.encode(payload);
+    return customBs58.address.encode(payload);
   } else if (network.noBase58) {
     var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);

@@ -8,19 +8,15 @@ var keccak256 = function (buffer) {
   return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
 };
 
-var noHash = function (buffer) {
-  return buffer;
-};
-
 var customBs58Check = {
   keccak256: {
     wif: bs58checkBase(keccak256),
     address: bs58checkBase(keccak256),
     pubKeyHash: crypto.hash160
   },
-  noHashAddress: {
+  dontSHA256HashPubkey: {
     wif: bs58checkBase(hash256),
-    address: bs58checkBase(noHash),
+    address: bs58checkBase(hash256),
     pubKeyHash: crypto.ripemd160
   }
 };
