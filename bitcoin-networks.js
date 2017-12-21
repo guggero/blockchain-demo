@@ -114,7 +114,7 @@ var bitcoinNetworks = [{
     noBase58: true
   }
 }, {
-  label: 'HTML5 (HTMLCOIN)',
+  label: 'HTML (HTMLCOIN)',
   config: {
     messagePrefix: 'unused',
     bip32: { public: 0x1397c10d, private: 0x1397bcf3 },
