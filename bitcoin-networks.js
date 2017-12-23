@@ -253,7 +253,7 @@ function customGetAddress(keyPair, network) {
     var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
     hash = bitcoin.keccak256(pubKeyUncompressed).slice(-20);
-    return '0x' + bitcoin.Buffer.from(hash).toString('hex');
+    return toChecksumEthereumAddress(bitcoin.Buffer.from(hash).toString('hex'));
   } else {
     return keyPair.getAddress();
   }
@@ -274,7 +274,7 @@ function customGetScriptAddress(keyPair, network) {
     var clonedPair = new bitcoin.ECPair(keyPair.d, keyPair.__Q, { compressed: false, network: network });
     var pubKeyUncompressed = clonedPair.getPublicKeyBuffer().slice(1);
     hash = bitcoin.keccak256(pubKeyUncompressed).slice(-20);
-    return '0x' + bitcoin.Buffer.from(hash).toString('hex');
+    return toChecksumEthereumAddress(bitcoin.Buffer.from(hash).toString('hex'));
   } else {
     hash = bitcoin.crypto.hash160(keyPair.getPublicKeyBuffer());
     payload = bitcoin.Buffer.allocUnsafe(21);
@@ -283,6 +283,22 @@ function customGetScriptAddress(keyPair, network) {
 
     return bitcoin.bs58check.encode(payload);
   }
+}
+
+function toChecksumEthereumAddress(address) {
+  address = address.toLowerCase().replace('0x', '');
+  var hash = bitcoin.sha3.keccak256.update(address).toString();
+  var ret = '0x';
+
+  for (var i = 0; i < address.length; i++) {
+    if (parseInt(hash[i], 16) >= 8) {
+      ret += address[i].toUpperCase();
+    } else {
+      ret += address[i];
+    }
+  }
+
+  return ret;
 }
 
 function customImportFromWif(wifUncompressed, network) {
