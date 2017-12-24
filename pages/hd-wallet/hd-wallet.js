@@ -12,7 +12,8 @@ var PBKDF2_SALT = 'Digital Bitbox',
   PBKDF2_ROUNDS_APP = 20480;
 
 var METHOD_NONE = 0,
-  METHOD_PBKDF2 = 1;
+  METHOD_PBKDF2 = 1,
+  METHOD_COINOMI = 2;
 
 function HdWalletPageController(lodash, bitcoinNetworks) {
   var vm = this;
@@ -36,7 +37,8 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   vm.path = 'm/44\'/0\'/0\'/0/0';
   vm.customPath = '0/0';
   vm.strenghteningMethods = [
-    {label: 'None', id: METHOD_NONE},
+    {label: 'BIP39 default (like Coinomi)', id: METHOD_COINOMI},
+    {label: 'BIP39 custom (passhprase to hex)', id: METHOD_NONE},
     {label: 'PBKDF2 (Digital Bitbox)', id: METHOD_PBKDF2}
 
   ];
@@ -61,12 +63,14 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
           PBKDF2_ROUNDS_APP,
           PBKDF2_HMACLEN,
           'sha512'
-        );
+        ).toString('hex');
+      } else if (vm.strenghtening.id === METHOD_COINOMI) {
+        pw = vm.passphrase;
       } else {
-        pw = bitcoin.Buffer.from(vm.passphrase, 'utf8');
+        pw = bitcoin.Buffer.from(vm.passphrase, 'utf8').toString('hex');
       }
     }
-    vm.seed = bitcoin.bip39.mnemonicToSeed(vm.mnemonic, (pw ? pw.toString('hex') : pw));
+    vm.seed = bitcoin.bip39.mnemonicToSeed(vm.mnemonic, pw);
     vm.fromSeed();
   };
 
