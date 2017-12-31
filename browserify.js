@@ -48,5 +48,6 @@ module.exports = {
   bip32utils: require('bip32-utils'),
   pbkdf2: require('pbkdf2'),
   sha3: sha3,
-  keccak256: keccak256
+  keccak256: keccak256,
+  secrets: require('secrets.js-grempe')
 };

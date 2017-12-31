@@ -36,6 +36,7 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/ecc', {template: '<ecc-page></ecc-page>', containerClass: 'container'})
     .when('/hd-wallet', {template: '<hd-wallet-page></hd-wallet-page>', containerClass: 'container'})
     .when('/bitcoin-block', {template: '<bitcoin-block-page></bitcoin-block-page>', containerClass: 'container'})
+    .when('/shamir-secret-sharing', {template: '<shamir-secret-sharing-page></shamir-secret-sharing-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
 

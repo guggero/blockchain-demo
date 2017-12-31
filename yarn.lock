@@ -823,6 +823,10 @@ scryptsy@^1.2.0:
   dependencies:
     pbkdf2 "^3.0.3"
 
+secrets.js-grempe@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/secrets.js-grempe/-/secrets.js-grempe-1.1.0.tgz#bb3b606dd68637ca244681a10fdee6c512049294"
+
 sha.js@^2.4.0, sha.js@^2.4.8:
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.9.tgz#98f64880474b74f4a38b8da9d3c0f2d104633e7d"
