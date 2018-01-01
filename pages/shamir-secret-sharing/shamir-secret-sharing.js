@@ -7,7 +7,7 @@ angular
     bindings: {}
   });
 
-function ShamirSecretSharingPageController(lodash) {
+function ShamirSecretSharingPageController() {
   var vm = this;
 
   vm.secret = null;

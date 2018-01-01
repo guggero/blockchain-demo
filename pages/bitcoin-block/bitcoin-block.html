@@ -21,6 +21,7 @@
   </div>
 </div>
 
+<h4>Block data</h4>
 <div class="well">
   <form class="form-horizontal">
     <div class="form-group">
@@ -106,7 +107,7 @@
 </div>
 
 <div ng-show="!vm.error && vm.decodedBlock && vm.decodedBlock.transactions.length > 0">
-  <h3>Merkle Tree</h3>
+  <h4>Merkle Tree</h4>
   <div id="merkleTree" class="row row-horizon" ng-show="vm.decodedBlock.transactions.length <= 200"></div>
   <div class="tooltip" id="tooltip"></div>
   <span ng-if="vm.decodedBlock.transactions.length > 200">
@@ -116,7 +117,7 @@
 
 <div ng-if="!vm.error && vm.decodedBlock && vm.decodedBlock.transactions.length > 0">
   <div ng-repeat="tx in vm.decodedBlock.transactions">
-    <h3 ng-init="origTx = vm.block.transactions[$index]">TX {{$index}}</h3>
+    <h4 ng-init="origTx = vm.block.transactions[$index]">TX {{$index}}</h4>
     <div class="well">
       <form class="form-horizontal">
         <!-- hash -->

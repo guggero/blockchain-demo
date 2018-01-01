@@ -63,7 +63,20 @@ function EccPageController(lodash, bitcoinNetworks) {
   };
 
   vm.signMessage = function () {
-    var hash = bitcoin.crypto.sha256(vm.message);
-    vm.signature = vm.keyPair.sign(hash).toDER().toString('hex');
+    vm.messageHash = bitcoin.crypto.sha256(vm.message);
+    vm.signature = vm.keyPair.sign(vm.messageHash).toDER().toString('hex');
+    vm.messageHashToVerify = vm.messageHash.toString('hex');
+    vm.signatureToVerify = vm.signature;
+    vm.verifySignature();
+  };
+
+  vm.verifySignature = function () {
+    try {
+      var hash = bitcoin.Buffer.from(vm.messageHashToVerify, 'hex');
+      var signature = bitcoin.ECSignature.fromDER(bitcoin.Buffer.from(vm.signatureToVerify, 'hex'));
+      vm.signatureValid = vm.keyPair.verify(hash, signature);
+    } catch (e) {
+      vm.signatureValid = false;
+    }
   };
 }
