@@ -164,6 +164,16 @@ var bitcoinNetworks = [{
     bip44: 0x51
   }
 }, {
+  label: 'RVN (Ravencoin)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
+    pubKeyHash: 60,
+    scriptHash: 122,
+    wif: 128,
+    bip44: 0xaf
+  }
+}, {
   label: 'RDD (ReddCoin)',
   config: {
     messagePrefix: 'unused',
