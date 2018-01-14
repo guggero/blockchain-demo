@@ -18,6 +18,8 @@ Changes in detail:
 * [Elliptic Curve Cryptography / Key Pair page](https://guggero.github.io/blockchain-demo/#!/ecc)
 * [Hierarchical Deterministic Wallet page](https://guggero.github.io/blockchain-demo/#!/hd-wallet)
 * [Bitcoin Block Parser page](https://guggero.github.io/blockchain-demo/#!/bitcoin-block)
+* [Shamir's Secret Sharing Scheme](https://guggero.github.io/blockchain-demo/#!/shamir-secret-sharing)
+* [Schnorr Signatures](https://guggero.github.io/blockchain-demo/#!/schnorr)
 
 ## Send Thanks
 
