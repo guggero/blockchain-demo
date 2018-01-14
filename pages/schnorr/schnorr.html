@@ -1,0 +1,71 @@
+<h1>Schnorr Signatures</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
+    <div class="panel-body">
+      Schnorr Signatures are a form of Digital Signature Algorithms (DSA) that produces short signatures even when combining multiple
+      public keys (when using for multisig).
+
+      <h3>Sources, tools and other useful information:</h3>
+      <ul>
+        <li>
+          <a href="http://procbits.com/2013/08/27/generating-a-bitcoin-address-with-javascript">
+            Generating a Bitcoin Address with JavaScript
+          </a>
+        </li>
+        <li><a href="https://en.wikipedia.org/wiki/Schnorr_signature">Wikipedia article</a></li>
+        <li><a href="https://github.com/bcoin-org/schnorr">Used JavaScript library</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h4>Sign message</h4>
+<div class="well">
+  <form class="form-horizontal">
+
+    <!-- key pairs -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Key pairs:</label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group">
+          <div class="input-group-addon">Private key (hex)</div>
+          <input class="form-control" ng-disabled="true" value="{{vm.privateKey}}">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon">Public key (hex)</div>
+          <input class="form-control" ng-disabled="true" value="{{vm.publicKey}}">
+        </div>
+      </div>
+    </div>
+
+    <!-- message -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Message:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control" ng-model="vm.message" ng-change="vm.signMessage()">
+      </div>
+    </div>
+
+    <!-- message sha256 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">SHA256 hash of message:</label>
+      <div class="col-sm-9 no-left-padding">
+        <input class="form-control" ng-disabled="true" value="{{vm.messageHash.toString('hex')}}">
+      </div>
+    </div>
+
+    <!-- signature -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Signature:</label>
+      <div class="col-sm-9 no-left-padding">
+        <input class="form-control" ng-disabled="true" value="{{vm.signature}}">
+      </div>
+    </div>
+  </form>
+</div>
