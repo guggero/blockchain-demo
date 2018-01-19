@@ -11,13 +11,14 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
   var vm = this;
 
   vm.networks = bitcoinNetworks;
-  vm.network = lodash.find(vm.networks, ['label', 'BTC (Bitcoin)']);
+  vm.network = lodash.find(vm.networks, ['label', 'BTC (Bitcoin Testnet)']);
   vm.keyPair = {};
   vm.keyValid = false;
   vm.inputTxVout = 0;
   vm.inputAmount = 0;
   vm.outputAmount = 0;
   vm.changeAmount = 0;
+  vm.useChange = true;
 
   vm.importFromWif = function () {
     vm.error = null;
@@ -50,9 +51,8 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
     try {
       var unspent = parseInt(vm.inputAmount, 10);
       var sendAmount = parseInt(vm.outputAmount, 10);
-      var changeAmount = parseInt(vm.changeAmount, 10);
-      var fee = unspent - sendAmount - changeAmount;
-      vm.calculatedFee = fee + ' satoshi';
+      var changeAmount = vm.useChange ? parseInt(vm.changeAmount, 10) : 0;
+      vm.calculatedFee = unspent - sendAmount - changeAmount;
       vm.createTransaction();
     } catch (e) {
       vm.feeError = e;
@@ -70,12 +70,16 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
       var txb = new bitcoin.TransactionBuilder(vm.network.config);
       txb.addInput(vm.inputTxId, parseInt(vm.inputTxVout, 10));
       txb.addOutput(vm.outputAddress, parseInt(vm.outputAmount));
-      txb.addOutput(vm.changeAddress, parseInt(vm.changeAmount));
+
+      if (vm.useChange) {
+        txb.addOutput(vm.changeAddress, parseInt(vm.changeAmount));
+      }
 
       txb.sign(0, vm.keyPair, redeemScript, null, unspent);
 
       var tx = txb.build();
       vm.raw = tx.toHex();
+      vm.txId = tx.getHash().reverse().toString('hex');
     } catch (e) {
       vm.txError = e;
     }

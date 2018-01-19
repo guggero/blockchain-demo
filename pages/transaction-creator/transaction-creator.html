@@ -158,7 +158,16 @@
         <label class="col-sm-3 control-label">Change address:</label>
         <div class="col-sm-9">
           <div class="input-group">
-            <div class="input-group-addon">Any own address</div>
+            <div class="input-group-addon">Send change to address:</div>
+            <div class="input-group-addon">
+              <input type="checkbox" ng-model="vm.useChange">
+            </div>
+            <input class="form-control no-border"
+                   ng-disabled="true"
+                   type="text">
+          </div>
+          <div class="input-group" ng-if="vm.useChange" >
+            <div class="input-group-addon">Change address</div>
             <input class="form-control"
                    ng-model="vm.changeAddress"
                    ng-change="vm.createTransaction()"
@@ -171,11 +180,16 @@
           </div>
           <div class="input-group">
             <div class="input-group">
-              <div class="input-group-addon" ng-if="!vm.feeError">Calculated fee</div>
+              <div class="input-group-addon" ng-if="!vm.feeError">Calculated fee (satoshi)</div>
               <input class="form-control"
                      ng-class="{'well-error': vm.feeError}"
                      ng-disabled="true"
                      value="{{vm.feeError || vm.calculatedFee}}">
+              <div class="input-group-addon" ng-if="!vm.feeError">Calculated fee (satoshi/byte)</div>
+              <input class="form-control"
+                     ng-class="{'well-error': vm.feeError}"
+                     ng-disabled="true"
+                     value="{{vm.feeError || vm.calculatedFee / (vm.raw.length * 4)}}">
             </div>
           </div>
         </div>
@@ -197,6 +211,14 @@
                     class="form-control"
                     ng-class="{'well-error': vm.txError}"
           >{{vm.txError || vm.raw}}</textarea>
+        </div>
+      </div>
+
+      <!-- transaction hex -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">TX ID:</label>
+        <div class="col-sm-9 no-left-padding">
+          <input class="form-control" ng-disabled="true" value="{{vm.txId}}">
         </div>
       </div>
     </form>
