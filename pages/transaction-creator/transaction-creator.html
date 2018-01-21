@@ -119,6 +119,15 @@
                    type="number">
           </div>
           <div class="input-group">
+            <div class="input-group-addon">Input is SegWit transaction:</div>
+            <div class="input-group-addon">
+              <input type="checkbox" ng-model="vm.inputSegwit">
+            </div>
+            <input class="form-control no-border"
+                   ng-disabled="true"
+                   type="text">
+          </div>
+          <div class="input-group">
             <div class="input-group-addon">Expected unspent amount in Satoshi (used for fee calculation)</div>
             <input class="form-control"
                    ng-model="vm.inputAmount"

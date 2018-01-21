@@ -18,6 +18,7 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
   vm.inputAmount = 0;
   vm.outputAmount = 0;
   vm.changeAmount = 0;
+  vm.inputSegwit = false;
   vm.useChange = true;
 
   vm.importFromWif = function () {
@@ -63,8 +64,13 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
     vm.txError = null;
     try {
       var pubKey = vm.keyPair.getPublicKeyBuffer();
-      var pubKeyHash = bitcoin.crypto.hash160(pubKey);
-      var redeemScript = bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
+
+      var pubKeyHash = null;
+      var redeemScript = null;
+      if (vm.inputSegwit) {
+        pubKeyHash = bitcoin.crypto.hash160(pubKey);
+        redeemScript = bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
+      }
       var unspent = parseInt(vm.inputAmount, 10);
 
       var txb = new bitcoin.TransactionBuilder(vm.network.config);
@@ -75,7 +81,11 @@ function TransactionCreatorPageController(lodash, bitcoinNetworks) {
         txb.addOutput(vm.changeAddress, parseInt(vm.changeAmount));
       }
 
-      txb.sign(0, vm.keyPair, redeemScript, null, unspent);
+      if (vm.inputSegwit) {
+        txb.sign(0, vm.keyPair, redeemScript, null, unspent);
+      } else {
+        txb.sign(0, vm.keyPair);
+      }
 
       var tx = txb.build();
       vm.raw = tx.toHex();
