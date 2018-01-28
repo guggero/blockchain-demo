@@ -353,3 +353,13 @@ function getNestedP2WPKHAddress(keyPair, network) {
   var scriptPubKey = bitcoin.script.scriptHash.output.encode(bitcoin.crypto.hash160(witnessScript));
   return bitcoin.address.fromOutputScript(scriptPubKey, network);
 }
+
+function calculateAddresses(keyPair, network) {
+  keyPair.wif = customToWIF(keyPair, network);
+  keyPair.address = customGetAddress(keyPair, network);
+  keyPair.scriptAddress = customGetScriptAddress(keyPair, network);
+  if (network.bech32) {
+    keyPair.nestedP2WPKHAddress = getNestedP2WPKHAddress(keyPair, network);
+    keyPair.P2WPKHAddress = getP2WPKHAddress(keyPair, network);
+  }
+}
