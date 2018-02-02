@@ -68,6 +68,15 @@ function run($location, $rootScope, $route, lodash) {
     return result;
   };
 
+  $rootScope.formatString = function (str) {
+    var args = [].slice.call(arguments, 1),
+      i = 0;
+
+    return str.replace(/%s/g, function () {
+      return args[i++];
+    });
+  };
+
   $rootScope.hexPubKeyToBitcoinAddr = function (hex) {
     var buffer = bitcoin.Buffer.from(hex, 'hex');
     return bitcoin.address.toBase58Check(buffer, bitcoin.networks.bitcoin.pubKeyHash);

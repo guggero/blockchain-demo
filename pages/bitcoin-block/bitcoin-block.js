@@ -7,12 +7,20 @@ angular
     bindings: {}
   });
 
-var API_URL_BLOCK = 'https://bitcoin.gugger.guru/rest/block/';
+var BLOCK_SOURCE_API_URLS = [{
+  label: 'blockchain.info',
+  url: 'https://blockchain.info/rawblock/%s?format=hex&cors=true'
+}, {
+  label: 'bitcoin.gugger.guru',
+  url: 'https://bitcoin.gugger.guru/rest/block/%s.hex'
+}];
 
-function BitcoinBlockPageController($http, lodash) {
+function BitcoinBlockPageController($rootScope, $http, lodash) {
   var vm = this;
 
   vm.hash = '0000000000000000079c58e8b5bce4217f7515a74b170049398ed9b8428beb4a';
+  vm.sources = BLOCK_SOURCE_API_URLS;
+  vm.selectedBlockSource = vm.sources[0];
   vm.raw = null;
   vm.decodedBlock = null;
 
@@ -23,7 +31,7 @@ function BitcoinBlockPageController($http, lodash) {
   vm.downloadBlock = function () {
     vm.error = null;
     vm.raw = 'loading...';
-    $http.get(API_URL_BLOCK + vm.hash + '.hex')
+    $http.get($rootScope.formatString(vm.selectedBlockSource.url, vm.hash))
       .then(function (response) {
         vm.raw = response.data.trim();
         vm.parseBlock();
