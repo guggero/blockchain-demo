@@ -114,6 +114,16 @@ var bitcoinNetworks = [{
     noBase58: true
   }
 }, {
+  label: 'ERC (EuropeCoin)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x00, private: 0x00 },
+    pubKeyHash: 33,
+    scriptHash: 5,
+    wif: 168,
+    bip44: 0x97
+  }
+}, {
   label: 'HTML (HTMLCOIN)',
   config: {
     messagePrefix: 'unused',
