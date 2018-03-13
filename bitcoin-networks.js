@@ -117,7 +117,7 @@ var bitcoinNetworks = [{
   label: 'ERC (EuropeCoin)',
   config: {
     messagePrefix: 'unused',
-    bip32: { public: 0x00, private: 0x00 },
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
     pubKeyHash: 33,
     scriptHash: 5,
     wif: 168,
