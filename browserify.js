@@ -50,5 +50,6 @@ module.exports = {
   sha3: sha3,
   keccak256: keccak256,
   secrets: require('secrets.js-grempe'),
-  schnorr: require('schnorr')
+  schnorr: require('schnorr'),
+  randomBytes: require('randombytes')
 };

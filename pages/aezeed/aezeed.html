@@ -1,0 +1,109 @@
+<h1>aezeed cipher seed scheme</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
+    <div class="panel-body">
+      The aezeed cipher seed scheme is a scheme to create versioned seeds for crypto currency wallets, based on
+      <a href="http://web.cs.ucdavis.edu/~rogaway/aez/">aez</a>.<br/><br/>
+      This new scheme was first introduced with <a href="https://github.com/lightningnetwork/lnd">lnd</a>, one of the
+      implementations of Lightning Network wallet software.
+
+      <h3>Links:</h3>
+      <ul>
+        <li><a href="http://web.cs.ucdavis.edu/~rogaway/aez/">AEZ: Robust Authenticated Encryption</a></li>
+        <li><a href="https://github.com/lightningnetwork/lnd">Lightning Network Daemon</a></li>
+        <li>
+          <a href="https://github.com/lightningnetwork/lnd/pull/773">
+            Pull request that introduced aezeed into lnd (with documentation)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-warning">
+  <strong>Warning</strong>: Any generated keys are for demonstration only.
+  Your browser's random number generator might be too predictable to trust!
+</div>
+
+<h4>Generate mnemonic</h4>
+<div class="well">
+  <form class="form-horizontal">
+
+    <!-- aezeed parameter -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">aezeed parameter:</label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group-addon">Internal version</div>
+        <input class="form-control"
+               ng-model="vm.version"
+               ng-change="vm.generateSeed()"
+               type="number">
+        <div class="input-group-addon">Birthday (days since Bitcoin genesis block)</div>
+        <input class="form-control"
+               ng-model="vm.birthday"
+               ng-change="vm.generateSeed()"
+               type="number">
+      </div>
+    </div>
+
+    <!-- passphrase -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Passphrase:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.passphrase"
+               ng-change="vm.generateSeed()"
+               type="{{vm.asPassword ? 'password' : 'text'}}">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
+                {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
+            </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- entropy hex -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Entropy (hex):</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.entropy"
+               ng-change="vm.generateSeed()">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="vm.generateEntropy()">
+                Randomize entropy
+            </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- mnemonic -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Mnemonic:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.mnemonic"
+               ng-change="vm.fromMnemonic()">
+      </div>
+    </div>
+
+    <!-- root key base58 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">HD node root key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.nodeBase58}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+  </form>
+</div>
+
