@@ -42,6 +42,21 @@
 <div class="well">
   <form class="form-horizontal">
 
+    <!-- mnemonic parameter -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Seed length:</label>
+      <div class="col-sm-9 input-group">
+        <select class="form-control"
+                ng-model="vm.mnemonicLength"
+                ng-options="l.label for l in vm.seedLengths"
+                ng-change="vm.newSeed()">
+        </select>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" ng-click="vm.newSeed()">Generate new</button>
+        </span>
+      </div>
+    </div>
+
     <!-- mnemonic -->
     <div class="form-group">
       <label class="col-sm-3 control-label">Seed Mnemonic (BIP39):</label>
@@ -49,9 +64,6 @@
         <input class="form-control"
                ng-model="vm.mnemonic"
                ng-change="vm.fromMnemonic()">
-        <span class="input-group-btn">
-                    <button class="btn btn-primary" ng-click="vm.newSeed()">Generate new</button>
-                </span>
       </div>
     </div>
 
@@ -64,10 +76,10 @@
                ng-change="vm.fromMnemonic()"
                type="{{vm.asPassword ? 'password' : 'text'}}">
         <span class="input-group-btn">
-                    <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
-                        {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
-                    </button>
-                </span>
+            <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
+                {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
+            </button>
+        </span>
         <div class="input-group-addon">Method</div>
         <select ng-model="vm.strenghtening"
                 ng-change="vm.fromMnemonic()"

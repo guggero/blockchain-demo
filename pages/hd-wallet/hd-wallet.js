@@ -37,19 +37,27 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   vm.path = 'm/44\'/0\'/0\'/0/0';
   vm.customPath = '0/0';
   vm.strenghteningMethods = [
-    {label: 'BIP39 default (like Coinomi)', id: METHOD_COINOMI},
-    {label: 'BIP39 custom (passhprase to hex)', id: METHOD_NONE},
-    {label: 'PBKDF2 (Digital Bitbox)', id: METHOD_PBKDF2}
+    { label: 'BIP39 default (like Coinomi)', id: METHOD_COINOMI },
+    { label: 'BIP39 custom (passhprase to hex)', id: METHOD_NONE },
+    { label: 'PBKDF2 (Digital Bitbox)', id: METHOD_PBKDF2 }
 
   ];
   vm.strenghtening = vm.strenghteningMethods[0];
+  vm.seedLengths = [
+    { label: '128bit / 12 words', id: 128 },
+    { label: '160bit / 15 words', id: 160 },
+    { label: '192bit / 18 words', id: 192 },
+    { label: '224bit / 21 words', id: 224 },
+    { label: '256bit / 24 words', id: 256 }
+  ];
+  vm.mnemonicLength = vm.seedLengths[0];
 
   vm.$onInit = function () {
     vm.newSeed();
   };
 
   vm.newSeed = function () {
-    vm.mnemonic = bitcoin.bip39.generateMnemonic();
+    vm.mnemonic = bitcoin.bip39.generateMnemonic(vm.mnemonicLength.id);
     vm.fromMnemonic();
   };
 
