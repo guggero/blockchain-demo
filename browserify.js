@@ -30,7 +30,7 @@ module.exports = {
   TransactionBuilder: require('bitcoinjs-lib/src/transaction_builder'),
 
   address: require('bitcoinjs-lib/src/address'),
-  bufferutils: require('bitcoinjs-lib/src/bufferutils'), // TODO: remove in 4.0.0
+  bufferutils: require('bitcoinjs-lib/src/bufferutils'),
   crypto: crypto,
   networks: require('bitcoinjs-lib/src/networks'),
   opcodes: require('bitcoin-ops'),
@@ -45,11 +45,16 @@ module.exports = {
   wif: require('wif'),
   bip38: require('bip38'),
   bip39: require('bip39'),
+  bip39wordlist: require('bip39/wordlists/english.json'),
   bip32utils: require('bip32-utils'),
   pbkdf2: require('pbkdf2'),
   sha3: sha3,
   keccak256: keccak256,
   secrets: require('secrets.js-grempe'),
   schnorr: require('schnorr'),
-  randomBytes: require('randombytes')
+  randomBytes: require('randombytes'),
+  scrypt: require('scrypt-js'),
+  aez: require('aez'),
+  crc32: require('fast-crc32c/impls/js_crc32c'),
+  unorm: require('unorm')
 };

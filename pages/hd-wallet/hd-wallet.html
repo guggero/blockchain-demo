@@ -76,10 +76,10 @@
                ng-change="vm.fromMnemonic()"
                type="{{vm.asPassword ? 'password' : 'text'}}">
         <span class="input-group-btn">
-                    <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
-                        {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
-                    </button>
-                </span>
+            <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
+                {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
+            </button>
+        </span>
         <div class="input-group-addon">Method</div>
         <select ng-model="vm.strenghtening"
                 ng-change="vm.fromMnemonic()"

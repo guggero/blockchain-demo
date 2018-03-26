@@ -43,11 +43,13 @@
         <div class="input-group-addon">Internal version</div>
         <input class="form-control"
                ng-model="vm.version"
+               ng-model-options="{debounce: 1000}"
                ng-change="vm.generateSeed()"
                type="number">
         <div class="input-group-addon">Birthday (days since Bitcoin genesis block)</div>
         <input class="form-control"
                ng-model="vm.birthday"
+               ng-model-options="{debounce: 1000}"
                ng-change="vm.generateSeed()"
                type="number">
       </div>
@@ -59,6 +61,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                ng-model="vm.passphrase"
+               ng-model-options="{debounce: 1000}"
                ng-change="vm.generateSeed()"
                type="{{vm.asPassword ? 'password' : 'text'}}">
         <span class="input-group-btn">
@@ -71,14 +74,24 @@
 
     <!-- entropy hex -->
     <div class="form-group">
-      <label class="col-sm-3 control-label">Entropy (hex):</label>
+      <label class="col-sm-3 control-label">Entropy and salt (hex):</label>
       <div class="col-sm-9 input-group">
         <input class="form-control"
                ng-model="vm.entropy"
+               ng-model-options="{debounce: 1000}"
                ng-change="vm.generateSeed()">
         <span class="input-group-btn">
-            <button class="btn btn-primary" ng-click="vm.generateEntropy()">
+            <button class="btn btn-primary" ng-click="vm.generateEntropy(); vm.generateSeed();">
                 Randomize entropy
+            </button>
+        </span>
+        <input class="form-control"
+               ng-model="vm.salt"
+               ng-model-options="{debounce: 1000}"
+               ng-change="vm.generateSeed()">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="vm.generateSalt(); vm.generateSeed();">
+                Randomize salt
             </button>
         </span>
       </div>
@@ -89,8 +102,10 @@
       <label class="col-sm-3 control-label">Mnemonic:</label>
       <div class="col-sm-9 input-group">
         <input class="form-control"
-               ng-model="vm.mnemonic"
-               ng-change="vm.fromMnemonic()">
+               ng-class="{'well-error': vm.error}"
+               value="{{vm.mnemonic}}"
+               ng-disabled="true">
+        <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
       </div>
     </div>
 
@@ -107,3 +122,81 @@
   </form>
 </div>
 
+<h4>Decode mnemonic</h4>
+<div class="well">
+  <form class="form-horizontal">
+
+    <!-- mnemonic -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Mnemonic:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.mnemonic2"
+               ng-model-options="{debounce: 1000}"
+               ng-class="{'well-error': vm.error2}"
+               ng-change="vm.fromMnemonic()">
+        <span class="input-group-addon" ng-if="!vm.error2">Hint: paste mnemonic words here to decode</span>
+        <span class="input-group-addon" ng-if="vm.error2" class="well-error"> {{vm.error2}}</span>
+      </div>
+    </div>
+
+    <!-- passphrase -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Passphrase:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               ng-model="vm.passphrase2"
+               ng-model-options="{debounce: 1000}"
+               ng-change="vm.fromMnemonic()"
+               type="{{vm.asPassword ? 'password' : 'text'}}">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="vm.asPassword = !vm.asPassword">
+                {{vm.asPassword ? 'Show' : 'Hide'}} passphrase
+            </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- aezeed parameter -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">aezeed parameter:</label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group-addon">Internal version</div>
+        <input class="form-control"
+               value="{{vm.decoded.version}}"
+               ng-disabled="true">
+        <div class="input-group-addon">Birthday (days since Bitcoin genesis block)</div>
+        <input class="form-control"
+               value="{{vm.decoded.birthday}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+
+    <!-- entropy hex -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label"></label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group-addon">Entropy</div>
+        <input class="form-control"
+               value="{{vm.decoded.entropy}}"
+               ng-disabled="true">
+        <div class="input-group-addon">Salt</div>
+        <input class="form-control"
+               value="{{vm.decoded.salt}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+    <!-- root key base58 -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">HD node root key base58:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control"
+               value="{{vm.decoded.nodeBase58}}"
+               ng-disabled="true">
+      </div>
+    </div>
+
+  </form>
+</div>
