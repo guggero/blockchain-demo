@@ -281,3 +281,19 @@ hr {
     color: black;
     border-bottom: 1px solid black;
 }
+
+div.as-block.input-group {
+  display: inline-block;
+  float: left;
+}
+
+div.as-block.input-group span {
+  line-height: 20px;
+}
+
+div.as-block.input-group input,
+div.as-block.input-group span,
+div.as-block.input-group select.form-control {
+  display: inline-block;
+  float: left;
+}

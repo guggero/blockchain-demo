@@ -18,8 +18,13 @@ var METHOD_NONE = 0,
 function HdWalletPageController(lodash, bitcoinNetworks) {
   var vm = this;
 
-  vm.networks = bitcoinNetworks;
-  vm.network = lodash.find(vm.networks, ['label', 'BTC (Bitcoin)']);
+  var BITCOIN = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']);
+  var BITCOIN_TESTNET = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin Testnet)']);
+
+  vm.coinTypes = bitcoinNetworks;
+  vm.coinType = BITCOIN;
+  vm.networks = [BITCOIN, BITCOIN_TESTNET];
+  vm.network = BITCOIN;
   vm.mnemonic = null;
   vm.asPassword = true;
   vm.passphrase = null;
@@ -30,7 +35,6 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   vm.privKeyWif = null;
   vm.publicKeyWif = null;
   vm.address = null;
-  vm.coinType = 0;
   vm.account = 0;
   vm.change = 0;
   vm.index = 0;
@@ -86,7 +90,6 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
     if (vm.seed) {
       vm.seedHex = vm.seed.toString('hex');
 
-      // always use bitcoin network for master key
       vm.node = bitcoin.HDNode.fromSeedBuffer(vm.seed, vm.network.config);
       vm.nodeBase58 = vm.node.toBase58();
       vm.customParentBase58 = vm.node.toBase58();
@@ -123,7 +126,7 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   };
 
   vm.calculatePath = function () {
-    vm.path = 'm/44\'/' + vm.network.config.bip44 + '\'/' + vm.account + '\'/' + vm.change + '/' + vm.index;
+    vm.path = 'm/44\'/' + vm.coinType.config.bip44 + '\'/' + vm.account + '\'/' + vm.change + '/' + vm.index;
     vm.fromPath();
   };
 

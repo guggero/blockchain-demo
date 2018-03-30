@@ -27,10 +27,14 @@ var AEZEED_DEFAULT_PASSPHRASE = bitcoin.unorm.nfkd('aezeed'),
 function AezeedPageController($timeout, lodash, bitcoinNetworks) {
   var vm = this;
 
+  var BITCOIN = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']);
+  var BITCOIN_TESTNET = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin Testnet)']);
+
+  vm.networks = [BITCOIN, BITCOIN_TESTNET];
+  vm.network = BITCOIN;
   vm.asPassword = true;
   vm.version = AEZEED_VERSION;
   vm.birthday = 0;
-  vm.network = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']);
 
   vm.$onInit = function () {
     vm.birthday = vm.calculateBirthday();
@@ -40,9 +44,12 @@ function AezeedPageController($timeout, lodash, bitcoinNetworks) {
   };
 
   vm.generateEntropy = function () {
-    var entropy = bitcoin.randomBytes(16);
-    vm.entropy = entropy.toString('hex');
-    vm.nodeBase58 = bitcoin.HDNode.fromSeedBuffer(entropy, bitcoinNetworks.bitcoin).toBase58();
+    vm.entropy = bitcoin.randomBytes(16).toString('hex');
+    vm.formatBase58();
+  };
+
+  vm.formatBase58 = function () {
+    vm.nodeBase58 = bitcoin.HDNode.fromSeedBuffer(bitcoin.Buffer.from(vm.entropy, 'hex'), vm.network.config).toBase58();
   };
 
   vm.generateSalt = function () {
@@ -175,7 +182,7 @@ function AezeedPageController($timeout, lodash, bitcoinNetworks) {
             vm.decoded.version = plainSeedBytes.readUInt8(0);
             vm.decoded.birthday = plainSeedBytes.readUInt16BE(1);
             vm.decoded.entropy = plainSeedBytes.slice(3).toString('hex');
-            vm.decoded.nodeBase58 = bitcoin.HDNode.fromSeedBuffer(plainSeedBytes.slice(3), bitcoinNetworks.bitcoin).toBase58();
+            vm.decoded.nodeBase58 = bitcoin.HDNode.fromSeedBuffer(plainSeedBytes.slice(3), vm.network.config).toBase58();
           });
         }
       }

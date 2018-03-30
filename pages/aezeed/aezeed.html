@@ -112,10 +112,18 @@
     <!-- root key base58 -->
     <div class="form-group">
       <label class="col-sm-3 control-label">HD node root key base58:</label>
-      <div class="col-sm-9 input-group">
+      <div class="col-sm-9 input-group as-block">
         <input class="form-control"
+               style="width: 60%"
                value="{{vm.nodeBase58}}"
                ng-disabled="true">
+        <span class="input-group-addon" style="width: 20%">&lt;-- paste here to import.</span>
+        <select ng-model="vm.network"
+                style="width: 20%"
+                ng-options="network.label for network in vm.networks"
+                ng-change="vm.formatBase58()"
+                class="form-control">
+        </select>
       </div>
     </div>
 
@@ -135,8 +143,8 @@
                ng-model-options="{debounce: 1000}"
                ng-class="{'well-error': vm.error2}"
                ng-change="vm.fromMnemonic()">
-        <span class="input-group-addon" ng-if="!vm.error2">Hint: paste mnemonic words here to decode</span>
-        <span class="input-group-addon" ng-if="vm.error2" class="well-error"> {{vm.error2}}</span>
+        <span class="input-group-addon" ng-if="!vm.error2">&lt;-- paste mnemonic words here to decode</span>
+        <span class="input-group-addon well-error" ng-if="vm.error2"> {{vm.error2}}</span>
       </div>
     </div>
 
@@ -191,10 +199,18 @@
     <!-- root key base58 -->
     <div class="form-group">
       <label class="col-sm-3 control-label">HD node root key base58:</label>
-      <div class="col-sm-9 input-group">
+      <div class="col-sm-9 input-group as-block">
         <input class="form-control"
+               style="width: 60%"
                value="{{vm.decoded.nodeBase58}}"
                ng-disabled="true">
+        <span class="input-group-addon" style="width: 20%">&lt;-- paste here to import.</span>
+        <select ng-model="vm.network"
+                style="width: 20%"
+                ng-options="network.label for network in vm.networks"
+                ng-change="vm.fromMnemonic()"
+                class="form-control">
+        </select>
       </div>
     </div>
 

@@ -62,8 +62,8 @@
                ng-change="vm.importFromWif()"
                ng-class="{'well-error': vm.error}"
                class="form-control"><br/>
-        <span class="input-group-addon" ng-if="!vm.error">Paste compressed/uncompressed key here...</span>
-        <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+        <span class="input-group-addon" ng-if="!vm.error">&lt;-- paste compressed/uncompressed key here</span>
+        <span class="input-group-addon well-error" ng-if="vm.error"> {{vm.error}}</span>
       </div>
     </div>
 

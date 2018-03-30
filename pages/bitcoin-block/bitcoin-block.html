@@ -42,8 +42,8 @@
                        ng-model="vm.hash"
                        ng-change="vm.downloadBlock()"
                        ng-class="{'well-error': vm.error}">
-                <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to examine</span>
-                <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+                <span class="input-group-addon" ng-if="!vm.error">&lt;-- paste here to examine</span>
+                <span class="input-group-addon well-error" ng-if="vm.error"> {{vm.error}}</span>
             </div>
         </div>
         <div class="form-group">

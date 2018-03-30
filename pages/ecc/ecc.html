@@ -103,8 +103,8 @@
                ng-change="vm.importFromWif()"
                ng-class="{'well-error': vm.error}"
                class="form-control"><br/>
-        <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to import from WIF</span>
-        <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+        <span class="input-group-addon" ng-if="!vm.error">&lt;-- paste here to import from WIF</span>
+        <span class="input-group-addon well-error" ng-if="vm.error"> {{vm.error}}</span>
       </div>
       <div ng-show="vm.showWifUncompressed" class="col-sm-offset-4 col-sm-8 qr-code" id="qrPrivUncompressed"></div>
     </div>

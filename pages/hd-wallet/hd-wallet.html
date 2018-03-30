@@ -102,13 +102,20 @@
     <!-- root key base58 -->
     <div class="form-group">
       <label class="col-sm-3 control-label">HD node root key base58:</label>
-      <div class="col-sm-9 input-group">
+      <div class="col-sm-9 input-group as-block">
         <input class="form-control"
+               style="width: 60%"
                ng-model="vm.nodeBase58"
                ng-class="{'well-error': vm.error}"
                ng-change="vm.fromBase58Seed()">
-        <span class="input-group-addon" ng-if="!vm.error">Hint: paste here to import</span>
-        <span class="input-group-addon" ng-if="vm.error" class="well-error"> {{vm.error}}</span>
+        <span class="input-group-addon" ng-if="!vm.error" style="width: 20%">&lt;-- paste here to import.</span>
+        <span class="input-group-addon well-error" ng-if="vm.error" style="width: 20%"> {{vm.error}}</span>
+        <select ng-model="vm.network"
+                style="width: 20%"
+                ng-options="network.label for network in vm.networks"
+                ng-change="vm.fromMnemonic()"
+                class="form-control">
+        </select>
       </div>
     </div>
 
@@ -155,8 +162,8 @@
       <div class="col-sm-9">
         <div class="input-group">
           <div class="input-group-addon">Coin type</div>
-          <select ng-model="vm.network"
-                  ng-options="network.label for network in vm.networks"
+          <select ng-model="vm.coinType"
+                  ng-options="coin.label for coin in vm.coinTypes"
                   ng-change="vm.fromNode()"
                   class="form-control">
           </select>
@@ -253,8 +260,8 @@
                ng-model="vm.customParentBase58"
                ng-class="{'well-error': vm.customParentError}"
                ng-change="vm.fromCustomParent()">
-        <span class="input-group-addon" ng-if="!vm.customParentError">Hint: paste here to import</span>
-        <span class="input-group-addon" ng-if="vm.customParentError" class="well-error"> {{vm.customParentError}}</span>
+        <span class="input-group-addon" ng-if="!vm.customParentError">&lt;-- paste here to import</span>
+        <span class="input-group-addon well-error" ng-if="vm.customParentError"> {{vm.customParentError}}</span>
       </div>
     </div>
 
