@@ -365,7 +365,11 @@ function getNestedP2WPKHAddress(keyPair, network) {
 }
 
 function calculateAddresses(keyPair, network) {
-  keyPair.wif = customToWIF(keyPair, network);
+  if (keyPair.d) {
+    keyPair.wif = customToWIF(keyPair, network);
+  } else {
+    keyPair.wif = '-';
+  }
   keyPair.address = customGetAddress(keyPair, network);
   keyPair.scriptAddress = customGetScriptAddress(keyPair, network);
   if (network.bech32) {
