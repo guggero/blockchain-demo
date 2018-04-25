@@ -56,5 +56,6 @@ module.exports = {
   scrypt: require('scrypt-js'),
   aez: require('aez'),
   crc32: require('fast-crc32c/impls/js_crc32c'),
-  unorm: require('unorm')
+  unorm: require('unorm'),
+  macaroon: require('macaroon')
 };

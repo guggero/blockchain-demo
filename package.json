@@ -25,6 +25,7 @@
     "ecurve": "^1.0.0",
     "fast-crc32c": "^1.0.4",
     "js-sha3": "^0.6.1",
+    "macaroon": "^3.0.0",
     "merkle-lib": "^2.0.10",
     "pbkdf2": "^3.0.13",
     "pushdata-bitcoin": "^1.0.1",

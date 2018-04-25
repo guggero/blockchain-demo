@@ -40,6 +40,7 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/schnorr', {template: '<schnorr-page></schnorr-page>', containerClass: 'container'})
     .when('/transaction-creator', {template: '<transaction-creator-page></transaction-creator-page>', containerClass: 'container'})
     .when('/aezeed', {template: '<aezeed-page></aezeed-page>', containerClass: 'container'})
+    .when('/macaroon', {template: '<macaroon-page></macaroon-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
 
