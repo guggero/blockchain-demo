@@ -20,10 +20,11 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
 
   var BITCOIN = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']);
   var BITCOIN_TESTNET = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin Testnet)']);
+  var PIVX = lodash.find(bitcoinNetworks, ['label', 'PIVX (PIVX)']);
 
   vm.coinTypes = bitcoinNetworks;
   vm.coinType = BITCOIN;
-  vm.networks = [BITCOIN, BITCOIN_TESTNET];
+  vm.networks = bitcoinNetworks;
   vm.network = BITCOIN;
   vm.mnemonic = null;
   vm.asPassword = true;
