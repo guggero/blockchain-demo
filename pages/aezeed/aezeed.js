@@ -7,7 +7,7 @@ angular
     bindings: {}
   });
 
-var AEZEED_DEFAULT_PASSPHRASE = bitcoin.unorm.nfkd('aezeed'),
+var AEZEED_DEFAULT_PASSPHRASE = 'aezeed',
   AEZEED_VERSION = 0,
   BITCOIN_GENESIS_BLOCK_TIMESTAMP = 1231006505,
   SCRYPT_N = 32768,
@@ -59,7 +59,7 @@ function AezeedPageController($timeout, lodash, bitcoinNetworks) {
   vm.generateSeed = function () {
     vm.error = null;
 
-    var password = bitcoin.Buffer.from(bitcoin.unorm.nfkd(vm.passphrase) || AEZEED_DEFAULT_PASSPHRASE, 'utf8');
+    var password = bitcoin.Buffer.from(vm.passphrase || AEZEED_DEFAULT_PASSPHRASE, 'utf8');
     var salt = bitcoin.Buffer.from(vm.salt, 'hex');
     vm.mnemonic = 'please wait...';
     bitcoin.scrypt(password, salt, SCRYPT_N, SCRYPT_R, SCRYPT_P, SCRYPT_KEY_LENGTH, function (error, progress, key) {
@@ -116,7 +116,7 @@ function AezeedPageController($timeout, lodash, bitcoinNetworks) {
 
   vm.fromMnemonic = function () {
     vm.error2 = null;
-    var words = bitcoin.unorm.nfkd(vm.mnemonic2).split(' ');
+    var words = vm.mnemonic2.split(' ');
 
     if (words.length !== NUM_WORDS) {
       vm.error2 = 'Must be 24 words!';
@@ -152,7 +152,7 @@ function AezeedPageController($timeout, lodash, bitcoinNetworks) {
     }
 
     var salt = seed.slice(SALT_OFFSET, SALT_OFFSET + SALT_LENGTH);
-    var password = bitcoin.Buffer.from(bitcoin.unorm.nfkd(vm.passphrase2) || AEZEED_DEFAULT_PASSPHRASE, 'utf8');
+    var password = bitcoin.Buffer.from(vm.passphrase2 || AEZEED_DEFAULT_PASSPHRASE, 'utf8');
     var cipherSeed = seed.slice(1, SALT_OFFSET);
     var checksum = seed.slice(CHECKSUM_OFFSET);
 
