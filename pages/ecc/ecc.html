@@ -169,7 +169,7 @@
 </div>
 
 <h4>Elliptic Curve Digital Signature Algorithm (ECDSA): Verify signature</h4>
-<div class="well"  ng-class="{'well-success': vm.signatureValid, 'well-error': !vm.signatureValid}">
+<div class="well" ng-class="{'well-success': vm.signatureValid, 'well-error': !vm.signatureValid}">
   <form class="form-horizontal">
     <div class="form-group">
       <label for="messageHash" class="col-sm-4 control-label">Message hash:</label>
@@ -188,6 +188,49 @@
                ng-model="vm.signatureToVerify"
                ng-change="vm.verifySignature()"
                class="form-control">
+      </div>
+    </div>
+  </form>
+</div>
+
+<h4>ECC Multiply</h4>
+<div class="well">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="multiplicand" class="col-sm-4 control-label">Multiplicand:</label>
+      <div class="col-sm-8 input-group">
+        <input id="multiplicand"
+               ng-model="vm.eccMultiplicand"
+               ng-change="vm.eccMultiply()"
+               class="form-control">
+      </div>
+      <div class="col-sm-offset-4 input-group">
+        <div class="input-group-addon">Multiplicand is private key:</div>
+        <div class="input-group-addon">
+          <input type="checkbox"
+                 ng-model="vm.multiplicandPrivKey"
+                 ng-change="vm.eccMultiply()">
+        </div>
+        <input class="form-control no-border"
+               ng-disabled="true"
+               type="text">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="multiplier" class="col-sm-4 control-label">Multiplier:</label>
+      <div class="col-sm-8 no-left-padding">
+        <input id="multiplier"
+               ng-model="vm.eccMultiplier"
+               ng-change="vm.eccMultiply()"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Result:</label>
+      <div class="col-sm-8 no-left-padding">
+        <input class="form-control" ng-disabled="true" value="{{vm.eccResult}}">
       </div>
     </div>
   </form>

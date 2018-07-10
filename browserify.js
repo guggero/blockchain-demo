@@ -3,6 +3,8 @@ var sha3 = require('js-sha3');
 var crypto = require('bitcoinjs-lib/src/crypto');
 var Buffer = require('safe-buffer').Buffer;
 var hash256 = require('bitcoinjs-lib/src/crypto').hash256;
+var ecurve = require('ecurve');
+var secp256k1 = ecurve.getCurveByName('secp256k1');
 
 var keccak256 = function (buffer) {
   return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
@@ -24,6 +26,7 @@ var customBs58Check = {
 module.exports = {
   Block: require('bitcoinjs-lib/src/block'),
   ECPair: require('bitcoinjs-lib/src/ecpair'),
+  ECDSA: require('bitcoinjs-lib/src/ecdsa'),
   ECSignature: require('bitcoinjs-lib/src/ecsignature'),
   HDNode: require('bitcoinjs-lib/src/hdnode'),
   Transaction: require('bitcoinjs-lib/src/transaction'),
@@ -36,6 +39,7 @@ module.exports = {
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
   ecurve: require('ecurve'),
+  secp256k1: secp256k1,
   varuint: require('varuint-bitcoin'),
   BigInteger: require('bigi'),
   Buffer: Buffer,

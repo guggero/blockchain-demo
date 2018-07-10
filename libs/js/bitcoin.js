@@ -4,6 +4,8 @@ var sha3 = require('js-sha3');
 var crypto = require('bitcoinjs-lib/src/crypto');
 var Buffer = require('safe-buffer').Buffer;
 var hash256 = require('bitcoinjs-lib/src/crypto').hash256;
+var ecurve = require('ecurve');
+var secp256k1 = ecurve.getCurveByName('secp256k1');
 
 var keccak256 = function (buffer) {
   return new Buffer(sha3.keccak256.update(buffer).digest(), 'hex');
@@ -25,6 +27,7 @@ var customBs58Check = {
 module.exports = {
   Block: require('bitcoinjs-lib/src/block'),
   ECPair: require('bitcoinjs-lib/src/ecpair'),
+  ECDSA: require('bitcoinjs-lib/src/ecdsa'),
   ECSignature: require('bitcoinjs-lib/src/ecsignature'),
   HDNode: require('bitcoinjs-lib/src/hdnode'),
   Transaction: require('bitcoinjs-lib/src/transaction'),
@@ -37,6 +40,7 @@ module.exports = {
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
   ecurve: require('ecurve'),
+  secp256k1: secp256k1,
   varuint: require('varuint-bitcoin'),
   BigInteger: require('bigi'),
   Buffer: Buffer,
@@ -61,7 +65,7 @@ module.exports = {
   macaroon: require('macaroon')
 };
 
-},{"aez":6,"bigi":30,"bip32-utils":35,"bip38":36,"bip39":38,"bip39/wordlists/english.json":46,"bitcoin-ops":52,"bitcoinjs-lib/src/address":54,"bitcoinjs-lib/src/block":55,"bitcoinjs-lib/src/bufferutils":56,"bitcoinjs-lib/src/crypto":57,"bitcoinjs-lib/src/ecpair":59,"bitcoinjs-lib/src/ecsignature":60,"bitcoinjs-lib/src/hdnode":61,"bitcoinjs-lib/src/networks":63,"bitcoinjs-lib/src/script":64,"bitcoinjs-lib/src/transaction":88,"bitcoinjs-lib/src/transaction_builder":89,"bs58check":125,"bs58check/base":124,"ecurve":155,"fast-crc32c/impls/js_crc32c":176,"js-sha3":196,"macaroon":197,"merkle-lib/fastRoot":198,"pbkdf2":212,"randombytes":226,"safe-buffer":241,"schnorr":242,"scrypt-js":243,"secrets.js-grempe":250,"unorm":271,"varuint-bitcoin":276,"wif":278}],2:[function(require,module,exports){
+},{"aez":6,"bigi":30,"bip32-utils":35,"bip38":36,"bip39":38,"bip39/wordlists/english.json":46,"bitcoin-ops":52,"bitcoinjs-lib/src/address":54,"bitcoinjs-lib/src/block":55,"bitcoinjs-lib/src/bufferutils":56,"bitcoinjs-lib/src/crypto":57,"bitcoinjs-lib/src/ecdsa":58,"bitcoinjs-lib/src/ecpair":59,"bitcoinjs-lib/src/ecsignature":60,"bitcoinjs-lib/src/hdnode":61,"bitcoinjs-lib/src/networks":63,"bitcoinjs-lib/src/script":64,"bitcoinjs-lib/src/transaction":88,"bitcoinjs-lib/src/transaction_builder":89,"bs58check":125,"bs58check/base":124,"ecurve":155,"fast-crc32c/impls/js_crc32c":176,"js-sha3":196,"macaroon":197,"merkle-lib/fastRoot":198,"pbkdf2":212,"randombytes":226,"safe-buffer":241,"schnorr":242,"scrypt-js":243,"secrets.js-grempe":250,"unorm":271,"varuint-bitcoin":276,"wif":278}],2:[function(require,module,exports){
 const { xorBytes1x16, xorBytes4x16, uint8, uint32 } = require('./functions');
 
 const TE0 = [
