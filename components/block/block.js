@@ -27,7 +27,12 @@ function BlockController($rootScope, $scope, $timeout, $element) {
     vm.prev = vm.prev || '';
     vm.updateBlock();
 
-    $rootScope.$on('difficulty-change', vm.updateBlock);
+    $rootScope.$on('difficulty-change', function () {
+      if ($rootScope.difficulty === 10) {
+        vm.nonce = 3947104378674;
+      }
+      vm.updateBlock();
+    });
     $scope.$watch('vm.prev', vm.updateBlock);
     $scope.$watch('vm.data', stringifyData, true);
     $scope.$watch('vm.dataString', parseData);
