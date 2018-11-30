@@ -21,6 +21,15 @@ function HdWalletPageController(lodash, bitcoinNetworks) {
   var BITCOIN = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']);
   var BITCOIN_TESTNET = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin Testnet)']);
   var PIVX = lodash.find(bitcoinNetworks, ['label', 'PIVX (PIVX)']);
+  var PIVX_TESTNET = lodash.find(bitcoinNetworks, ['label', 'PIVX (PIVX Testnet)']);
+  var ION = lodash.find(bitcoinNetworks, ['label', 'ION (Ion)']);
+  var ION_TESTNET = lodash.find(bitcoinNetworks, ['label', 'ION (Ion Testnet)']);
+  var SLATE = lodash.find(bitcoinNetworks, ['label', 'SLX (Slate)']);
+  var SLATE_TESTNET = lodash.find(bitcoinNetworks, ['label', 'SLX (Slate Testnet)']);
+  var OBSERVER = lodash.find(bitcoinNetworks, ['label', 'OBSR (Observer)']);
+  var OBSERVER_TESTNET = lodash.find(bitcoinNetworks, ['label', 'OBSR (Observer Testnet)']);
+  var WAGERR = lodash.find(bitcoinNetworks, ['label', 'WGR (Wagger)']);
+  var WAGERR_TESTNET = lodash.find(bitcoinNetworks, ['label', 'WGR (Wagerr Testnet)']);
 
   vm.coinTypes = bitcoinNetworks;
   vm.coinType = BITCOIN;
