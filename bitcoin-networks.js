@@ -344,24 +344,6 @@ var bitcoinNetworks = [{
     wif: 177,
     bip44: 0x37
   }
-}, {
-  label: 'ZCOIN (Zcoin)',
-  config: {
-    messagePrefix: 'unused',
-    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
-    pubKeyHash: 82,
-    scriptHash: 7,
-    wif: 210,
-  }
-}, {
-  label: 'ZCOIN (Zcoin Testnet)',
-  config: {
-    messagePrefix: 'unused',
-    bip32: { public: 0x043587cf, private: 0x04358384 },
-    pubKeyHash: 65,
-    scriptHash: 178,
-    wif: 185,
-  }
 }];
 
 function customToWIF(keyPair, network) {
