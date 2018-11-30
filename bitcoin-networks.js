@@ -134,6 +134,26 @@ var bitcoinNetworks = [{
     bip44: 0xac
   }
 }, {
+  label: 'ION (Ion)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
+    pubKeyHash: 103,
+    scriptHash: 88,
+    wif: 153,
+    bip44: 0x77
+  }
+}, {
+  label: 'ION (Ion Testnet)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x043587cf, private: 0x04358391 },
+    pubKeyHash: 61,
+    scriptHash: 13,
+    wif: ef,
+    bip44: 0x01
+  }
+}, {
   label: 'LTC (Litecoin Testnet)',
   config: {
     messagePrefix: '\u0019Litecoin Signed Message:\n',
@@ -154,7 +174,37 @@ var bitcoinNetworks = [{
     bip44: 0x02
   }
 }, {
+  label: 'OBSR (Observer)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x022e321b, private: 0x0221271a },
+    pubKeyHash: 115,
+    scriptHash: 19,
+    wif: 222,
+    bip44: 0x73
+  }
+}, {
+  label: 'OBSR (Observer Testnet)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x3a8061a0, private: 0x3a805837 },
+    pubKeyHash: 129,
+    scriptHash: 19,
+    wif: 239,
+    bip44: 0x01
+  }
+}, {
   label: 'PIVX (PIVX)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x022d2533, private: 0x0221312b },
+    pubKeyHash: 30,
+    scriptHash: 13,
+    wif: 212,
+    bip44: 0x77
+  }
+}, {
+  label: 'PIVX (PIVX Testnet)',
   config: {
     messagePrefix: 'unused',
     bip32: { public: 0x022d2533, private: 0x0221312b },
@@ -192,6 +242,26 @@ var bitcoinNetworks = [{
     scriptHash: 5,
     wif: 189,
     bip44: 0x04
+  }
+}, {
+  label: 'SLX (Slate)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x022d2533, private: 0x0221312b },
+    pubKeyHash: 125,
+    scriptHash: 18,
+    wif: 140,
+    bip44: 0x77
+  }
+}, {
+  label: 'SLX (Slate Testnet)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x3a8061a0, private: 0x3a805837 },
+    pubKeyHash: 66,
+    scriptHash: 9,
+    wif: 144,
+    bip44: 0x01
   }
 }, {
   label: 'SMART (SmartCash)',
@@ -253,6 +323,44 @@ var bitcoinNetworks = [{
     scriptHash: 33,
     wif: 158,
     bip44: 0x4d
+  }
+}, {
+  label: 'WGR (Wagerr)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x022d2533, private: 0x0221312b },
+    pubKeyHash: 73,
+    scriptHash: 63,
+    wif: 199,
+    bip44: 0x72
+  }
+}, {
+  label: 'WGR (Wagerr Testnet)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x3a8061a0, private: 0x3a805837 },
+    pubKeyHash: 65,
+    scriptHash: 125,
+    wif: 177,
+    bip44: 0x37
+  }
+}, {
+  label: 'ZCOIN (Zcoin)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x0488b21e, private: 0x0488ade4 },
+    pubKeyHash: 82,
+    scriptHash: 7,
+    wif: 210,
+  }
+}, {
+  label: 'ZCOIN (Zcoin Testnet)',
+  config: {
+    messagePrefix: 'unused',
+    bip32: { public: 0x043587cf, private: 0x04358384 },
+    pubKeyHash: 65,
+    scriptHash: 178,
+    wif: 185,
   }
 }];
 
