@@ -208,10 +208,10 @@ var bitcoinNetworks = [{
   config: {
     messagePrefix: 'unused',
     bip32: { public: 0x022d2533, private: 0x0221312b },
-    pubKeyHash: 30,
-    scriptHash: 13,
-    wif: 212,
-    bip44: 0x77
+    pubKeyHash: 139,
+    scriptHash: 19,
+    wif: 239,
+    bip44: 0x01
   }
 }, {
   label: 'POT (Potcoin)',
