@@ -150,7 +150,7 @@ var bitcoinNetworks = [{
     bip32: { public: 0x043587cf, private: 0x04358391 },
     pubKeyHash: 61,
     scriptHash: 13,
-    wif: ef,
+    wif: 0xef,
     bip44: 0x01
   }
 }, {
