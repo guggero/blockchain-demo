@@ -88,10 +88,10 @@
                 <a ng-click="vm.showDecoded = !vm.showDecoded">Decoded as JSON:</a>
             </label>
             <div class="col-sm-8 input-group" ng-if="vm.showDecoded">
-                <textarea id="json" rows="20" ng-disabled="true" class="form-control">{{vm.decodedBlock | json}}</textarea>
+                <textarea id="json" rows="20" ng-readonly="true" class="form-control">{{vm.decodedBlock | json}}</textarea>
             </div>
             <div class="col-sm-8 input-group" ng-if="!vm.showDecoded">
-                <textarea id="json" rows="1" ng-disabled="true"
+                <textarea id="json" rows="1" ng-readonly="true"
                           class="form-control">(hidden for performance reasons, click the link to show)</textarea>
             </div>
         </div>
@@ -99,19 +99,19 @@
         <div class="form-group">
             <label class="col-sm-4 control-label" for="json">Block size as seen by pre-SegWit nodes:</label>
             <div class="col-sm-8 input-group">
-                <input ng-disabled="true" value="{{vm.block.legacySize}}" class="form-control">
+                <input ng-readonly="true" value="{{vm.block.legacySize}}" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" for="json">Real block size with SegWit:</label>
             <div class="col-sm-8 input-group">
-                <input ng-disabled="true" value="{{vm.block.byteLength()}}" class="form-control">
+                <input ng-readonly="true" value="{{vm.block.byteLength()}}" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" for="json">Block weight:</label>
             <div class="col-sm-8 input-group">
-                <input ng-disabled="true" value="{{vm.block.weight}}" class="form-control">
+                <input ng-readonly="true" value="{{vm.block.weight}}" class="form-control">
             </div>
         </div>
     </form>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="raw">Calculated Hash:</label>
                     <div class="col-sm-9 input-group">
-                        <input ng-disabled="true" value="{{::origTx.getHash().toString('hex')}}" class="form-control">
+                        <input ng-readonly="true" value="{{::origTx.getHash().toString('hex')}}" class="form-control">
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="raw">TX ID (reversed hash):</label>
                     <div class="col-sm-9 input-group">
-                        <input ng-disabled="true" value="{{::origTx.getId().toString('hex')}}" class="form-control">
+                        <input ng-readonly="true" value="{{::origTx.getId().toString('hex')}}" class="form-control">
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="raw">Misc:</label>
                     <div class="col-sm-9 input-group">
-            <span class="form-control" disabled>
+            <span class="form-control" ng-readonly="true">
                 Version: {{::tx.version}}, Locktime: {{::tx.locktime}}, is coinbase TX: {{::origTx.isCoinbase()}}, weight: {{::origTx.weight()}}
             </span>
                     </div>
@@ -165,25 +165,25 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">Referencing TX ID:</span>
-                                    <input ng-disabled="true" value="{{::vm.getTxId(input.hash)}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::vm.getTxId(input.hash)}}" class="form-control">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon">Referencing TX Output Index:</span>
-                                    <input ng-disabled="true" value="{{::input.index}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::input.index}}" class="form-control">
                                     <span class="input-group-addon">Sequence Number:</span>
-                                    <input ng-disabled="true" value="{{::input.sequence.toString(16)}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::input.sequence.toString(16)}}" class="form-control">
                                 </div>
                                 <div class="input-group" ng-if="!origTx.isCoinbase()">
                                     <span class="input-group-addon">Script:</span>
-                                    <input ng-disabled="true" value="{{::input.script}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::input.script}}" class="form-control">
                                 </div>
                                 <div class="input-group" ng-if="origTx.isCoinbase()">
                                     <span class="input-group-addon">Data:</span>
-                                    <input ng-disabled="true" value="{{::vm.getRawString(input.script)}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::vm.getRawString(input.script)}}" class="form-control">
                                 </div>
                                 <div class="input-group" ng-if="origTx.hasWitnesses()">
                                     <span class="input-group-addon">Witness:</span>
-                                    <input ng-disabled="true" value="{{::input.witness}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::input.witness}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -198,17 +198,17 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">Value (Raw/Satoshis):</span>
-                                    <input ng-disabled="true" value="{{::output.value}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::output.value}}" class="form-control">
                                     <span class="input-group-addon">Value (BTCs):</span>
-                                    <input ng-disabled="true" value="{{::output.value / 100000000}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::output.value / 100000000}}" class="form-control">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon">Script:</span>
-                                    <input ng-disabled="true" value="{{::output.script}}" class="form-control">
+                                    <input ng-readonly="true" value="{{::output.script}}" class="form-control">
                                 </div>
                                 <div class="input-group" ng-if="::vm.isP2PKH(origTx.outs[$index].script)">
                                     <span class="input-group-addon">Address:</span>
-                                    <input ng-disabled="true"
+                                    <input ng-readonly="true"
                                            value="{{::$root.hexPubKeyToBitcoinAddr(vm.getP2PKH(origTx.outs[$index].script))}}"
                                            class="form-control">
                                 </div>

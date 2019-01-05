@@ -73,9 +73,9 @@
       <div class="col-sm-9 input-group">
         <div class="input-group">
           <div class="input-group-addon">P2PKH</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.keyPair.address}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.keyPair.address}}">
           <div class="input-group-addon">P2SH</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.keyPair.scriptAddress}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.keyPair.scriptAddress}}">
         </div>
       </div>
     </div>
@@ -86,9 +86,9 @@
       <div class="col-sm-9 input-group">
         <div class="input-group">
           <div class="input-group-addon">P2SH-P2WPKH</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.keyPair.nestedP2WPKHAddress}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.keyPair.nestedP2WPKHAddress}}">
           <div class="input-group-addon">bech32 P2WPKH</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.keyPair.P2WPKHAddress}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.keyPair.P2WPKHAddress}}">
         </div>
       </div>
     </div>
@@ -124,7 +124,7 @@
               <input type="checkbox" ng-model="vm.inputSegwit">
             </div>
             <input class="form-control no-border"
-                   ng-disabled="true"
+                   ng-readonly="true"
                    type="text">
           </div>
           <div class="input-group">
@@ -172,7 +172,7 @@
               <input type="checkbox" ng-model="vm.useChange">
             </div>
             <input class="form-control no-border"
-                   ng-disabled="true"
+                   ng-readonly="true"
                    type="text">
           </div>
           <div class="input-group" ng-if="vm.useChange" >
@@ -192,12 +192,12 @@
               <div class="input-group-addon" ng-if="!vm.feeError">Calculated fee (satoshi)</div>
               <input class="form-control"
                      ng-class="{'well-error': vm.feeError}"
-                     ng-disabled="true"
+                     ng-readonly="true"
                      value="{{vm.feeError || vm.calculatedFee}}">
               <div class="input-group-addon" ng-if="!vm.feeError">Calculated fee (satoshi/byte)</div>
               <input class="form-control"
                      ng-class="{'well-error': vm.feeError}"
-                     ng-disabled="true"
+                     ng-readonly="true"
                      value="{{vm.feeError || vm.calculatedFee / (vm.raw.length * 4)}}">
             </div>
           </div>
@@ -216,7 +216,7 @@
         <div class="col-sm-9 input-group">
           <textarea id="raw"
                     rows="10"
-                    ng-disabled="true"
+                    ng-readonly="true"
                     class="form-control"
                     ng-class="{'well-error': vm.txError}"
           >{{vm.txError || vm.raw}}</textarea>
@@ -227,7 +227,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">TX ID:</label>
         <div class="col-sm-9 no-left-padding">
-          <input class="form-control" ng-disabled="true" value="{{vm.txId}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.txId}}">
         </div>
       </div>
     </form>

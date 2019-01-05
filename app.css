@@ -221,7 +221,7 @@ span.input-group-addon {
     font-size: 13px;
 }
 
-.form-control[disabled], fieldset[disabled] .form-control {
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control, fieldset[readonly] .form-control {
     cursor: text;
 }
 

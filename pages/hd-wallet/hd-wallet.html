@@ -125,7 +125,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.privKeyWif}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -135,7 +135,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.publicKeyWif}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -146,7 +146,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.address}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
   </form>
@@ -198,7 +198,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.derivedKey.toBase58()}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -208,7 +208,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.derivedKey.keyPair.wif}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -218,7 +218,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.derivedKey.keyPair.address}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -226,7 +226,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Pay to Script Hash (P2SH) address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.derivedKey.keyPair.scriptAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.derivedKey.keyPair.scriptAddress}}">
       </div>
     </div>
 
@@ -234,7 +234,7 @@
     <div class="form-group" ng-if="vm.network.config.bech32">
       <label class="col-sm-3 control-label">SegWit P2SH-P2WPKH address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.derivedKey.keyPair.nestedP2WPKHAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.derivedKey.keyPair.nestedP2WPKHAddress}}">
       </div>
     </div>
 
@@ -242,7 +242,7 @@
     <div class="form-group" ng-if="vm.network.config.bech32">
       <label class="col-sm-3 control-label">SegWit bech32 P2WPKH address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.derivedKey.keyPair.P2WPKHAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.derivedKey.keyPair.P2WPKHAddress}}">
       </div>
     </div>
   </form>
@@ -281,7 +281,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.customDerivedKey.toBase58()}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -291,7 +291,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.customDerivedKey.keyPair.wif}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -301,7 +301,7 @@
       <div class="col-sm-9 input-group">
         <input class="form-control"
                value="{{vm.customDerivedKey.keyPair.address}}"
-               ng-disabled="true">
+               ng-readonly="true">
       </div>
     </div>
 
@@ -309,7 +309,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Pay to Script Hash (P2SH) address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.customDerivedKey.keyPair.scriptAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.customDerivedKey.keyPair.scriptAddress}}">
       </div>
     </div>
 
@@ -317,7 +317,7 @@
     <div class="form-group" ng-if="vm.network.config.bech32">
       <label class="col-sm-3 control-label">SegWit P2SH-P2WPKH address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.customDerivedKey.keyPair.nestedP2WPKHAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.customDerivedKey.keyPair.nestedP2WPKHAddress}}">
       </div>
     </div>
 
@@ -325,7 +325,7 @@
     <div class="form-group" ng-if="vm.network.config.bech32">
       <label class="col-sm-3 control-label">SegWit bech32 P2WPKH address:</label>
       <div class="col-sm-9 input-group">
-        <input class="form-control" ng-disabled="true" value="{{vm.customDerivedKey.keyPair.P2WPKHAddress}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.customDerivedKey.keyPair.P2WPKHAddress}}">
       </div>
     </div>
   </form>

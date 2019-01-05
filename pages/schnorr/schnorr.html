@@ -30,11 +30,11 @@
       <div class="col-sm-9 input-group">
         <div class="input-group">
           <div class="input-group-addon">Private key (hex)</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.privateKey}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.privateKey}}">
         </div>
         <div class="input-group">
           <div class="input-group-addon">Public key (hex)</div>
-          <input class="form-control" ng-disabled="true" value="{{vm.publicKey}}">
+          <input class="form-control" ng-readonly="true" value="{{vm.publicKey}}">
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">SHA256 hash of message:</label>
       <div class="col-sm-9 no-left-padding">
-        <input class="form-control" ng-disabled="true" value="{{vm.messageHash.toString('hex')}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.messageHash.toString('hex')}}">
       </div>
     </div>
 
@@ -59,7 +59,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Signature:</label>
       <div class="col-sm-9 no-left-padding">
-        <input class="form-control" ng-disabled="true" value="{{vm.signature}}">
+        <input class="form-control" ng-readonly="true" value="{{vm.signature}}">
       </div>
     </div>
   </form>
