@@ -2,7 +2,7 @@ var bs58checkBase = require('bs58check/base');
 var sha3 = require('js-sha3');
 var crypto = require('bitcoinjs-lib/src/crypto');
 var Buffer = require('safe-buffer').Buffer;
-var hash256 = require('bitcoinjs-lib/src/crypto').hash256;
+var hash256 = crypto.hash256;
 var ecurve = require('ecurve');
 var secp256k1 = ecurve.getCurveByName('secp256k1');
 
@@ -38,7 +38,7 @@ module.exports = {
   networks: require('bitcoinjs-lib/src/networks'),
   opcodes: require('bitcoin-ops'),
   script: require('bitcoinjs-lib/src/script'),
-  ecurve: require('ecurve'),
+  ecurve: ecurve,
   secp256k1: secp256k1,
   varuint: require('varuint-bitcoin'),
   BigInteger: require('bigi'),
@@ -55,7 +55,7 @@ module.exports = {
   sha3: sha3,
   keccak256: keccak256,
   secrets: require('secrets.js-grempe'),
-  schnorr: require('schnorr'),
+  schnorr: require('bip-schnorr'),
   randomBytes: require('randombytes'),
   scrypt: require('scrypt-js'),
   aez: require('aez'),

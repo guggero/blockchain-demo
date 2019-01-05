@@ -84,6 +84,11 @@ function run($location, $rootScope, $route, lodash) {
     return bitcoin.address.toBase58Check(buffer, bitcoin.networks.bitcoin.pubKeyHash);
   };
 
+  $rootScope.round =   function (number, digits) {
+    var exp = Math.pow(10, digits);
+    return (Math.round(number * exp) / exp).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'');
+  };
+
   lodash.mixin({
     deeply: function (map) {
       return function (obj, fn) {

@@ -1,4 +1,4 @@
-<h1>Schnorr Signatures</h1>
+<h1>BIP Schnorr Signatures</h1>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -9,12 +9,16 @@
   <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
     <div class="panel-body">
       Schnorr Signatures are a form of Digital Signature Algorithms (DSA) that produces short signatures even when combining multiple
-      public keys (when using for multisig).
+      public keys (when using for multisig).<br/><br/>
+      Currently there is a BIP that has no number assigned yet that introduces a specific signature scheme for Schnorr that produces
+      64-byte signatures over the elliptic curve <em>secp256k1</em>.<br/>
+      This demo page shows how this BIP could look like when implemented in Bitcoin.
 
       <h3>Sources, tools and other useful information:</h3>
       <ul>
+        <li><a href="https://github.com/sipa/bips/blob/bip-schnorr/bip-schnorr.mediawiki">BIP</a></li>
         <li><a href="https://en.wikipedia.org/wiki/Schnorr_signature">Wikipedia article</a></li>
-        <li><a href="https://github.com/bcoin-org/schnorr">Used JavaScript library</a></li>
+        <li><a href="https://github.com/guggero/bip-schnorr">Used JavaScript library</a></li>
       </ul>
     </div>
   </div>
@@ -29,11 +33,11 @@
       <label class="col-sm-3 control-label">Key pairs:</label>
       <div class="col-sm-9 input-group">
         <div class="input-group">
-          <div class="input-group-addon">Private key (hex)</div>
+          <div class="input-group-addon">Private key</div>
           <input class="form-control" ng-readonly="true" value="{{vm.privateKey}}">
         </div>
         <div class="input-group">
-          <div class="input-group-addon">Public key (hex)</div>
+          <div class="input-group-addon">Public key</div>
           <input class="form-control" ng-readonly="true" value="{{vm.publicKey}}">
         </div>
       </div>
@@ -55,11 +59,90 @@
       </div>
     </div>
 
-    <!-- signature -->
+    <!-- ECDSA signature -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ECDSA Signature:</label>
+      <div class="col-sm-9 no-left-padding">
+        <textarea class="form-control" rows="2" ng-readonly="true">{{vm.ecdsaSignature}}</textarea>
+      </div>
+    </div>
+
+    <!-- schnorr signature -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Schnorr Signature:</label>
+      <div class="col-sm-9 no-left-padding">
+        <textarea class="form-control" rows="2" ng-readonly="true">{{vm.signature}}</textarea>
+        Signature size improvement: <b>{{$root.round(vm.sizeImprovement, 1)}}%</b>
+      </div>
+    </div>
+  </form>
+</div>
+
+<h4>Verify Schnorr signature</h4>
+<div class="well" ng-class="{'well-success': vm.signatureValid, 'well-error': !vm.signatureValid}">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="publicKey" class="col-sm-3 control-label">Public key:</label>
+      <div class="col-sm-9 input-group">
+        <input id="publicKey"
+               ng-model="vm.publicKeyToVerify"
+               ng-change="vm.verifySignature()"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="messageHash" class="col-sm-3 control-label">Message hash:</label>
+      <div class="col-sm-9 input-group">
+        <input id="messageHash"
+               ng-model="vm.messageHashToVerify"
+               ng-change="vm.verifySignature()"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="signature" class="col-sm-3 control-label">Signature:</label>
+      <div class="col-sm-9 no-left-padding">
+        <input id="signature"
+               ng-model="vm.signatureToVerify"
+               ng-change="vm.verifySignature()"
+               class="form-control">
+      </div>
+    </div>
+  </form>
+</div>
+
+<h4>Aggregate signatures of multiple private keys over same message</h4>
+<small><b>Note:</b> this is just a demo of how it could work and not part of any BIP yet!</small>
+<div class="well">
+  <form class="form-horizontal">
+    <!-- private keys -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Private keys:</label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group">
+          <div class="input-group-addon">Private key 1</div>
+          <input class="form-control" ng-readonly="true" value="{{vm.privateKey}}">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon">Private key 2</div>
+          <input class="form-control" ng-readonly="true" value="{{vm.privateKey2}}">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="messageHash" class="col-sm-3 control-label">Sum of public keys:</label>
+      <div class="col-sm-9 no-left-padding">
+        <input class="form-control" ng-readonly="true" value="{{vm.sumOfPublicKeys}}">
+      </div>
+    </div>
+
     <div class="form-group">
       <label class="col-sm-3 control-label">Signature:</label>
       <div class="col-sm-9 no-left-padding">
-        <input class="form-control" ng-readonly="true" value="{{vm.signature}}">
+        <textarea rows="2" class="form-control" ng-readonly="true">{{vm.aggregatedSignature}}</textarea>
       </div>
     </div>
   </form>

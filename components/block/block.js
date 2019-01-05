@@ -107,12 +107,7 @@ function BlockController($rootScope, $scope, $timeout, $element) {
       vm.nonce = nonce;
       var duration = (new Date().getTime() - start);
       var seconds = duration / 1000;
-      vm.miningStats = ' took ' + round(seconds, 1) + 's, speed: ' + round(nonce / seconds, 0) + ' hashes/s';
+      vm.miningStats = ' took ' + $rootScope.round(seconds, 1) + 's, speed: ' + $rootScope.round(nonce / seconds, 0) + ' hashes/s';
     }
-  }
-
-  function round(number, digits) {
-    var exp = Math.pow(10, digits);
-    return (Math.round(number * exp) / exp).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'');
   }
 }
