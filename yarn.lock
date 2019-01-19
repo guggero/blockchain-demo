@@ -574,13 +574,14 @@ bindings@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
 
-bip-schnorr@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/bip-schnorr/-/bip-schnorr-0.0.3.tgz#d7dad591b86f5280fd4da00832ddcf3f22f6a1a8"
-  integrity sha512-pUiUtvR0OZAgNomPV/Lq5/XCkaxwnwsrzKKfqt6g9j8woy94EYYy4Af6+8VvWT2VKBhVz8I9GiruDQW20xBx/w==
+bip-schnorr@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/bip-schnorr/-/bip-schnorr-0.1.0.tgz#3721293d6b3b5d945ac092cb27e31b111e8bf58c"
+  integrity sha512-PD5430blWO1f2U8m8OdtoG9RqQTyXJPRHmNVyUPCH0GPp0Qx6u+0AK4P+Z/yfEMq/czYL0vVar6YTeDglpb5xA==
   dependencies:
     ecurve "^1.0.6"
     js-sha256 "^0.9.0"
+    random-bytes "^1.0.0"
     safe-buffer "^5.0.1"
 
 bip32-utils@^0.10.0:
@@ -1607,6 +1608,11 @@ querystring-es3@~0.2.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+
+random-bytes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/random-bytes/-/random-bytes-1.0.0.tgz#4f68a1dc0ae58bd3fb95848c30324db75d64360b"
+  integrity sha1-T2ih3Arli9P7lYSMMDJNt11kNgs=
 
 randombytes@^2.0.0, randombytes@^2.0.1:
   version "2.0.5"
