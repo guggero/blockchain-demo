@@ -1078,6 +1078,20 @@ Testnet:
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 ```
 
+## KRYPTOFRANC (KYF)
+Source: https://github.com/NicolasChoukroun/KryptoFranc/blob/master/kryptofranccore/src/chainparams.cpp#L142
+
+```cpp
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,'K');
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,'k');
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,'+');
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
+        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+
+```
+
+
+
 ## addCoin
 Source: 
 
@@ -1152,4 +1166,7 @@ POT   |     81     |        183       |  55/('P')       |   5/('3')       |     
 XRP   |     NR     | 96?/'s'(116 bits)|96?/'r'(136 bits)|                 |                   | https://github.com/stevenzeiler/ripple-wallet (OMG - Is Ripple using 96 bit secret keys?)
 XMR   |    128     |        N/A       |    /('4')       |    N/A          |  ???              |
 ZEC   |    133     |        128       | (28 & b8)/('t1')| (28 & bd)/('t3')| 76066276/('xprv') | https://github.com/zcash/zcash/blob/master/src/chainparams.cpp#L105
+KYF   |    75 ('k')|        89('y')   | 86('f')         | 32 (' ')        | 4b455620/('kyf ') | https://github.com/NicolasChoukroun/KryptoFranc/blob/master/kryptofranccore/src/chainparams.cpp#L117
+
+
 ```
