@@ -15,6 +15,14 @@ function ShamirSecretSharingPageController() {
   vm.sharesNeeded = 3;
   vm.shares = [];
   vm.shareLines = null;
+  vm.paddingLengths = [
+    { label: '64bit', id: 64 },
+    { label: '128bit', id: 128 },
+    { label: '256bit', id: 256 },
+    { label: '512bit', id: 512 },
+    { label: '1024bit', id: 1024 }
+  ];
+  vm.minPad = vm.paddingLengths[1];
   vm.error = null;
   vm.error2 = null;
 
@@ -31,7 +39,7 @@ function ShamirSecretSharingPageController() {
     var hex = bitcoin.Buffer.from(vm.secret, 'utf-8').toString('hex');
     vm.error = null;
     try {
-      vm.shares = bitcoin.secrets.share(hex, parseInt(vm.numShares, 10), parseInt(vm.sharesNeeded, 10));
+      vm.shares = bitcoin.secrets.share(hex, parseInt(vm.numShares, 10), parseInt(vm.sharesNeeded, 10), parseInt(vm.minPad.id, 10));
     } catch (e) {
       vm.error = e;
     }
