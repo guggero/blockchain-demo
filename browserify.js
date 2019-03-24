@@ -56,7 +56,7 @@ module.exports = {
   keccak256: keccak256,
   secrets: require('secrets.js-grempe'),
   schnorr: require('bip-schnorr'),
-  randomBytes: require('randombytes'),
+  randomBytes: require('random-bytes').sync,
   scrypt: require('scrypt-js'),
   aez: require('aez'),
   crc32: require('fast-crc32c/impls/js_crc32c'),

@@ -1,0 +1,106 @@
+<h1>MuSig: Key Aggregation for Schnorr Signatures</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a ng-click="vm.showExplanation = !vm.showExplanation">Explanation</a>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" ng-class="{in: vm.showExplanation}">
+    <div class="panel-body">
+      MuSig is a key aggregation scheme for Schnorr signatures that is secured agains rogue-key-attacks.
+
+      <h3>Sources, tools and other useful information:</h3>
+      <ul>
+        <li><a href="https://eprint.iacr.org/2018/068">MuSig paper from Blockstream</a></li>
+        <li><a href="https://blockstream.com/2018/01/23/musig-key-aggregation-schnorr-signatures/">MuSig article</a></li>
+        <li><a href="https://github.com/guggero/bip-schnorr">Used JavaScript library</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>Interactive demo</h3>
+
+<h4>Message and participant's key pairs</h4>
+<div class="well">
+  <form class="form-horizontal">
+
+    <!-- message -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Message to be signed:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control" ng-model="vm.message" ng-change="vm.hashMessage()">
+        <div class="input-group">
+          <div class="input-group-addon">Hash</div>
+          <input class="form-control" ng-readonly="true" value="{{vm.publicData.message.toString('hex')}}">
+        </div>
+      </div>
+    </div>
+
+    <!-- key pairs -->
+    <div class="form-group" ng-repeat="pair in vm.keyPairs">
+      <label class="col-sm-3 control-label">
+        Key pair {{$index + 1}}:<br/><br/>
+        <small ng-if="vm.keyPairs.length > 1">
+          <a ng-click="vm.removeKeyPair($index)" ng-if="vm.step == 0"><i class="fas fa-trash-alt"></i></a>
+        </small>
+      </label>
+      <div class="col-sm-9 input-group">
+        <div class="input-group">
+          <div class="input-group-addon">Private key</div>
+          <input class="form-control" ng-model="pair.privateKey" ng-change="vm.updateKeyPair($index)" ng-readonly="vm.step > 0">
+          <span class="input-group-addon">&lt;-- paste hex</span>
+          <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="vm.randomKeyPair($index)" ng-disabled="vm.step > 0">Randomize</button>
+          </span>
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon">Public key</div>
+          <input class="form-control" ng-readonly="true" value="{{pair.publicKey}}">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-sm-9 input-group">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" ng-click="vm.newPrivateKey()" ng-disabled="vm.step > 0">Add key pair</button></div>
+        </div>
+    </div>
+  </form>
+</div>
+
+<p>
+  After you have set up the key pairs, click the following button to step through the signing process.<br/>
+  Observe how the public and private data changes after each step.<br/>
+  To reset the demo, please reload the page.
+</p>
+
+<button class="btn btn-primary" ng-click="vm.nextStep()" ng-disabled="vm.step > 7">{{vm.steps[vm.step].label}}</button>
+
+<h4>Public data</h4>
+<small>This represents data that is known to all participants. In fact, every participant will calculate/store these values during the signing session.</small>
+<div class="well">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-12 input-group">
+        <textarea rows="15" ng-readonly="true" class="form-control">{{vm.hexEncoded(vm.publicData) | json}}</textarea>
+      </div>
+    </div>
+  </form>
+</div>
+
+<h4>Signer private data</h4>
+<small>
+  This represents data that is only known by the individual party and is never shared between the signers!
+  So for example, the owner of the key pair 2 only knows the data shown here at index 1.
+</small>
+<div class="well">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-12 input-group">
+        <textarea rows="15" ng-readonly="true" class="form-control">{{vm.hexEncoded(vm.signerPrivateData) | json}}</textarea>
+      </div>
+    </div>
+  </form>
+</div>

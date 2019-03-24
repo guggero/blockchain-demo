@@ -37,6 +37,7 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/hd-wallet', {template: '<hd-wallet-page></hd-wallet-page>', containerClass: 'container'})
     .when('/bitcoin-block', {template: '<bitcoin-block-page></bitcoin-block-page>', containerClass: 'container'})
     .when('/shamir-secret-sharing', {template: '<shamir-secret-sharing-page></shamir-secret-sharing-page>', containerClass: 'container'})
+    .when('/mu-sig', {template: '<mu-sig-page></mu-sig-page>', containerClass: 'container'})
     .when('/schnorr', {template: '<schnorr-page></schnorr-page>', containerClass: 'container'})
     .when('/transaction-creator', {template: '<transaction-creator-page></transaction-creator-page>', containerClass: 'container'})
     .when('/aezeed', {template: '<aezeed-page></aezeed-page>', containerClass: 'container'})

@@ -574,10 +574,10 @@ bindings@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
 
-bip-schnorr@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/bip-schnorr/-/bip-schnorr-0.1.0.tgz#3721293d6b3b5d945ac092cb27e31b111e8bf58c"
-  integrity sha512-PD5430blWO1f2U8m8OdtoG9RqQTyXJPRHmNVyUPCH0GPp0Qx6u+0AK4P+Z/yfEMq/czYL0vVar6YTeDglpb5xA==
+bip-schnorr@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/bip-schnorr/-/bip-schnorr-0.3.0.tgz#e6490379603704e9dd123d874b41755aea4f352c"
+  integrity sha512-Sc1Hn2+1n+okPEW8G+JLjeaM12dsUOwr+oFlMDSKR9wYwNGMw0alskeBIHTmXxBxMZSWKhCW7PwKQVDyGmnaVg==
   dependencies:
     ecurve "^1.0.6"
     js-sha256 "^0.9.0"

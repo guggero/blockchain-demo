@@ -12,7 +12,7 @@
     "babelify": "^8.0.0",
     "bech32": "0.0.3",
     "bigi": "^1.4.0",
-    "bip-schnorr": "^0.1.0",
+    "bip-schnorr": "0.3.0",
     "bip32-utils": "^0.10.0",
     "bip38": "^2.0.1",
     "bip39": "^2.3.0",
@@ -30,7 +30,6 @@
     "merkle-lib": "^2.0.10",
     "pbkdf2": "^3.0.13",
     "pushdata-bitcoin": "^1.0.1",
-    "randombytes": "^2.0.1",
     "safe-buffer": "^5.0.1",
     "scrypt-js": "^2.0.3",
     "secrets.js-grempe": "^1.1.0",
@@ -41,5 +40,8 @@
   },
   "scripts": {
     "browserify": "browserify -o libs/js/bitcoin.js browserify.js --standalone bitcoin"
+  },
+  "dependencies": {
+    "random-bytes": "^1.0.0"
   }
 }

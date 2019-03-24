@@ -59,11 +59,11 @@ function SchnorrPageController(lodash, bitcoinNetworks) {
   vm.aggregateSignatures = function () {
     var pk1 = bitcoin.BigInteger.fromHex(vm.privateKey);
     var pk2 = bitcoin.BigInteger.fromHex(vm.privateKey2);
-    var hash = bitcoin.crypto.sha256(vm.message);
-    vm.aggregatedSignature = bitcoin.schnorr.aggregateSignatures([pk1, pk2], hash).toString('hex');
+    var messageHash = bitcoin.crypto.sha256(vm.message);
+    vm.aggregatedSignature = bitcoin.schnorr.naiveKeyAggregation([pk1, pk2], messageHash).toString('hex');
     var publicKey1 = bitcoin.Buffer.from(vm.publicKey, 'hex');
     var publicKey2 = bitcoin.Buffer.from(vm.publicKey2, 'hex');
-    var sumPoint = bitcoin.schnorr.pubKeyToPoint(publicKey1).add(bitcoin.schnorr.pubKeyToPoint(publicKey2));
-    vm.sumOfPublicKeys = sumPoint.getEncoded(true).toString('hex');
+    var sumPoint = bitcoin.schnorr.convert.pubKeyToPoint(publicKey1).add(bitcoin.schnorr.convert.pubKeyToPoint(publicKey2));
+    vm.sumOfPublicKeys = bitcoin.schnorr.convert.pointToBuffer(sumPoint).toString('hex');
   };
 }
