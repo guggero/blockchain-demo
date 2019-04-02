@@ -25,11 +25,14 @@
     "create-hmac": "^1.1.3",
     "ecurve": "^1.0.0",
     "fast-crc32c": "^1.0.4",
+    "google-protobuf": "^3.7.1",
+    "grpc-web": "^1.0.4",
     "js-sha3": "^0.6.1",
     "macaroon": "^3.0.0",
     "merkle-lib": "^2.0.10",
     "pbkdf2": "^3.0.13",
     "pushdata-bitcoin": "^1.0.1",
+    "random-bytes": "^1.0.0",
     "safe-buffer": "^5.0.1",
     "scrypt-js": "^2.0.3",
     "secrets.js-grempe": "^1.1.0",
@@ -40,8 +43,5 @@
   },
   "scripts": {
     "browserify": "browserify -o libs/js/bitcoin.js browserify.js --standalone bitcoin"
-  },
-  "dependencies": {
-    "random-bytes": "^1.0.0"
   }
 }

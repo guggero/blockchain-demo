@@ -11,7 +11,6 @@ function MuSigPageController(lodash, bitcoinNetworks) {
   const vm = this;
   const schnorr = bitcoin.schnorr;
   const muSig = schnorr.muSig;
-  const convert = schnorr.convert;
   const Buffer = bitcoin.Buffer;
   const BigInteger = bitcoin.BigInteger;
   const network = lodash.find(bitcoinNetworks, ['label', 'BTC (Bitcoin)']).config;
