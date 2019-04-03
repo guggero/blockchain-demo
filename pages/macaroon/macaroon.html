@@ -24,6 +24,7 @@
 <div class="well">
   <form class="form-horizontal">
 
+    <!-- root key -->
     <div class="form-group">
       <label class="col-sm-3 control-label" for="rootKey">Root key (hex):</label>
       <div class="col-sm-9 input-group">
@@ -40,6 +41,7 @@
       </div>
     </div>
 
+    <!-- identifier -->
     <div class="form-group">
       <label class="col-sm-3 control-label" for="identifier">Identifier:</label>
       <div class="col-sm-9 input-group">
@@ -47,10 +49,29 @@
       </div>
     </div>
 
+    <!-- location -->
     <div class="form-group">
       <label class="col-sm-3 control-label" for="location">Location:</label>
       <div class="col-sm-9 input-group">
         <input id="location" class="form-control" ng-model="vm.location" ng-change="vm.newMacaroon()">
+      </div>
+    </div>
+
+    <!-- caveats -->
+    <div class="form-group" ng-repeat="caveat in vm.caveats track by $index">
+      <label class="col-sm-3 control-label">Caveat {{$index + 1}}:</label>
+      <div class="col-sm-9 input-group">
+        <input class="form-control" ng-model="vm.caveats[$index]" ng-change="vm.newMacaroon()">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" ng-click="vm.removeCaveat($index)"><i class="fas fa-trash-alt"></i></button>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-sm-9 input-group">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" ng-click="vm.addCaveat()">Add caveat</button>
+        </div>
       </div>
     </div>
 

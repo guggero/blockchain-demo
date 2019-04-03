@@ -19,6 +19,7 @@ function MacaroonPageController() {
   vm.tryDecodingId = true;
   vm.identifier = 'demo-identifier';
   vm.location = 'some-location';
+  vm.caveats = ['username = guggero'];
   vm.rootKey = null;
   vm.encodedMacaroon = '';
 
@@ -36,6 +37,7 @@ function MacaroonPageController() {
     try {
       const keyBytes = Buffer.from(vm.rootKey, 'hex');
       vm.macaroon2 = macaroon.newMacaroon({ identifier: vm.identifier, location: vm.location, rootKey: keyBytes, version: 2 });
+      vm.caveats.forEach(c => vm.macaroon2.addFirstPartyCaveat(c));
     } catch (e) {
       vm.error2 = e;
     }
@@ -68,6 +70,16 @@ function MacaroonPageController() {
     } else {
       return Buffer.from(mac.exportBinary()).toString('hex');
     }
+  };
+
+  vm.removeCaveat = function (index) {
+    vm.caveats.splice(index, 1);
+    vm.newMacaroon();
+  };
+
+  vm.addCaveat = function () {
+    vm.caveats.push('condition = value');
+    vm.newMacaroon();
   };
 
   vm.decodeMacaroon = function () {
