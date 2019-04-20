@@ -73,7 +73,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "                        <a href=\"#!/transaction-creator\">Transaction Creator</a>\n" +
     "                      </li>\n" +
     "                      <li ng-class=\"{active: $root.isActive('/aezeed')}\">\n" +
-    "                        <a href=\"#!/aezeed\">aezeed cipher seed scheme</a>\n" +
+    "                        <a href=\"#!/aezeed\">aezeed Cipher Seed Scheme</a>\n" +
     "                      </li>\n" +
     "                      <li ng-class=\"{active: $root.isActive('/macaroon')}\">\n" +
     "                        <a href=\"#!/macaroon\">Macaroons</a>\n" +
@@ -262,7 +262,12 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "  <script src=\"app.js\"></script>\n" +
     "\n" +
     "  <!-- HTML templates -->\n" +
-    "  <script src=\"libs/templates.js\"></script>\n" +
+    "  <script>\n" +
+    "    // don't load HTML templates from pre-compiled file in development mode\n" +
+    "    if (location.hostname !== \"localhost\" && location.hostname !== \"127.0.0.1\") {\n" +
+    "      document.write('<scr' + 'ipt src=\"libs/templates.js\"></sc' + 'ript>');\n" +
+    "    }\n" +
+    "  </script>\n" +
     "\n" +
     "  <!-- Components -->\n" +
     "  <script src=\"components/block/block.js\"></script>\n" +
@@ -2300,7 +2305,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('pages/aezeed/aezeed.html',
-    "<h1>aezeed cipher seed scheme</h1>\n" +
+    "<h1>aezeed Cipher Seed Scheme</h1>\n" +
     "\n" +
     "<div class=\"panel panel-default\">\n" +
     "  <div class=\"panel-heading\">\n" +
@@ -2310,7 +2315,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "  <div class=\"panel-collapse collapse\" ng-class=\"{in: vm.showExplanation}\">\n" +
     "    <div class=\"panel-body\">\n" +
-    "      The aezeed cipher seed scheme is a scheme to create versioned seeds for crypto currency wallets, based on\n" +
+    "      The aezeed Cipher Seed Scheme is a scheme to create versioned seeds for crypto currency wallets, based on\n" +
     "      <a href=\"http://web.cs.ucdavis.edu/~rogaway/aez/\">aez</a>.<br/><br/>\n" +
     "      This new scheme was first introduced with <a href=\"https://github.com/lightningnetwork/lnd\">lnd</a>, one of the\n" +
     "      implementations of Lightning Network wallet software.\n" +
@@ -3518,8 +3523,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "<h1>Blockchain Demo</h1>\n" +
     "\n" +
     "A web-based demonstration of blockchain concepts.<br/><br/>\n" +
-    "This is a heavily modified version of <a href=\"https://github.com/anders94/blockchain-demo\">Anders Brownworth's\n" +
-    "  Blockchain Demo</a>.<br/>\n" +
+    "This is a complete rewrite of <a href=\"https://github.com/anders94/blockchain-demo\">Anders Brownworth's\n" +
+    "  Blockchain Demo</a> with lots of additional features.<br/>\n" +
     "Basically only the idea shown in his <a href=\"https://www.youtube.com/watch?v=_160oMzblY8\">excellent Demo\n" +
     "  Video</a> remains,\n" +
     "the code has completely been rewritten.\n" +
@@ -3537,15 +3542,17 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "  <li><a href=\"#!/ecc\">Elliptic Curve Cryptography / Key Pair page</a></li>\n" +
     "  <li><a href=\"#!/hd-wallet\">Hierarchical Deterministic Wallet page</a></li>\n" +
     "  <li><a href=\"#!/bitcoin-block\">Bitcoin Block Parser page</a></li>\n" +
-    "  <li><a href=\"#!/shamir-secret-sharing\">Shamir's Secret Sharing Scheme</a></li>\n" +
-    "  <li><a href=\"#!/schnorr\">Schnorr Signatures</a></li>\n" +
-    "  <li><a href=\"#!/transaction-creator\">Transaction Creator</a></li>\n" +
+    "  <li><a href=\"#!/shamir-secret-sharing\">Shamir's Secret Sharing Scheme page</a></li>\n" +
+    "  <li><a href=\"#!/schnorr\">BIP Schnorr Signatures page</a></li>\n" +
+    "  <li><a href=\"#!/mu-sig\">MuSig: Key Aggregation for Schnorr Signatures page</a></li>\n" +
+    "  <li><a href=\"#!/transaction-creator\">Transaction Creator page</a></li>\n" +
+    "  <li><a href=\"#!/aezeed\">aezeed Cipher Seed Scheme page</a></li>\n" +
+    "  <li><a href=\"#!/macaroon\">Macaroons page</a></li>\n" +
     "</ul>\n" +
     "\n" +
     "<p class=\"pull-right\">\n" +
     "  by <a href=\"https://github.com/guggero\">Oliver Gugger</a><br>\n" +
-    "  BTC: 1GuggerownoWdKkMUA8C2ySkA8AK7Ucn7n<br/>\n" +
-    "  PIVX: DGuggerovpXAZcsUT2sMtcGNSwrjTudFEE<br/><br/>\n" +
+    "  BTC: 1GuggerownoWdKkMUA8C2ySkA8AK7Ucn7n<br/><br/>\n" +
     "  original idea by <a href=\"http://andersbrownworth.com/\">Anders Brownworth </a><br/>\n" +
     "  BTC: 1K3NvcuZzVTueHW1qhkG2Cm3viRkh2EXJp<br/>\n" +
     "  ETH: 0x84a90e21d9d02e30ddcea56d618aa75ba90331ff\n" +
