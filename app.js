@@ -6,15 +6,6 @@ angular
   .module('app', [
     'ngRoute'
   ])
-  .constant('moment', window.moment)
-  .constant('lodash', window._)
-  .constant('bitcoinNetworks', window.bitcoinNetworks)
-  .filter('ago', function (moment) {
-    return function (input) {
-      var duration = moment.duration(moment().diff(moment(input)));
-      return duration.humanize()
-    }
-  })
   .component('app', {
     templateUrl: 'app.html'
   })
@@ -33,19 +24,10 @@ function routeConfig($locationProvider, $routeProvider) {
     .when('/distributed', {template: '<distributed-page></distributed-page>', containerClass: 'container-fluid'})
     .when('/tokens', {template: '<tokens-page></tokens-page>', containerClass: 'container-fluid'})
     .when('/coinbase', {template: '<coinbase-page></coinbase-page>', containerClass: 'container-fluid'})
-    .when('/ecc', {template: '<ecc-page></ecc-page>', containerClass: 'container'})
-    .when('/hd-wallet', {template: '<hd-wallet-page></hd-wallet-page>', containerClass: 'container'})
-    .when('/bitcoin-block', {template: '<bitcoin-block-page></bitcoin-block-page>', containerClass: 'container'})
-    .when('/shamir-secret-sharing', {template: '<shamir-secret-sharing-page></shamir-secret-sharing-page>', containerClass: 'container'})
-    .when('/mu-sig', {template: '<mu-sig-page></mu-sig-page>', containerClass: 'container'})
-    .when('/schnorr', {template: '<schnorr-page></schnorr-page>', containerClass: 'container'})
-    .when('/transaction-creator', {template: '<transaction-creator-page></transaction-creator-page>', containerClass: 'container'})
-    .when('/aezeed', {template: '<aezeed-page></aezeed-page>', containerClass: 'container'})
-    .when('/macaroon', {template: '<macaroon-page></macaroon-page>', containerClass: 'container'})
     .otherwise({redirectTo: '/'})
 }
 
-function run($location, $rootScope, $route, lodash) {
+function run($location, $rootScope, $route) {
   var id = 0;
   $rootScope.difficulty = 4;
   $rootScope.$route = $route;
@@ -80,23 +62,8 @@ function run($location, $rootScope, $route, lodash) {
     });
   };
 
-  $rootScope.hexPubKeyToBitcoinAddr = function (hex) {
-    var buffer = bitcoin.Buffer.from(hex, 'hex');
-    return bitcoin.address.toBase58Check(buffer, bitcoin.networks.bitcoin.pubKeyHash);
-  };
-
   $rootScope.round =   function (number, digits) {
     var exp = Math.pow(10, digits);
     return (Math.round(number * exp) / exp).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'');
   };
-
-  lodash.mixin({
-    deeply: function (map) {
-      return function (obj, fn) {
-        return map(lodash.mapValues(obj, function (v) {
-          return lodash.isPlainObject(v) ? lodash.deeply(map)(v, fn) : v;
-        }), fn);
-      }
-    }
-  });
 }
