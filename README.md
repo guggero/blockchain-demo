@@ -23,7 +23,7 @@ Changes in detail:
 ## Send Thanks
 
 Created by [Oliver Gugger](https://github.com/guggero):
-* BTC: `1GuggerownoWdKkMUA8C2ySkA8AK7Ucn7n`
+* BTC tip address: `bc1qrepygjyxq34d08dqpwhryej5aclpqgzc28seqt`
 
 Original idea by, [anders94](https://github.com/anders94):
 * BTC: `1K3NvcuZzVTueHW1qhkG2Cm3viRkh2EXJp`
