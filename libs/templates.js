@@ -848,7 +848,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "<p class=\"pull-right\">\n" +
     "  by <a href=\"https://github.com/guggero\">Oliver Gugger</a><br>\n" +
-    "  BTC tip address: bc1qrepygjyxq34d08dqpwhryej5aclpqgzc28seqt<br/><br/>\n" +
+    "  BTC tip address: bc1qfgua5vhwm6myajak9p4crhwmwm2k6mczf789eh<br/><br/>\n" +
     "  original idea by <a href=\"http://andersbrownworth.com/\">Anders Brownworth </a><br/>\n" +
     "  BTC: 1K3NvcuZzVTueHW1qhkG2Cm3viRkh2EXJp<br/>\n" +
     "  ETH: 0x84a90e21d9d02e30ddcea56d618aa75ba90331ff\n" +
